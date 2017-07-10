@@ -19,7 +19,7 @@ Please read the installation instructions included in the repository.
 :[range]!lwrap -j80
 
 ## Examples
-
+<p style="text-align: center;">
   The  franchise  began  in 1977 	実写映画本編
   with  the  release of the film 	本シリーズの実写映画本編は、複
   Star   Wars  (later  subtitled 	数のエピソードにより綴られるサ
@@ -70,4 +70,5 @@ Please read the installation instructions included in the repository.
   nouveaux  films  entre 1999 et 	소드에  해당한다.  마크 해밀, 해
   2005,  narrant  des événements 	리슨  포드,  캐리 피셔, 피터 커
   antérieurs   à   la   première 	싱,  앨릭  기니스, 데이비드 프로
-  trilogie.    Cette    dernière 	스,  제임스  얼 존스, 앤서니 대
+  trilogie.    Cette    dernière 	스,  제임스  얼 존스, 앤서니 대 
+  </p>
