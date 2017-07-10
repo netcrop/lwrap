@@ -1,26 +1,26 @@
-# lwrap
-## Overview
+# lwrap
+## Overview
 Line wrap text input according to user defined line width.
 
-## Reporting a bug and security issues
+## Reporting a bug and security issues
 
 github.com/netcrop/lwrap/issues
 
-## How to install
+## How to install
 
 Please read the installation instructions included in the repository.
 
-## License
+## License
 
 [GNU General Public License version 2 (GPLv2)](https://github.com/netcrop/lwrap/COPYING)
 
-## Use with vim
+## Use with vim
 :[range]!lwrap -j80
 
-## Examples
+## Examples
 
-<p style="text-align: center;">The  franchise  began  in 1977 	実写映画本編</p>
-<p style="text-align: center;">with  the  release of the film 	本シリーズの実写映画本編は、複</p>
+<p style="text-align: center;">The  franchise  began  in 1977 	実写映画本編</p>
+<p style="text-align: center;">with  the  release of the film 	本シリーズの実写映画本編は、複</p>
 <p style="text-align: center;">Star   Wars  (later  subtitled 	数のエピソードにより綴られるサ</p>
 <p style="text-align: center;">Episode  IV:  A  New  Hope  in 	ーガの形式を採っている。エピソ</p>
 <p style="text-align: center;">1981),[2][3]  which  became  a 	ード番号は、原題ではローマ数字</p>
