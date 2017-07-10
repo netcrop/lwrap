@@ -19,4 +19,4 @@ Please read the installation instructions included in the repository.
 
 ## Examples
 
-![Alt text](../en_jp.jpg?raw=true "")
+![Alt text](../test/en_jp.jpg?raw=true "")
