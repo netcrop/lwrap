@@ -1,0 +1,33 @@
+%define name    lwrap
+%define ver     1.0
+%define rel     1
+
+Summary:
+Name: %{name}
+Version: %{ver}
+Release: %{rel}
+Group: Amusements/Graphics
+Copyright: GPL
+Packager:
+URL:
+Source0:
+#Provides: none
+#Conflicts: none
+BuildRoot: /var/tmp/%{name}-buildroot
+%Description
+%Prep
+%setup
+%Build
+./configure --prefix=/usr/local --mandir=/usr/local/share/man
+make
+%Install
+rm -rf $RPM_BUILD_ROOT
+make DESTDIR="$RPM_BUILD_ROOT" install
+strip lwrap
+%clean
+rm -rf $RPM_BUILD_ROOT
+%files
+%defattr(-,root,root)
+%doc README COPYING ChangeLogINSTALL
+%{_bindir}/lwrap
+%{_mandir}/*/*

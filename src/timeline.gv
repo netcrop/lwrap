@@ -1,0 +1,142 @@
+digraph ports {
+//	ranksep=1; size="40,40";
+  { rank=same; n0}
+	splines=polyline;
+	n0 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+  <TR>
+    <TD PORT="0.1" BGCOLOR="lightseagreen" COLSPAN="1"><FONT POINT-SIZE="10">next data<br/>reference</FONT></TD>
+  </TR>
+  <TR>
+    <TD PORT="0.1" BGCOLOR="lightblue" COLSPAN="1"><FONT POINT-SIZE="10">current data<br/>reference</FONT></TD>
+  </TR>
+  <TR>
+    <TD PORT="0.1" BGCOLOR="lightgrey" COLSPAN="1"><FONT POINT-SIZE="10">prev data<br/>reference</FONT></TD>
+  </TR>
+	<TR>
+			<TD><FONT POINT-SIZE="10" COLOR="black">Read<br/>Time Line</FONT></TD>
+			<TD PORT="0.1" BGCOLOR="white"><FONT POINT-SIZE="10">past</FONT></TD>
+			<TD PORT="1.1" BGCOLOR="white"><FONT POINT-SIZE="10">20</FONT></TD>
+			<TD PORT="2.1" BGCOLOR="white"><FONT POINT-SIZE="10">19</FONT></TD>
+			<TD PORT="3.1" BGCOLOR="white"><FONT POINT-SIZE="10">18</FONT></TD>
+			<TD PORT="4.1" BGCOLOR="white"><FONT POINT-SIZE="10">17</FONT></TD>
+			<TD PORT="5.1" BGCOLOR="white"><FONT POINT-SIZE="10">16</FONT></TD>
+			<TD PORT="6.1" BGCOLOR="white"><FONT POINT-SIZE="10">15</FONT></TD>
+		  <TD PORT="7.1" BGCOLOR="white"><FONT POINT-SIZE="10">14</FONT></TD>
+			<TD PORT="8.1" BGCOLOR="white"><FONT POINT-SIZE="10">13</FONT></TD>
+			<TD PORT="9.1" BGCOLOR="white"><FONT POINT-SIZE="10">12</FONT></TD>
+     	<TD PORT="10.1" BGCOLOR="white"><FONT POINT-SIZE="10">11</FONT></TD>
+		  <TD PORT="11.1" BGCOLOR="white"><FONT POINT-SIZE="10">10</FONT></TD>
+			<TD PORT="12.1" BGCOLOR="white"><FONT POINT-SIZE="10">9</FONT></TD>
+			<TD PORT="13.1" BGCOLOR="white"><FONT POINT-SIZE="10">8</FONT></TD>
+    	<TD PORT="14.1" BGCOLOR="white"><FONT POINT-SIZE="10">7</FONT></TD>
+			<TD PORT="15.1" BGCOLOR="white"><FONT POINT-SIZE="10">6</FONT></TD>
+      <TD PORT="16.1" BGCOLOR="white"><FONT POINT-SIZE="10">5</FONT></TD>
+    	<TD PORT="17.1" BGCOLOR="white"><FONT POINT-SIZE="10">4</FONT></TD>
+			<TD PORT="18.1" BGCOLOR="white"><FONT POINT-SIZE="10">3</FONT></TD>
+      <TD PORT="19.1" BGCOLOR="white"><FONT POINT-SIZE="10">2</FONT></TD>
+    	<TD PORT="20.1" BGCOLOR="white"><FONT POINT-SIZE="10">1</FONT></TD>
+      <TD PORT="21.1" BGCOLOR="white"><FONT POINT-SIZE="10">now</FONT></TD>
+		</TR>
+    <TR>
+			<TD><FONT POINT-SIZE="10" COLOR="black">read<br/>buffer index</FONT></TD>
+			<TD PORT="0.1" BGCOLOR="white">0</TD>
+			<TD PORT="1.1" BGCOLOR="white">1</TD>
+			<TD PORT="2.1" BGCOLOR="white">2</TD>
+			<TD PORT="3.1" BGCOLOR="white">3</TD>
+			<TD PORT="4.1" BGCOLOR="white">4</TD>
+			<TD PORT="5.1" BGCOLOR="white">5</TD>
+			<TD PORT="6.1" BGCOLOR="white">6</TD>
+		  <TD PORT="7.1" BGCOLOR="white">7</TD>
+			<TD PORT="8.1" BGCOLOR="white">8</TD>
+			<TD PORT="9.1" BGCOLOR="white">9</TD>
+     	<TD PORT="10.1" BGCOLOR="white">10</TD>
+		  <TD PORT="11.1" BGCOLOR="white">11</TD>
+			<TD PORT="12.1" BGCOLOR="white">12</TD>
+			<TD PORT="13.1" BGCOLOR="white">13</TD>
+    	<TD PORT="14.1" BGCOLOR="white">14</TD>
+			<TD PORT="15.1" BGCOLOR="white">15</TD>
+      <TD PORT="16.1" BGCOLOR="white">16</TD>
+    	<TD PORT="17.1" BGCOLOR="white">17</TD>
+			<TD PORT="18.1" BGCOLOR="white">18</TD>
+      <TD PORT="19.1" BGCOLOR="white">19</TD>
+    	<TD PORT="20.1" BGCOLOR="white">20</TD>
+      <TD PORT="21.1" BGCOLOR="white">21</TD>
+      </TR>
+   <TR>
+			<TD><FONT POINT-SIZE="10" COLOR="black">data index</FONT></TD>
+			<TD PORT="0.1" BGCOLOR="white">0</TD>
+			<TD PORT="1.1" BGCOLOR="white">1</TD>
+			<TD PORT="2.1" BGCOLOR="white">2</TD>
+			<TD PORT="3.1" BGCOLOR="white">3</TD>
+			<TD PORT="4.1" BGCOLOR="white">4</TD>
+		  <TD PORT="5.1" BGCOLOR="white">5</TD>
+			<TD PORT="6.1" BGCOLOR="white">6</TD>
+			<TD PORT="7.1" BGCOLOR="white">7</TD>
+     	<TD PORT="8.1" BGCOLOR="white">8</TD>
+		  <TD PORT="9.1" BGCOLOR="white">9</TD>
+			<TD PORT="10.1" BGCOLOR="white">10</TD>
+			<TD PORT="11.1" BGCOLOR="white">11</TD>
+    	<TD PORT="12.1" BGCOLOR="white">12</TD>
+			<TD PORT="13.1" BGCOLOR="white">13</TD>
+      <TD PORT="14.1" BGCOLOR="white">14</TD>
+    	<TD PORT="15.1" BGCOLOR="white">15</TD>
+			<TD PORT="16.1" BGCOLOR="white">16</TD>
+      <TD PORT="17.1" BGCOLOR="white">17</TD>
+    	<TD PORT="18.1" BGCOLOR="white">18</TD>
+      <TD PORT="19.1" BGCOLOR="lightgrey">19</TD>
+      <TD PORT="20.1" BGCOLOR="lightblue">20</TD>
+      <TD PORT="21.1" BGCOLOR="lightseagreen">21</TD>
+		</TR>
+     <TR>
+			<TD><FONT POINT-SIZE="10" COLOR="black">linebreaks<br/>on relaybuffindex</FONT></TD>
+			<TD PORT="0.1" BGCOLOR="white">0</TD>
+			<TD PORT="1.1" BGCOLOR="white">1</TD>
+			<TD PORT="2.1" BGCOLOR="white">2</TD>
+			<TD PORT="3.1" BGCOLOR="white">3</TD>
+			<TD PORT="4.1" BGCOLOR="white"><font point-size="10">LB</font></TD>
+			<TD PORT="5.1" BGCOLOR="white">5</TD>
+			<TD port="6.1" bgcolor="white">6</TD>
+		  <TD port="7.1" bgcolor="white">7</TD>
+			<TD port="8.1" bgcolor="white">8</TD>
+			<TD port="9.1" bgcolor="white"><font point-size="10">LB</font></TD>
+     	<TD port="10.1" bgcolor="white">10</TD>
+		  <TD port="11.1" bgcolor="white">11</TD>
+			<TD port="12.1" bgcolor="white">12</TD>
+			<TD port="13.1" bgcolor="white">13</TD>
+    	<TD port="14.1" bgcolor="white"><font point-size="10">LB</font></TD>
+      <TD PORT="15.1" BGCOLOR="white">15</TD>
+			<TD PORT="16.1" BGCOLOR="lightblue">16</TD>
+		</TR>
+     <TR>
+			<TD><font point-size="10" color="black">write<br/>buffer index</font></TD>
+    	<TD port="0.1" bgcolor="white">0</TD>
+			<TD port="1.1" bgcolor="white">1</TD>
+			<TD port="2.1" bgcolor="white">2</TD>
+			<TD port="3.1" bgcolor="white">3</TD>
+      <TD PORT="4.1" BGCOLOR="white">4</TD>
+			<TD PORT="5.1" BGCOLOR="white">5</TD>
+			<TD port="6.1" bgcolor="white">6</TD>
+		  <TD port="7.1" bgcolor="white">7</TD>
+			<TD port="8.1" bgcolor="white">8</TD>
+    	<TD port="9.1" bgcolor="white">9</TD>
+    	<TD PORT="10.1" BGCOLOR="white">10</TD>
+			<TD PORT="11.1" BGCOLOR="lightblue">11</TD>
+      </TR>
+    <TR>
+			<TD><font point-size="10" color="black">hcolsize</font></TD>
+    	<TD port="0.1" bgcolor="white" colspan="17"></TD>
+    	<TD port="1.1" bgcolor="white" colspan="5"><font point-size="10">5</font></TD>
+		</TR>
+   <TR>
+			<TD><font point-size="10" color="black">writebuffrelay</font></TD>
+    	<TD port="0.1" bgcolor="white" colspan="12"></TD>
+      <TD port="1.1" bgcolor="white" colspan="10">
+        <font point-size="10">hcolsize &times; justifymultiple &rarr; 5 &times; 2 = 10</font>
+      </TD>
+		</TR>
+   </TABLE>>];
+	label = "\n\nTimeline.\nlwrap -j -c5";
+	fontsize=10;
+}

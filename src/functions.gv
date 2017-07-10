@@ -1,0 +1,412 @@
+digraph ports {
+//	ranksep=1; size="40,40";
+  { rank=same; n0}
+  { rank=same; n1 n18 n3 n2 n4}
+  { rank=same; n5 n6}
+  { rank=same; n8}
+  { rank=same; n9 n10 n11 n12}
+	splines=polyline;
+	n0 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">main()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+	n1 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">alocate()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n2 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">option()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n3 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">freadfile()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n4 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">delocate()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n5 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">readsize == readbuffsize</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="2" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">fread()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n6 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">readsize == readbuffsize</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="2" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">frelay()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n8 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">readsize &lt; readbuffsize</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="3" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">ffilter()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n9 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">funicode[readdata.val]()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">alnum()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">space()</FONT>
+      </TD>
+	 </TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">formfeed()</FONT>
+      </TD>
+		</TR>
+  <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">twobyteheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">hangulheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">asianheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">formsheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">symbolheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">mischeader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">indicheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">cjkheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">hangulmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">cjkmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">latinmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">middlebyteheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">fourbyteheader()</FONT>
+      </TD>
+		</TR>
+    <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">newline()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n10 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">Delay: hcolcount &gt; hcolsize</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="2" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">flinebreak()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n11 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">finitwritebuff()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+   n12 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">Delay: dataindex &ge;writebuffrelay</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="2" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">fwritebuff()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+   n13 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">Delay: outindex &ge;writebuffsize</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="2" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">foutput()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+    n14 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">fwrite()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+    n15 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">abuff()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+    n16 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">acall()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+    n17 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">aunicode()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+     n18 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">avariable()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+     n19 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">fjustify()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n20 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">funicode[linebreak.val]()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbalnum()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbspace()</FONT>
+      </TD>
+	 </TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbformfeed()</FONT>
+      </TD>
+		</TR>
+  <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbtwobyteheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbhangulheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbasianheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbformsheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbsymbolheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbmischeader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbindicheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbcjkheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbhangulmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbcjkmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lblatinmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbmiddlebyteheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbfourbyteheader()</FONT>
+      </TD>
+		</TR>
+    <TR>
+      <TD PORT="1" BGCOLOR="white" COLSPAN="11">
+        <FONT POINT-SIZE="10">lbnewline()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n0:1:s->n18:1:n; 
+  n0:1:s->n2:1;
+  n0:1:s->n1:1;
+  n0:1:s->n3:1;
+  n0:1:s->n4:1;
+  n1:1:s->n15:1:n;
+  n1:1:s->n16:1:n;
+  n1:1:s->n17:1:n;
+  n3:1:s->n5:1:n;
+  n3:1:s->n6:1:n;
+  n3:1:e->n8:1:n;
+  n6:2:s->n8:3:w;
+  n8:3:s->n9:1:n;
+  n8:3:s->n10:1:n;
+  n8:3:s->n11:1;
+  n8:3:s->n12:1:n;
+  n8:3:s->n13:1:n;
+  n10:2:s->n20:1:n;
+  n11:1:e->n12:1:w;
+  n12:2:s->n19:1;
+  n13:2:s->n14:1;
+	label = "\n\nlwrap: Functions.";
+	fontsize=10;
+}
