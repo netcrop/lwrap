@@ -15,3 +15,7 @@ Please read the installation instructions included in the repository.
 
 ## Use with vim
 :[range]!lwrap -j80
+
+## Examples
+
+![Alt text](test/en_jp.jpg?raw=true "")
