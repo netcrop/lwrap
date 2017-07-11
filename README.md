@@ -20,4 +20,4 @@ Please read the installation instructions included in the repository.
 
 ## Examples
 
-![Alt text](misc/lexamples.gif?raw=true "")
+![Alt text](misc/examples.gif?raw=true "")
