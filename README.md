@@ -23,7 +23,7 @@ following commands do Not use sudo
 
    The most flexible way of using lwrap is to  
 testing with different line width back and forth  
-inside vim with command: `:[range]!lwrap -j50`.
+inside vim with e.g. command: `:[range]!lwrap -j50`.
 
 ![Alt text](misc/lwrap.gif?raw=true "")
 
@@ -36,9 +36,9 @@ line width consistency depends on the input language
 font glyph width.
 
   The default line break is ascii space plus newline,  
-  which can be changed with command option to a single  
-  newline. This is because ascii space occasionally  
-  been used as word and name separator in asian languages.
+which can be changed with command option to a single  
+newline. This is because ascii space occasionally  
+been used as word and name separator in asian languages.
 
 ![Alt text](misc/examples.gif?raw=true "")
 
@@ -48,7 +48,7 @@ font glyph width.
 
   One 255 elements array been created as a "filter" for each  
 input byte. Each element is a struct pointer, which in turn  
-pointing to 20 unique functions based on that input byte.  
+contains functions that handle each input byte.  
 By doing this we avoid as many as possible if-else cluster.  
 And keep the functions in minimal size.
 
@@ -59,7 +59,7 @@ function call.
   It seems we introduced a lot of overhead by doing many  
 function calls. But the benefits of decreased if-else cluster  
 and maintainbility of functions overcome some hundred  
-millisecounds in decreased speed efficiency.
+millisecounds in lost speed efficiency.
 
 <img src="misc/functions.png" height="282" width="282">
 
@@ -68,9 +68,9 @@ millisecounds in decreased speed efficiency.
   Three buffers been created for handling input bytes.  
 We use library functions `fread` and `fwrite` to minimize  
 the number of function calls. A short time delay been  
-introduced for the first occurence of linebreak.  
+introduced for the first occurence of line break.  
 And another one for initiation of write buffer.  
-Therefore the big "O" notation of input stream through  
+The big "O" notation of input stream through  
 the entire program is constant.
 
 <img src="misc/timeline.png" height="232" width="382">
