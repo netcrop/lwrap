@@ -20,4 +20,18 @@ Please read the installation instructions included in the repository.
 
 ## Examples
 
+Output in different natural languages.
+
 ![Alt text](misc/examples.gif?raw=true "")
+
+## For developers
+
+:Function calls
+
+![Alt text](misc/functions.png?raw=true "")
+
+:Timeline
+
+![Alt text](misc/timeline.png?raw=true "")
+
+

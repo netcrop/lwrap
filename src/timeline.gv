@@ -1,5 +1,5 @@
 digraph ports {
-//	ranksep=1; size="40,40";
+	ranksep=1; size="40,40";
   { rank=same; n0}
 	splines=polyline;
 	n0 [shape=none,margin=0,label=<
