@@ -20,7 +20,7 @@ Output screenshots in different natural languages.
 
 Function calls
 
-<img src="misc/functions.png" height="232" width="232">
+<img src="misc/functions.png" height="282" width="282">
 
 Timeline
 
