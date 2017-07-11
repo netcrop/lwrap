@@ -4,13 +4,13 @@ Line wrap text input according to user defined line width.
 ## How to install
 
 For linux/unix system:
-
+```
 cd src/
 source lwrap.sh
 lwrap.config
 lwrap.make
 lwrap.install lwrap
-
+```
 ## Use with vim
 :[range]!lwrap -j60
 
