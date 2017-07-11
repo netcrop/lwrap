@@ -8,7 +8,7 @@ required header files:
 stdio.h  
 stdlib.h  
 unistd.h  
-These commands do Not use ```sudo``` for best security precaution.
+Following commands do Not use ```sudo``` for best security precaution.
 ```
 > cd src/
 > source lwrap.sh
@@ -20,12 +20,16 @@ These commands do Not use ```sudo``` for best security precaution.
 ```
 ## Use with vim
 :[range]!lwrap -j60
-
+* Testing with different line width back and forth.
+the most flexible way of using lwrap with vim.
 ![Alt text](misc/lwrap.gif?raw=true "")
 
 ## Examples
 
-Output screenshots in different natural languages.
+* Output screenshots in different natural languages.
+lwrap support entire unicode utf-8 codepage.   
+the actual line width consistency depends on the input   
+language font glyph width.
 
 ![Alt text](misc/examples.gif?raw=true "")
 
