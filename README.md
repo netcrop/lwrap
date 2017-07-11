@@ -1,16 +1,18 @@
 # lwrap
 Line wrap text input according to user defined line width.
 
-## How to install
+## Compile install and uninstall
 
-* For linux/unix system:
-This commands do Not use ```sudo``` for best security concern.
+* For linux/unix system:  
+These commands do Not use ```sudo``` for best security concern.
 ```
 > cd src/
 > source lwrap.sh
 > lwrap.config
 > lwrap.make
 > lwrap.install
+> man lwrap
+> lwrap.uninstall
 ```
 ## Use with vim
 :[range]!lwrap -j60
