@@ -12,7 +12,7 @@ Please read the installation instructions included in the repository.
 
 ## Examples
 
-Output in different natural languages.
+Output screenshots in different natural languages.
 
 ![Alt text](misc/examples.gif?raw=true "")
 
