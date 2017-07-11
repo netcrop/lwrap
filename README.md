@@ -71,8 +71,8 @@ We use library functions fread and fwrite to minimize
 the number of function calls. A short time delay been  
 introduced for the first occurence of linebreak.  
 And another one for initiation of write buffer.  
-Therefore the big "O" of input stream through the  
-program is constant.
+Therefore the big "O" notation of input stream through  
+the entire program is constant.
 
 <img src="misc/timeline.png" height="232" width="382">
 
