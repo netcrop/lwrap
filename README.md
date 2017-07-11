@@ -14,8 +14,8 @@ Please read the installation instructions included in the repository.
 [GNU General Public License version 2 (GPLv2)](https://github.com/netcrop/lwrap/COPYING)
 
 ## Use with vim
-:[range]!lwrap -j80
+:[range]!lwrap -j60
+![Alt text](misc/lwrap.gif?raw=true "")
 
 ## Examples
 
-![Alt text](test/en_jp.jpg?raw=true "")
