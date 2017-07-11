@@ -24,7 +24,7 @@ for best security precaution.
 
 * Testing with different line width back and forth.
 
-The most flexible way of using lwrap with vim.
+   The most flexible way of using lwrap with vim.
 
 ![Alt text](misc/lwrap.gif?raw=true "")
 
@@ -32,14 +32,14 @@ The most flexible way of using lwrap with vim.
 
 * Output screenshots in different natural languages.
 
-lwrap support unicode utf-8 codepage.   
+   lwrap support unicode utf-8 codepage.   
 The actual line width consistency depends  
 on the input language font glyph width.
 
-...The default line break is ascii space plus newline,  
+   The default line break is ascii space plus newline,  
 which can be changed with command option to a single
 newline.  
-...This is because ascii space occasionally been used as word  
+This is because ascii space occasionally been used as word  
 and name separator in asian languages.
 
 ![Alt text](misc/examples.gif?raw=true "")
