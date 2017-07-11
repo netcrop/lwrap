@@ -64,8 +64,13 @@ millisecounds in decreased speed efficiency.
 
 <img src="misc/functions.png" height="282" width="282">
 
-Timeline
+* Timeline
 
+  Three buffers been created for handling input bytes.  
+We use library functions fread and fwrite to minimize  
+the number of function calls. A time delay been introduced  
+for the first occurence of linebreak. And another time delay  
+for initiation of write buffer.
 <img src="misc/timeline.png" height="232" width="382">
 
 ## Reporting a bug and security issues
