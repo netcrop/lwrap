@@ -28,10 +28,7 @@ Output in different natural languages.
 
 :Function calls
 
-![Alt text](misc/functions.png?raw=true "")
+<img src="misc/functions.png" height="32" width="32">
 
 :Timeline
-
-![Alt text](misc/timeline.png?raw=true "")
-
 
