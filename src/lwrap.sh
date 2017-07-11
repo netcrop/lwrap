@@ -33,16 +33,17 @@ lwrap.make()
 }
 lwrap.install()
 {
-  local binpath=${1:?[bin file for install]}
-  local binfile=$(basename $binpath)
-  local bindir=$(dirname $binpath)
+  local binpath=${1:-lwrap}
+  binfile=$(basename $binpath)
+  local bindir=${2:-/usr/local/bin/}
+  local bindir=$(dirname $bindir)
   local manfile=${binfile}.1
-  cp -f $binpath /usr/local/bin/$binfile
-  chmod gu=rx /usr/local/bin/$binfile
-  chown :users /usr/local/bin/$binfile
+  cp -f $binpath $bindir/$binfile
+  chmod gu=rx $binpdir/$binfile
+  chown $USER: $bindir/$binfile
   cp -f $bindir/$manfile /usr/local/man/man1/$manfile
   chmod gu=r /usr/local/man/man1/$manfile
-  chown :users /usr/local/man/man1/$manfile
+  chown $USER: /usr/local/man/man1/$manfile
 }
 lwrap.uninstall()
 {
