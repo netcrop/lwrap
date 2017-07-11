@@ -50,7 +50,8 @@ font glyph width.
   One 255 elements array been created as a "filter" for each  
 input byte. Each element is a function pointer, which execute  
 a function call based on that input byte. By doing this  
-we avoide as many as possible if-else cluster.
+we avoide as many as possible if-else cluster. And keep the  
+functions in minimal size.
 
   The same filter applys for the last byte before each line  
 break. This time the array element will use another pointer  
@@ -58,7 +59,7 @@ to execute a function call.
 
   It seems we introduced a lot of overhead by doing many  
 function calls. But the benefits of decreased if-else cluster  
-and minimal function size overcome some hundred millisecounds  
+and maintainbility of functions overcome some hundred millisecounds  
 in decreased speed efficiency.
 
 <img src="misc/functions.png" height="282" width="282">
