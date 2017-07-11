@@ -48,9 +48,13 @@ font glyph width.
 * Function calls
 
   One 255 elements array been created as a "filter" for each  
-input byte. Each  element is a function pointer, which  
-execute a function call based on that input byte. By doing this  
+input byte. Each element is a function pointer, which execute  
+a function call based on that input byte. By doing this  
 we avoide as many as possible if-else cluster.
+
+  The same filter applys for the last byte before each line  
+break. This time the array element will use another pointer  
+to execute a function all.
 
 <img src="misc/functions.png" height="282" width="282">
 
