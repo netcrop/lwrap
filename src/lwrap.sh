@@ -35,13 +35,12 @@ lwrap.install()
 {
   local binpath=${1:-lwrap}
   binfile=$(basename $binpath)
-  local bindir=${2:-/usr/local/bin/}
-  local bindir=$(dirname $bindir)
+  local bindir=${2:-/usr/local/bin}
   local manfile=${binfile}.1
   cp -f $binpath $bindir/$binfile
-  chmod gu=rx $binpdir/$binfile
+  chmod gu=rx $bindir/$binfile
   chown $USER: $bindir/$binfile
-  cp -f $bindir/$manfile /usr/local/man/man1/$manfile
+  cp -f $manfile /usr/local/man/man1/$manfile
   chmod gu=r /usr/local/man/man1/$manfile
   chown $USER: /usr/local/man/man1/$manfile
 }
