@@ -28,7 +28,10 @@ Output in different natural languages.
 
 Function calls
 
-<img src="misc/functions.png" height="132" width="132">
+<img src="misc/functions.png" height="232" width="232">
 
 Timeline
+
+<img src="misc/time.png" height="232" width="232">
+
 
