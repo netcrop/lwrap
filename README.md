@@ -36,10 +36,10 @@ for best security precaution.
 line   width  consistency  depends  on  the  input  
 language font glyph width.
 
-  The  default  line  break  is  ascii  space plus  
-newline,  which can be changed with command option  
-to  a  single newline. This is because ascii space  
-occasionally  been used as word and name separator   
+  The  default  line  break  is  ascii  space plus  
+newline,  which can be changed with command option  
+to  a  single newline. This is because ascii space  
+occasionally  been used as word and name separator  
 in asian languages.
 
 ![Alt text](misc/examples.gif?raw=true "")
