@@ -23,7 +23,7 @@ following commands do Not use sudo
 
    The most flexible way of using lwrap is to  
 testing with different line width back and forth  
-inside vim with command: `:[range]!lwrap -j60`.
+inside vim with command: `:[range]!lwrap -j50`.
 
 ![Alt text](misc/lwrap.gif?raw=true "")
 
