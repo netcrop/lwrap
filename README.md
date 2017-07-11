@@ -59,8 +59,8 @@ to execute a function call.
 
   It seems we introduced a lot of overhead by doing many  
 function calls. But the benefits of decreased if-else cluster  
-and maintainbility of functions overcome some hundred millisecounds  
-in decreased speed efficiency.
+and maintainbility of functions overcome some hundred  
+millisecounds in decreased speed efficiency.
 
 <img src="misc/functions.png" height="282" width="282">
 
