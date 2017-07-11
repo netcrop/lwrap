@@ -50,7 +50,7 @@ font glyph width.
   One 255 elements array been created as a "filter" for each  
 input byte. Each element is a function pointer, which execute  
 a function call based on that input byte. By doing this  
-we avoide as many as possible if-else cluster. And keep the  
+we avoid as many as possible if-else cluster. And keep the  
 functions in minimal size.
 
   The same filter applys for the last byte before each line  
