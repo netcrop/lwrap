@@ -9,8 +9,8 @@ stdio.h
 stdlib.h  
 unistd.h  
 ```
-Following commands do Not use sudo
-for best security precaution.
+For best security precaution,
+following commands do Not use sudo
 > cd src/
 > source lwrap.sh
 > lwrap.config
