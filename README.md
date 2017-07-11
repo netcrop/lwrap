@@ -5,11 +5,11 @@ Line wrap text input according to user defined line width.
 
 For linux/unix system:
 ```
-cd src/
-source lwrap.sh
-lwrap.config
-lwrap.make
-lwrap.install lwrap
+>cd src/
+>source lwrap.sh
+>lwrap.config
+>lwrap.make
+>lwrap.install lwrap
 ```
 ## Use with vim
 :[range]!lwrap -j60
