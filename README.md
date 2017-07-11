@@ -4,6 +4,10 @@ Line wrap text input according to user defined line width.
 ## Compile install and uninstall
 
 * For linux/unix system:  
+required header files:  
+stdio.h  
+stdlib.h  
+unistd.h  
 These commands do Not use ```sudo``` for best security concern.
 ```
 > cd src/
