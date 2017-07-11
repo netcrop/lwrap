@@ -26,9 +26,9 @@ Output in different natural languages.
 
 ## For developers
 
-:Function calls
+Function calls
 
-<img src="misc/functions.png" height="32" width="32">
+<img src="misc/functions.png" height="132" width="132">
 
-:Timeline
+Timeline
 
