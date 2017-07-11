@@ -31,6 +31,10 @@ lwrap support entire unicode utf-8 codepage.
 the actual line width consistency depends on the input   
 language font glyph width.
 
+The default line break is ascii space plus newline.  
+Due to ascii space occasionally been used as word  
+and name separator in asian languages.
+
 ![Alt text](misc/examples.gif?raw=true "")
 
 ## For developers
