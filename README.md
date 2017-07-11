@@ -19,12 +19,11 @@ following commands do Not use sudo
 > man lwrap
 > lwrap.uninstall
 ```
-## Use with vim
-:[range]!lwrap -j60
+## Using lwrap
 
-* Testing with different line width back and forth.
-
-   The most flexible way of using lwrap with vim.
+   The most flexible way of using lwrap is to  
+testing with different line width back and forth  
+inside vim with command: `:[range]!lwrap -j60`.
 
 ![Alt text](misc/lwrap.gif?raw=true "")
 
