@@ -8,8 +8,9 @@ required header files:
 stdio.h  
 stdlib.h  
 unistd.h  
-Following commands do Not use ```sudo``` for best security precaution.
 ```
+Following commands do Not use ```sudo```
+for best security precaution.
 > cd src/
 > source lwrap.sh
 > lwrap.config
