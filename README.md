@@ -32,6 +32,6 @@ Function calls
 
 Timeline
 
-<img src="misc/timeline.png" height="232" width="322">
+<img src="misc/timeline.png" height="232" width="382">
 
 
