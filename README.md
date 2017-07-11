@@ -48,14 +48,14 @@ font glyph width.
 * Function calls
 
   One 255 elements array been created as a "filter" for each  
-input byte. Each element is a function pointer, which execute  
-a function call based on that input byte. By doing this  
-we avoid as many as possible if-else cluster. And keep the  
-functions in minimal size.
+input byte. Each element is a struct pointer, which in turn  
+pointing to 20 unique functions based on that input byte.  
+By doing this we avoid as many as possible if-else cluster.  
+And keep the functions in minimal size.
 
   The same filter applys for the last byte before each line  
-break. This time the array element will use another pointer  
-to execute a function call.
+break. This time the struct pointer will execute another  
+function call.
 
   It seems we introduced a lot of overhead by doing many  
 function calls. But the benefits of decreased if-else cluster  
