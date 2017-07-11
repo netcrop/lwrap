@@ -46,8 +46,10 @@ lwrap.install()
 }
 lwrap.uninstall()
 {
-  rm -f /usr/local/bin/lwrap
-  rm -f /usr/local/man/man1/lwrap.1
+  local binpath=${1:-/usr/local/bin/lwrap}
+  local manpath=${2:-/usr/local/man/man1/lwrap.1}
+  rm -f $binpath
+  rm -f $manpath
 }
 lwrap.exclude()
 {
