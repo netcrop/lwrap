@@ -68,9 +68,12 @@ millisecounds in decreased speed efficiency.
 
   Three buffers been created for handling input bytes.  
 We use library functions fread and fwrite to minimize  
-the number of function calls. A time delay been introduced  
-for the first occurence of linebreak. And another time delay  
-for initiation of write buffer.
+the number of function calls. A short time delay been  
+introduced for the first occurence of linebreak.  
+And another one for initiation of write buffer.  
+Therefore the big "O" of input stream through the  
+program is constant.
+
 <img src="misc/timeline.png" height="232" width="382">
 
 ## Reporting a bug and security issues
