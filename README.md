@@ -45,7 +45,12 @@ font glyph width.
 
 ## For developers
 
-Function calls
+* Function calls
+
+  One 255 elements array been created as a "filter" for each  
+input byte. Each  element is a function pointer, which  
+execute a function call based on that input byte. By doing this  
+we avoide as many as possible if-else cluster.
 
 <img src="misc/functions.png" height="282" width="282">
 
