@@ -3,13 +3,14 @@ Line wrap text input according to user defined line width.
 
 ## How to install
 
-For linux/unix system:
+* For linux/unix system:
+This commands do Not use ```sudo``` for best security concern.
 ```
 > cd src/
 > source lwrap.sh
 > lwrap.config
 > lwrap.make
-> lwrap.install lwrap
+> lwrap.install
 ```
 ## Use with vim
 :[range]!lwrap -j60
