@@ -54,7 +54,12 @@ we avoide as many as possible if-else cluster.
 
   The same filter applys for the last byte before each line  
 break. This time the array element will use another pointer  
-to execute a function all.
+to execute a function call.
+
+  It seems we introduced a lot of overhead by doing many  
+function calls. But the benefits of decreased if-else cluster  
+and minimal function size overcome some hundrad millisecounds  
+in decreased speed efficiency.
 
 <img src="misc/functions.png" height="282" width="282">
 
