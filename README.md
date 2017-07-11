@@ -15,6 +15,7 @@ Please read the installation instructions included in the repository.
 
 ## Use with vim
 :[range]!lwrap -j60
+
 ![Alt text](misc/lwrap.gif?raw=true "")
 
 ## Examples
