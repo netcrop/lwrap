@@ -196,3 +196,8 @@ lwrap.indentall()
   done
   rm -rf *.*~
 }
+lwrap.commit()
+{
+  [[ "x$(basename $PWD)" != xlwrap ]] && return
+  g.commit.message "$(date +'%Y-%m-%d %H:%M:%S')"
+}
