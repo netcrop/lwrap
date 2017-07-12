@@ -199,5 +199,5 @@ lwrap.indentall()
 lwrap.commit()
 {
   [[ "x$(basename $PWD)" != xlwrap ]] && return
-  g.commit.message "$(date +'%Y-%m-%d %H:%M:%S')"
+  git commit --all --message="$(date +'%Y-%m-%d %H:%M:%S')"
 }
