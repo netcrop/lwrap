@@ -1,3 +1,8 @@
+/*
+ * Yang Li
+ * GPLv2
+ */
+
 #include "lwrap.h"
 #define my (**me)
 inline void foutput(self ** me)

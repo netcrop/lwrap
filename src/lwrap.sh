@@ -205,3 +205,13 @@ lwrap.indentall()
     lwrap.indent $i
   done
 }
+lwrap.comments()
+{
+  local infile=${1:?[infile]}
+  local tmpfile=$(mktemp)
+  local i;
+  for i in *.c *.h;do
+    cat $infile $i > $tmpfile
+    mv $tmpfile $i
+  done
+}
