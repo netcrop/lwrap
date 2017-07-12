@@ -28,6 +28,7 @@ lwrap.clean()
 }
 lwrap.make()
 {
+  lwrap.indentall
   make clean
   touch .deps/lwrap.Po
   make -j4 CFLAGS='-g -O2 -w'
@@ -195,9 +196,4 @@ lwrap.indentall()
     indent --linux-style --indent-level2 --no-tabs $i
   done
   rm -rf *.*~
-}
-lwrap.commit()
-{
-  [[ "x$(basename $PWD)" != xlwrap ]] && return
-  git commit --all --message="$(date +'%Y-%m-%d %H:%M:%S')"
 }
