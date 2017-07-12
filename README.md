@@ -92,7 +92,7 @@ and debugging the source code.
   The most flexible way is keep your own coding style  
 and use this command for all of your source code  
 before commit:  
-`indent --linux-style --indent-level2 --no-tabs`  
+`> indent --linux-style --indent-level2 --no-tabs`  
 ```
 Or use this bash function:
 > cd src/
