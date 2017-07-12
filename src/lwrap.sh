@@ -187,13 +187,21 @@ lwrap.release()
 }
 lwrap.indent()
 {
-  indent --linux-style --indent-level2 --no-tabs --tab-size2 "$@"
+  local infile=${1:?[c,h file]}
+  local tmpfile=$(mktemp)
+  indent --linux-style --indent-level2 --no-tabs --tab-size2 $infile -o $tmpfile
+  local change="$(diff --brief $infile $tmpfile)"
+  if [[ X$change == X ]];then
+    /bin/rm -f $tmpfile
+    return
+  fi
+  mv $tmpfile $infile
+  /bin/rm -f $infile~
 }
 lwrap.indentall()
 {
   local i;
   for i in *.c *.h;do
-    indent --linux-style --indent-level2 --no-tabs $i
+    lwrap.indent $i
   done
-  rm -rf *.*~
 }

@@ -11,7 +11,7 @@ inline void flinebreak(self ** me)
   my.lbdata = &my.data[my.linebreak];
   my.hcolcount = my.currdata->wcolcount;
   my.hbytecount = my.currdata->wbytecount;
-  my.funicode[my.lbdata->val]->linebreak->f(me);
+  my.funicode[my.lbdata->val]->linebreak(me);
   if (my.currjustify->remain != 0 && my.currjustify->wcount == 0) ;
   else
     my.currjustify = my.currjustify->after;

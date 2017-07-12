@@ -19,9 +19,8 @@ struct data_t {
   data_t *after;
 };
 struct fun_t {
-  fun f;
-  fun_t *filter;
-  fun_t *linebreak;
+  fun *filter;
+  fun *linebreak;
 };
 struct index_t {
   int val;
@@ -178,7 +177,7 @@ typedef struct self {
   index_t *readindex;
   index_t *currreadindex;
   fun_t **funicode;
-  fun_t **fring;
+  fun_t *fring;
   justify_t *justify;
   justify_t *currjustify;
   justify_t *outjustify;

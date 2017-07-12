@@ -2,7 +2,7 @@
 #define my (**me)
 inline void ffilter(self ** me)
 {
-  my.funicode[(unsigned char)my.readbuff[my.currreadindex->val]]->filter->f(me);
+  my.funicode[(unsigned char)my.readbuff[my.currreadindex->val]]->filter(me);
   if (my.currdata->val == EOS)
     return;
   my.flinebreak(me);

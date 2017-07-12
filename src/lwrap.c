@@ -60,13 +60,8 @@ void delocate(self ** me)
       free(my.funicode);
     if (my.call != NULL)
       free(my.call);
-    if (my.fring != NULL) {
-      for (int i = 0; i < my.fringboundry; i++) {
-        if (my.fring[i] != NULL)
-          free(my.fring[i]);
-      }
+    if (my.fring != NULL)
       free(my.fring);
-    }
     free(*me);
   }
 }
@@ -258,95 +253,87 @@ inline void acall(self ** me)
 inline void afring(self ** me)
 {
   mlocate((void **)&my.fring, (sizeof(fun_t) * my.fringboundry));
-  for (int i = 0; i < my.fringboundry; i++)
-    mlocate((void **)&my.fring[i], (sizeof(fun_t) * 2));
-  my.fring[0][0].f = &nonealnum;
-  my.fring[0][1].f = &lbnonealnum;
-  my.fring[1][0].f = &alnum;
-  my.fring[1][1].f = &lbalnum;
-  my.fring[2][0].f = &space;
-  my.fring[2][1].f = &lbspace;
-  my.fring[3][0].f = &newline;
-  my.fring[3][1].f = &lbnewline;
-  my.fring[4][0].f = &formfeed;
-  my.fring[4][1].f = &lbformfeed;
-  my.fring[5][0].f = &middlebyte;
-  my.fring[5][1].f = &lbmiddlebyte;
-  my.fring[6][0].f = &invalidbyte;
-  my.fring[6][1].f = &lbinvalidbyte;
-  my.fring[7][0].f = &twobyteheader;
-  my.fring[7][1].f = &lbtwobyteheader;
-  my.fring[8][0].f = &fourbyteheader;
-  my.fring[8][1].f = &lbfourbyteheader;
-  my.fring[9][0].f = &indicheader;
-  my.fring[9][1].f = &lbindicheader;
-  my.fring[10][0].f = &mischeader;
-  my.fring[10][1].f = &lbmischeader;
-  my.fring[11][0].f = &symbolheader;
-  my.fring[11][1].f = &lbsymbolheader;
-  my.fring[12][0].f = &cjkheader;
-  my.fring[12][1].f = &lbcjkheader;
-  my.fring[13][0].f = &asianheader;
-  my.fring[13][1].f = &lbasianheader;
-  my.fring[14][0].f = &puaheader;
-  my.fring[14][1].f = &lbpuaheader;
-  my.fring[15][0].f = &formsheader;
-  my.fring[15][1].f = &lbformsheader;
-  my.fring[16][0].f = &hangulheader;
-  my.fring[16][1].f = &lbhangulheader;
-  for (int i = 0; i < my.fringboundry; i++) {
-    my.fring[i][0].linebreak = &my.fring[i][1];
-    my.fring[i][0].filter = &my.fring[i][0];
-    my.fring[i][1].linebreak = &my.fring[i][0];
-    my.fring[i][1].filter = &my.fring[i][0];
-  }
+  my.fring[0].filter = &nonealnum;
+  my.fring[0].linebreak = &lbnonealnum;
+  my.fring[1].filter = &alnum;
+  my.fring[1].linebreak = &lbalnum;
+  my.fring[2].filter = &space;
+  my.fring[2].linebreak = &lbspace;
+  my.fring[3].filter = &newline;
+  my.fring[3].linebreak = &lbnewline;
+  my.fring[4].filter = &formfeed;
+  my.fring[4].linebreak = &lbformfeed;
+  my.fring[5].filter = &middlebyte;
+  my.fring[5].linebreak = &lbmiddlebyte;
+  my.fring[6].filter = &invalidbyte;
+  my.fring[6].linebreak = &lbinvalidbyte;
+  my.fring[7].filter = &twobyteheader;
+  my.fring[7].linebreak = &lbtwobyteheader;
+  my.fring[8].filter = &fourbyteheader;
+  my.fring[8].linebreak = &lbfourbyteheader;
+  my.fring[9].filter = &indicheader;
+  my.fring[9].linebreak = &lbindicheader;
+  my.fring[10].filter = &mischeader;
+  my.fring[10].linebreak = &lbmischeader;
+  my.fring[11].filter = &symbolheader;
+  my.fring[11].linebreak = &lbsymbolheader;
+  my.fring[12].filter = &cjkheader;
+  my.fring[12].linebreak = &lbcjkheader;
+  my.fring[13].filter = &asianheader;
+  my.fring[13].linebreak = &lbasianheader;
+  my.fring[14].filter = &puaheader;
+  my.fring[14].linebreak = &lbpuaheader;
+  my.fring[15].filter = &formsheader;
+  my.fring[15].linebreak = &lbformsheader;
+  my.fring[16].filter = &hangulheader;
+  my.fring[16].linebreak = &lbhangulheader;
 }
 
 inline void aunicode(self ** me)
 {
   mlocate((void **)&my.funicode, (sizeof(fun_t *) * UNICODESIZE));
   for (int i = 0; i <= NONEALNUMMAX; i++)
-    my.funicode[i] = &my.fring[0][0];
+    my.funicode[i] = &my.fring[0];
   for (int i = ALNUMMIN; i <= ALNUMMAX; i++)
-    my.funicode[i] = &my.fring[1][0];
-  my.funicode[ALNUMMAX + 1] = &my.fring[0][0];
-  my.funicode[SPACE] = &my.fring[2][0];
-  my.funicode[NEWLINE] = &my.fring[3][0];
-  my.funicode[FORMFEED] = &my.fring[4][0];
+    my.funicode[i] = &my.fring[1];
+  my.funicode[ALNUMMAX + 1] = &my.fring[0];
+  my.funicode[SPACE] = &my.fring[2];
+  my.funicode[NEWLINE] = &my.fring[3];
+  my.funicode[FORMFEED] = &my.fring[4];
   for (int i = MIDDLEBYTEMIN; i <= MIDDLEBYTEMAX; i++)
-    my.funicode[i] = &my.fring[5][0];
-  my.funicode[192] = &my.fring[6][0];
-  my.funicode[193] = &my.fring[6][0];
+    my.funicode[i] = &my.fring[5];
+  my.funicode[192] = &my.fring[6];
+  my.funicode[193] = &my.fring[6];
   for (int i = LATINMIN; i <= LATINMAX; i++)
-    my.funicode[i] = &my.fring[7][0];
+    my.funicode[i] = &my.fring[7];
   for (int i = IPAMIN; i <= IPAMAX; i++)
-    my.funicode[i] = &my.fring[7][0];
+    my.funicode[i] = &my.fring[7];
   for (int i = ACCENTSMIN; i <= ACCENTSMAX; i++)
-    my.funicode[i] = &my.fring[7][0];
+    my.funicode[i] = &my.fring[7];
   for (int i = CYRILMIN; i <= CYRILMAX; i++)
-    my.funicode[i] = &my.fring[7][0];
-  my.funicode[ARMENIMIN] = &my.fring[7][0];
+    my.funicode[i] = &my.fring[7];
+  my.funicode[ARMENIMIN] = &my.fring[7];
   for (int i = HEBREWMIN; i <= HEBREWMAX; i++)
-    my.funicode[i] = &my.fring[7][0];
+    my.funicode[i] = &my.fring[7];
   for (int i = ARABICMIN; i <= ARABICMAX; i++)
-    my.funicode[i] = &my.fring[7][0];
-  my.funicode[SYRIACMIN] = &my.fring[7][0];
-  my.funicode[THAANAMIN] = &my.fring[7][0];
-  my.funicode[NKOMIN] = &my.fring[7][0];
-  my.funicode[INDICMIN] = &my.fring[9][0];
-  my.funicode[MISCMIN] = &my.fring[10][0];
-  my.funicode[SYMBOLMIN] = &my.fring[11][0];
+    my.funicode[i] = &my.fring[7];
+  my.funicode[SYRIACMIN] = &my.fring[7];
+  my.funicode[THAANAMIN] = &my.fring[7];
+  my.funicode[NKOMIN] = &my.fring[7];
+  my.funicode[INDICMIN] = &my.fring[9];
+  my.funicode[MISCMIN] = &my.fring[10];
+  my.funicode[SYMBOLMIN] = &my.fring[11];
   for (int i = CJKMIN; i <= CJKMAX; i++)
-    my.funicode[i] = &my.fring[12][0];
-  my.funicode[ASIANMIN] = &my.fring[13][0];
-  my.funicode[PUAMIN] = &my.fring[14][0];
-  my.funicode[FORMSMIN] = &my.fring[15][0];
+    my.funicode[i] = &my.fring[12];
+  my.funicode[ASIANMIN] = &my.fring[13];
+  my.funicode[PUAMIN] = &my.fring[14];
+  my.funicode[FORMSMIN] = &my.fring[15];
   for (int i = HANGULMIN; i <= HANGULMAX; i++)
-    my.funicode[i] = &my.fring[16][0];
+    my.funicode[i] = &my.fring[16];
   for (int i = THREEBYTEHEADER; i < FOURBYTEHEADER; i++)
-    my.funicode[i] = &my.fring[8][0];
+    my.funicode[i] = &my.fring[8];
   for (int i = FOURBYTEHEADER; i < UNICODESIZE; i++)
-    my.funicode[i] = &my.fring[6][0];
+    my.funicode[i] = &my.fring[6];
 }
 
 inline void abuff(self ** me)
