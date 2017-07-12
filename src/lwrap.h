@@ -19,8 +19,8 @@ struct data_t {
   data_t *after;
 };
 struct fun_t {
-  fun *filter;
-  fun *linebreak;
+  fun filter;
+  fun linebreak;
 };
 struct index_t {
   int val;
