@@ -22,9 +22,15 @@ takes 1 column.
 .TP
 .I "\-e"
 Line break without ascii space but a newline only.
-The default line break is ascii space plus newline.
-Due to ascii space occasionally been used as word
-and name separator in asian languages.
+The default line break is ascii space plus newline, 
+this makes the output reversible back to it's original 
+input format. The reason is ascii space occasionally 
+been used as word and name separator in asian 
+languages, and if these spaces were erased, the output 
+will no longer be reversible. The default can be 
+changed this command options to a single newline, and 
+this may be the desired final output.
+
 .TP
 .I "\-j"
 Same as -c but justified lines with ascii spaces.
