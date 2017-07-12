@@ -195,4 +195,5 @@ lwrap.indentall()
   for i in *.c *.h;do
     indent --linux-style --indent-level2 --no-tabs $i
   done
+  rm -rf *.*~
 }
