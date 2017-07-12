@@ -90,9 +90,10 @@ and debugging the source code.
 
 * Coding style
 
-  The most flexible way is keep your own coding style  
-and use this command for all of your source code  
-before commit:  
+  The most flexible way is keep your preferred coding style  
+and use the following command for all of your source code  
+before commit and change back to your preferred style  
+after your checkout:  
 `> indent --linux-style --indent-level2 --no-tabs`  
 ```
 Or use this bash function:
