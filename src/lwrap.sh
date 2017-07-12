@@ -185,3 +185,7 @@ lwrap.release()
   cp $sourcedir/*.gv $targetdir/
   sed "s;;;g" $sourcedir/lwrap.sh >$targetdir/lwrap.sh
 }
+lwrap.indent()
+{
+  indent --linux-style --indent-level2 --no-tabs --tab-size2 "$@"
+}
