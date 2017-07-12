@@ -189,3 +189,10 @@ lwrap.indent()
 {
   indent --linux-style --indent-level2 --no-tabs --tab-size2 "$@"
 }
+lwrap.indentall()
+{
+  local i;
+  for i in *.c *.h;do
+    indent --linux-style --indent-level2 --no-tabs $i
+  done
+}

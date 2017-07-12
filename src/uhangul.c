@@ -1,14 +1,14 @@
 #include "lwrap.h"
 #define my (**me)
-void hangulheader(self **me)
+void hangulheader(self ** me)
 {
-  my.currdata->val=(unsigned char)my.readbuff[my.currreadindex->val];
-  my.currdata->byteheader=30;
-  my.currdata->glyph=HANGUL;
-  my.wcolcount=my.wbytecount=0;
-  my.currdata->wcolcount=2;
-  my.currdata->wbytecount=1;
+  my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
+  my.currdata->byteheader = 30;
+  my.currdata->glyph = HANGUL;
+  my.wcolcount = my.wbytecount = 0;
+  my.currdata->wcolcount = 2;
+  my.currdata->wbytecount = 1;
   my.currjustify->wcount++;
-  my.hcolcount+=2;
+  my.hcolcount += 2;
   my.hbytecount++;
 }
