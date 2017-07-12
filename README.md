@@ -47,8 +47,9 @@ been used as word and name separator in asian languages.
 * Function calls
 
   One 255 elements array been created as a "filter" for each  
-input byte. Each element is a struct pointer, which in turn  
-contains functions that handle each input byte.  
+input byte. Each element is a struct pointer that pointing  
+to one of 16 struct, which in turn contains functions that  
+process each input byte.  
 By doing this we avoid as many as possible if-else cluster.  
 And keep the functions in minimal size.
 
