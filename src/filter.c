@@ -11,7 +11,7 @@ inline void ffilter(self **me)
   my.prevdata=my.currdata;
   my.currdata=my.currdata->after;
   my.nextdata=my.currdata->after;
- }
+}
 inline void frelay(self **me)
 {
   my.currreadindex=&my.readindex[0];

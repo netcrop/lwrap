@@ -8,13 +8,13 @@ EOF
 lwrap.config()
 {
   make clean &&\
-  rm -f Makefile Makefile.in configure config.h.in config.h \
-  config.log config.status
+    rm -f Makefile Makefile.in configure config.h.in config.h \
+    config.log config.status
   rm -rf autom4te.cache
   autoheader &&\
-  automake &&\
-  autoconf configure.ac >configure &&\
-  chmod u=rwx configure
+    automake &&\
+    autoconf configure.ac >configure &&\
+    chmod u=rwx configure
   ./configure
 }
 lwrap.clean()
@@ -22,7 +22,7 @@ lwrap.clean()
   touch .deps/lwrap.Po
   make clean
   rm -f Makefile Makefile.in configure config.h.in config.h \
-  config.log config.status lwrap.spec lwrap.s lwrap.out lwrap.verbose verify
+    config.log config.status lwrap.spec lwrap.s lwrap.out lwrap.verbose verify
   rm -rf autom4te.cache
 }
 lwrap.make()
@@ -54,22 +54,22 @@ lwrap.uninstall()
 lwrap.exclude()
 {
   cat<<-EOF>.git/info/exclude
-Makefile
-Makefile.in
-configure
-config.log
-config.status
-autom4te.cache/
-config.h
-config.h.in
-lwrap
-lwrap.spec
-lwrap.s
-lwrap.verbose
-lwrap.out
-.*
-*.o
-*~
+  Makefile
+  Makefile.in
+  configure
+  config.log
+  config.status
+  autom4te.cache/
+  config.h
+  config.h.in
+  lwrap
+  lwrap.spec
+  lwrap.s
+  lwrap.verbose
+  lwrap.out
+  .*
+  *.o
+  *~
 EOF
 }
 lwrap.assembly()
@@ -169,7 +169,7 @@ lwrap.composite.wc()
   rest2=$(tr -d '\n ' <$rest2file |wc -c)
   rm -f $rest1file $rest2file
   [[ $rest1 -eq $rest2 ]] ||\
-  builtin echo -e "$rest1file\n$rest2file\n$rest1:$rest2"
+    builtin echo -e "$rest1file\n$rest2file\n$rest1:$rest2"
 }
 lwrap.testall()
 {

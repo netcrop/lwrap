@@ -7,27 +7,27 @@
 #define my (**me)
 void usage(self **me)
 {
-    printf("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s"," Usage: ",my.progname,
-        " [-c columns] [-j columns][-e][-f text file]\n\
-     LANG=countrycode.utf8\n\
- -c: Set number of columns before line break.\n\
-     The default is 80 (min:1,max:235).\n\
-     Each three bytes glyph (e.g. CJK) takes 2 columns.\n\
-     Each one or two bytes glyph (e.g. ascii and latin)\n\
-     takes 1 column.\n\
- -j: Same as -c but justified lines with ascii spaces.\n\
- -f: read input from text file instead of default stdin.\n\
- -e: Line break without ascii space but a newline only.\n\
-     The default line break is ascii space plus newline.\n\
-     Due to ascii space occasionally been used as word\n\
-     and name separator in asian languages.\n\
- -h: Print usage and exit.\n\
- -d: Output debugging text to /tmp/lwrap.debug file.\n\
- -V: Print Version and exit.\n",
- "e.g. ",my.progname," -c80 -f foo.txt\n",
-"e.g. ",my.progname," -j60 <foo.txt\n",
- "e.g. ",my.progname," -e -j60 <foo.txt >result.txt\n",
- "Use with vim.   :[range]!",my.progname," -j60\n");
+  printf("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s"," Usage: ",my.progname,
+      " [-c columns] [-j columns][-e][-f text file]\n\
+      LANG=countrycode.utf8\n\
+      -c: Set number of columns before line break.\n\
+      The default is 80 (min:1,max:235).\n\
+      Each three bytes glyph (e.g. CJK) takes 2 columns.\n\
+      Each one or two bytes glyph (e.g. ascii and latin)\n\
+      takes 1 column.\n\
+      -j: Same as -c but justified lines with ascii spaces.\n\
+      -f: read input from text file instead of default stdin.\n\
+      -e: Line break without ascii space but a newline only.\n\
+      The default line break is ascii space plus newline.\n\
+      Due to ascii space occasionally been used as word\n\
+      and name separator in asian languages.\n\
+      -h: Print usage and exit.\n\
+      -d: Output debugging text to /tmp/lwrap.debug file.\n\
+      -V: Print Version and exit.\n",
+      "e.g. ",my.progname," -c80 -f foo.txt\n",
+      "e.g. ",my.progname," -j60 <foo.txt\n",
+      "e.g. ",my.progname," -e -j60 <foo.txt >result.txt\n",
+      "Use with vim.   :[range]!",my.progname," -j60\n");
 }
 void version(self **me)
 {
@@ -60,8 +60,8 @@ void delocate(self **me)
       free(my.call);
     if(my.fring!=NULL){
       for(int i=0;i<my.fringboundry;i++){
-          if(my.fring[i]!=NULL)
-            free(my.fring[i]);
+        if(my.fring[i]!=NULL)
+          free(my.fring[i]);
       }
       free(my.fring);
     }
@@ -97,11 +97,11 @@ inline void fjustify(self **me)
     my.curroutindex=my.curroutindex->incre;
     return;
   }
- if(my.outjustify->remain<0 || my.outjustify->wcount<2)
+  if(my.outjustify->remain<0 || my.outjustify->wcount<2)
     return;
   int wseparator=my.outjustify->wcount-1, \
-        spaces=my.outjustify->remain/wseparator, \
-        remainder=my.outjustify->remain%wseparator;
+                 spaces=my.outjustify->remain/wseparator, \
+                 remainder=my.outjustify->remain%wseparator;
   if(remainder)
     spaces++;
   for(int i=0;i<spaces;i++){
@@ -117,27 +117,27 @@ void option(self **me)
 {
   while ((my.optchr=getopt(my.argc, my.argv, "hc:dj:ef:V")) != EOF) {
     switch (my.optchr) {
-    case 'h':
-    case '?':
+      case 'h':
+      case '?':
         my.usage(me);
         delocate(me);
         exit(0);
-    case 'c':
+      case 'c':
         if((my.hcolsize=(int)strtol(optarg,&my.strtolend,10))>0 && my.hcolsize<my.displaymax){
           my.writebuffrelay=my.hcolsize*my.justifymultiple;
           break;
         }
         delocate(me);
         exit(0);
-    case 'd':
+      case 'd':
         my.debug=1;
         if((my.filedebug=fopen(my.debugfile,"w"))==NULL)
           my.filedebug=stderr;
         break;
-    case 'e':
+      case 'e':
         my.endingspace=0;
         break;
-    case 'j':
+      case 'j':
         if((my.hcolsize=(int)strtol(optarg,&my.strtolend,10))>0 && my.hcolsize<my.displaymax){
           my.writebuffrelay=my.hcolsize*my.justifymultiple;
           my.justifying=1;
@@ -145,12 +145,12 @@ void option(self **me)
         }
         delocate(me);
         exit(0);
-    case 'f':
+      case 'f':
         if((my.filep=fopen(optarg,"r"))!=NULL)
           break;
         delocate(me);
         exit(0);
-    case 'V':
+      case 'V':
         version(me);
         delocate(me);
         exit(0);
