@@ -98,6 +98,7 @@ after your checkout:
 ```
 Or use this bash function:
 > cd src/
+> source lwrap.sh
 > lwrap.indentall
 ```
 
