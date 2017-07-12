@@ -50,7 +50,7 @@ been used as word and name separator in asian languages.
 input byte. Each element is a struct pointer that pointing  
 to one of 16 structs, which in turn contains functions that  
 process each input byte.  
-By doing this we avoid as many as possible if-else cluster.  
+By doing this we avoid as many as possible if-else statements.  
 And keep the functions in minimal size.
 
   The same filter applys for the last byte before each line  
