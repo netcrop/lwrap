@@ -1,13 +1,13 @@
-/***********/
-/* Yang Li */
-/* GPLv2   */
-/***********/
+/*
+ * Yang Li
+ * GPLv2
+ */
 
 #include "lwrap.h"
 #define my (**me)
 void usage(self ** me)
 {
-  printf("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", " Usage: ", my.progname,
+  printf("%s%s%s", " Usage: ", my.progname,
          " [-c columns] [-j columns][-e][-f text file]\n\
       LANG=countrycode.utf8\n\
       -c: Set number of columns before line break.\n\
@@ -23,7 +23,11 @@ void usage(self ** me)
       and name separator in asian languages.\n\
       -h: Print usage and exit.\n\
       -d: Output debugging text to /tmp/lwrap.debug file.\n\
-      -V: Print Version and exit.\n", "e.g. ", my.progname, " -c80 -f foo.txt\n", "e.g. ", my.progname, " -j60 <foo.txt\n", "e.g. ", my.progname, " -e -j60 <foo.txt >result.txt\n", "Use with vim.   :[range]!", my.progname, " -j60\n");
+      -V: Print Version and exit.\n\
+      e.g.  -c80 -f foo.txt\n\
+      e.g.  -j60 <foo.txt\n\
+      e.g.  -e -j60 <foo.txt >result.txt\n\
+      Use with vim.  :[range]! -j60\n");
 }
 
 void version(self ** me)
