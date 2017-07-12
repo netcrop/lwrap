@@ -22,7 +22,8 @@ lwrap.clean()
   touch .deps/lwrap.Po
   make clean
   rm -f Makefile Makefile.in configure config.h.in config.h \
-    config.log config.status lwrap.spec lwrap.s lwrap.out lwrap.verbose verify
+    config.log config.status lwrap.spec lwrap.s lwrap.out \
+    lwrap.verbose verify *.*~
   rm -rf autom4te.cache
 }
 lwrap.make()
