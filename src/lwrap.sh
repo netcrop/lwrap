@@ -28,7 +28,6 @@ lwrap.clean()
 }
 lwrap.make()
 {
-  lwrap.indentall
   make clean
   touch .deps/lwrap.Po
   make -j4 CFLAGS='-g -O2 -w'
