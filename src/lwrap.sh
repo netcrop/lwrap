@@ -181,10 +181,8 @@ lwrap.testall()
 }
 lwrap.release()
 {
-  local sourcedir=${1:?[source dir][target dir]}
-  local targetdir=${2:?[target dir]}
-  cp $sourcedir/*.gv $targetdir/
-  sed "s;;;g" $sourcedir/lwrap.sh >$targetdir/lwrap.sh
+  local branch=${1:-alpha}
+  g.push origin alpha
 }
 lwrap.indent()
 {
