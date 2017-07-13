@@ -180,15 +180,15 @@ inline void lbformfeed(self ** me)
   my.lbdata->annotation = NEWLINE;
 }
 
+inline void lbinvalidbyte(self ** me)
+{
+  my.currjustify->remain = my.currdata->wcolcount;
+}
+
 inline void lbmiddlebyte(self ** me)
 {
   my.currjustify->remain = my.currdata->wcolcount;
   my.lbdata->annotation = NEWLINE;
-}
-
-inline void lbinvalidbyte(self ** me)
-{
-  my.currjustify->remain = my.currdata->wcolcount;
 }
 
 inline void lbtwobyteheader(self ** me)
