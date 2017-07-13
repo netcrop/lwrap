@@ -113,7 +113,7 @@ Or use this bash function:
 
   alpha is the latest developing branch.  
   beta is the latest testing release tag.  
-  v1.0 is the upcomming stable release tag.
+  v[major/new features].[minor/bugfix/security hole] is the upcomming stable release tag.
 
 ## Reporting a bug and security issues
 
