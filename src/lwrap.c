@@ -244,8 +244,8 @@ inline void afring(self ** me)
   my.fring[5].linebreak = &lbmiddlebyte;
   my.fring[6].filter = &invalidbyte;
   my.fring[6].linebreak = &lbinvalidbyte;
-  my.fring[7].filter = &twobyteheader;
-  my.fring[7].linebreak = &lbtwobyteheader;
+  my.fring[7].filter = &latinheader;
+  my.fring[7].linebreak = &lblatinheader;
   my.fring[8].filter = &fourbyteheader;
   my.fring[8].linebreak = &lbfourbyteheader;
   my.fring[9].filter = &indicheader;
