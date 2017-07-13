@@ -21,3 +21,8 @@ inline void flatinmiddlebyte(self ** me)
   my.currdata->wbytecount = ++my.wbytecount;
   my.currdata->wcolcount = my.wcolcount;
 }
+
+inline void lblatinheader(self ** me)
+{
+  my.currjustify->remain = my.currdata->wcolcount;
+}

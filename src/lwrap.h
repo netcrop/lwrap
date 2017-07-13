@@ -263,3 +263,4 @@ void lbpuaheader(self ** me);
 void lbformsheader(self ** me);
 void lbhangulheader(self ** me);
 void flinebreak(self ** me);
+void lblatinheader(self ** me);
