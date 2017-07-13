@@ -35,7 +35,7 @@ inside vim with e.g. command: `:[range]!lwrap -j50`.
 line width consistency depends on the input language  
 font glyph width.
 
-The default line break is ascii space plus newline,  
+  The default line break is ascii space plus newline,  
 it makes the output reversible back to it's original  
 input format. The reason is ascii space occasionally  
 been used as word and name separator in asian  
