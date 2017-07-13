@@ -113,8 +113,8 @@ Or use this bash function:
 
   **alpha** is allways the latest developing **branch**.  
 **beta** is allways the latest testing **release** tag.  
-v[new features].[bugfix/security fix] e.g. **v1.0**  
-is the upcomming stable **release** tag.
+v[new features].[bugfix/security fix/documentation/API]  
+e.g. **v1.0** is the upcomming stable **release** tag.
 
 ## Reporting a bug and security issues
 
