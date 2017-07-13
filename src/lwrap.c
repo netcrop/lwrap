@@ -5,6 +5,24 @@
 
 #include "lwrap.h"
 #define my (**me)
+
+inline void flinebreak(self ** me)
+{
+  if (my.hcolcount <= my.hcolsize)
+    return;
+  if (my.currdata->val == EOS)
+    return;
+  if ((my.linebreak = my.currdata->dataindex - my.currdata->wbytecount) < 0)
+    my.linebreak += my.databoundry;
+  my.lbdata = &my.data[my.linebreak];
+  my.hcolcount = my.currdata->wcolcount;
+  my.hbytecount = my.currdata->wbytecount;
+  my.funicode[my.lbdata->val]->linebreak(me);
+  if (my.currjustify->remain != 0 && my.currjustify->wcount == 0) ;
+  else
+    my.currjustify = my.currjustify->after;
+}
+
 void usage(self ** me)
 {
   printf("%s%s%s", " Usage: ", my.progname,
@@ -71,40 +89,6 @@ inline void strappend(char *str, char **strp, self ** me)
 {
   *strp = my.currstring;
   while ((*my.currstring++ = *str++) != EOS) ;
-}
-
-inline void fjustify(self ** me)
-{
-  if (!my.justifying) {
-    my.writebuff[my.curroutindex->val] = space;
-    my.curroutindex = my.curroutindex->incre;
-    return;
-  }
-  if (my.outjustify->remain == 0) {
-    my.writebuff[my.curroutindex->val] = space;
-    my.curroutindex = my.curroutindex->incre;
-    return;
-  }
-  if (my.outjustify->wcount < 2) {
-    my.writebuff[my.curroutindex->val] = space;
-    my.curroutindex = my.curroutindex->incre;
-    return;
-  }
-  if (my.outjustify->remain < 0 || my.outjustify->wcount < 2)
-    return;
-  int wseparator = my.outjustify->wcount - 1,
-      spaces = my.outjustify->remain / wseparator,
-      remainder = my.outjustify->remain % wseparator;
-  if (remainder)
-    spaces++;
-  for (int i = 0; i < spaces; i++) {
-    my.writebuff[my.curroutindex->val] = space;
-    my.curroutindex = my.curroutindex->incre;
-  }
-  my.writebuff[my.curroutindex->val] = space;
-  my.curroutindex = my.curroutindex->incre;
-  my.outjustify->remain -= spaces;
-  my.outjustify->wcount--;
 }
 
 void option(self ** me)
@@ -228,7 +212,7 @@ inline void avariable(self ** me)
   my.fring = (fun_t **) NULL;
   mlocate((void **)&my.string, (sizeof(char) * my.stringsize));
   for (int i = 0; i < my.stringsize; i++)
-    my.string[i] = space;
+    my.string[i] = SPACE;
   my.string[my.stringsize - 1] = EOS;
   my.currstring = &my.string[0];
   strappend("lwrap", &my.progname, me);
@@ -406,4 +390,38 @@ inline void alocate(self ** me)
   afring(me);
   aunicode(me);
   abuff(me);
+}
+
+inline void fjustify(self ** me)
+{
+  if (!my.justifying) {
+    my.writebuff[my.curroutindex->val] = SPACE;
+    my.curroutindex = my.curroutindex->incre;
+    return;
+  }
+  if (my.outjustify->remain == 0) {
+    my.writebuff[my.curroutindex->val] = SPACE;
+    my.curroutindex = my.curroutindex->incre;
+    return;
+  }
+  if (my.outjustify->wcount < 2) {
+    my.writebuff[my.curroutindex->val] = SPACE;
+    my.curroutindex = my.curroutindex->incre;
+    return;
+  }
+  if (my.outjustify->remain < 0 || my.outjustify->wcount < 2)
+    return;
+  int wseparator = my.outjustify->wcount - 1,
+      spaces = my.outjustify->remain / wseparator,
+      remainder = my.outjustify->remain % wseparator;
+  if (remainder)
+    spaces++;
+  for (int i = 0; i < spaces; i++) {
+    my.writebuff[my.curroutindex->val] = SPACE;
+    my.curroutindex = my.curroutindex->incre;
+  }
+  my.writebuff[my.curroutindex->val] = SPACE;
+  my.curroutindex = my.curroutindex->incre;
+  my.outjustify->remain -= spaces;
+  my.outjustify->wcount--;
 }

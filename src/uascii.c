@@ -5,22 +5,6 @@
 
 #include "lwrap.h"
 #define my (**me)
-inline void flinebreak(self ** me)
-{
-  if (my.hcolcount <= my.hcolsize)
-    return;
-  if (my.currdata->val == EOS)
-    return;
-  if ((my.linebreak = my.currdata->dataindex - my.currdata->wbytecount) < 0)
-    my.linebreak += my.databoundry;
-  my.lbdata = &my.data[my.linebreak];
-  my.hcolcount = my.currdata->wcolcount;
-  my.hbytecount = my.currdata->wbytecount;
-  my.funicode[my.lbdata->val]->linebreak(me);
-  if (my.currjustify->remain != 0 && my.currjustify->wcount == 0) ;
-  else
-    my.currjustify = my.currjustify->after;
-}
 
 inline void lbspace(self ** me)
 {
