@@ -22,10 +22,10 @@ following commands do Not use sudo
 ## Using lwrap
 
    The most flexible way of using lwrap is to  
-testing with different line width back and forth  
-inside vim with command: `:[range]!lwrap -jNUMBERS`.  
-And with this command to get final output:  
-`:[range]!lwrap -jNUMBERS -e.`
+shifting with different line width inside vim  
+with command: `:[range]!lwrap -jNUMBERS`.  
+When you are satisfied use this command to get final  
+output: `:[range]!lwrap -jNUMBERS -e.`
 
 ![Alt text](misc/lwrap.gif?raw=true "")
 
