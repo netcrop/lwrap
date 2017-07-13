@@ -5,7 +5,7 @@ uindic.c umisc.c usymbol.c uasian.c \
 upua.c uforms.c lwrap.c verify.c \
 uipa.c uaccents.c ugreek.c ucyril.c \
 uarmeni.c uhebrew.c uarabic.c usyriac.c \
-uthaana.c unko.c ufourbyte.c
+uthaana.c unko.c ufourbyte.c umiddlebyte.c
 
 man_MANS = lwrap.1
 EXTRA_DIST = COPYING ChangeLog INSTALL README \
