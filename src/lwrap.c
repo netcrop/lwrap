@@ -216,7 +216,6 @@ inline void avariable(self ** me)
   my.string[my.stringsize - 1] = EOS;
   my.currstring = &my.string[0];
   strappend("lwrap", &my.progname, me);
-  strappend("%01c", &my.printarg, me);
   strappend("/tmp/lwrap.debug", &my.debugfile, me);
 }
 
