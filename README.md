@@ -111,10 +111,10 @@ Or use this bash function:
 
 * Releases
 
-  alpha is allways the latest developing branch.  
-beta is allways the latest testing release tag.  
+  alpha is allways the latest developing **branch**.  
+beta is allways the latest testing **release tag**.  
 v[new features].[bugfix/security hole] e.g. v1.0  
-is the upcomming stable release tag.
+is the upcomming stable **release** tag.
 
 ## Reporting a bug and security issues
 
