@@ -1,6 +1,6 @@
 bin_PROGRAMS = lwrap
 lwrap_SOURCES =  uascii.c filter.c outbuff.c \
-unicode.c ucjk.c uhangul.c ulatin.c \
+ucjk.c uhangul.c ulatin.c \
 uindic.c umisc.c usymbol.c uasian.c \
 upua.c uforms.c lwrap.c verify.c
 
