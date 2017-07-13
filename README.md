@@ -23,7 +23,9 @@ following commands do Not use sudo
 
    The most flexible way of using lwrap is to  
 testing with different line width back and forth  
-inside vim with e.g. command: `:[range]!lwrap -j50`.
+inside vim with command: `:[range]!lwrap -jNUMBERS`.  
+And with this command to get final output:  
+`:[range]!lwrap -jNUMBERS -e.`
 
 ![Alt text](misc/lwrap.gif?raw=true "")
 
