@@ -74,38 +74,3 @@ inline void lbfourbyteheader(self ** me)
 {
   my.currjustify->remain = my.currdata->wcolcount;
 }
-
-inline void lbindicheader(self ** me)
-{
-  my.currjustify->remain = my.currdata->wcolcount;
-}
-
-inline void lbcjkheader(self ** me)
-{
-  my.currjustify->remain = my.currdata->wcolcount;
-}
-
-inline void lbmischeader(self ** me)
-{
-  my.currjustify->remain = my.currdata->wcolcount;
-}
-
-inline void lbsymbolheader(self ** me)
-{
-  my.currjustify->remain = my.currdata->wcolcount;
-}
-
-inline void lbasianheader(self ** me)
-{
-  my.currjustify->remain = my.currdata->wcolcount;
-}
-
-inline void lbpuaheader(self ** me)
-{
-  my.currjustify->remain = my.currdata->wcolcount;
-}
-
-inline void lbformsheader(self ** me)
-{
-  my.currjustify->remain = my.currdata->wcolcount;
-}

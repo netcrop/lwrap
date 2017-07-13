@@ -16,3 +16,8 @@ void indicheader(self ** me)
   my.hcolcount += 2;
   my.hbytecount++;
 }
+
+inline void lbindicheader(self ** me)
+{
+  my.currjustify->remain = my.currdata->wcolcount;
+}

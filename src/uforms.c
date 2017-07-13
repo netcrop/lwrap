@@ -11,6 +11,7 @@ void formsheader(self ** me)
   my.hcolcount += 2;
   my.hbytecount++;
 }
+
 inline void lbformsheader(self ** me)
 {
   my.currjustify->remain = my.currdata->wcolcount;

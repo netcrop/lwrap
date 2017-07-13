@@ -17,3 +17,8 @@ void symbolheader(self ** me)
   my.hcolcount += 2;
   my.hbytecount++;
 }
+
+inline void lbsymbolheader(self ** me)
+{
+  my.currjustify->remain = my.currdata->wcolcount;
+}

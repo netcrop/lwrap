@@ -17,3 +17,8 @@ void cjkheader(self ** me)
   my.hcolcount += 2;
   my.hbytecount++;
 }
+
+inline void lbcjkheader(self ** me)
+{
+  my.currjustify->remain = my.currdata->wcolcount;
+}

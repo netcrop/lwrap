@@ -16,3 +16,8 @@ void asianheader(self ** me)
   my.hcolcount += 2;
   my.hbytecount++;
 }
+
+inline void lbasianheader(self ** me)
+{
+  my.currjustify->remain = my.currdata->wcolcount;
+}

@@ -16,3 +16,8 @@ void mischeader(self ** me)
   my.hcolcount += 2;
   my.hbytecount++;
 }
+
+inline void lbmischeader(self ** me)
+{
+  my.currjustify->remain = my.currdata->wcolcount;
+}
