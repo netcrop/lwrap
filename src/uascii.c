@@ -109,8 +109,3 @@ inline void lbformsheader(self ** me)
 {
   my.currjustify->remain = my.currdata->wcolcount;
 }
-
-inline void lbhangulheader(self ** me)
-{
-  my.currjustify->remain = my.currdata->wcolcount;
-}
