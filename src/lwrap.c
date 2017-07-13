@@ -266,24 +266,24 @@ inline void afring(self ** me)
   my.fring[16].linebreak = &lbthaanaheader;
   my.fring[17].filter = &nkoheader;
   my.fring[17].linebreak = &lbnkoheader;
-  my.fring[18].filter = &fourbyteheader;
-  my.fring[18].linebreak = &lbfourbyteheader;
-  my.fring[19].filter = &indicheader;
-  my.fring[19].linebreak = &lbindicheader;
-  my.fring[20].filter = &mischeader;
-  my.fring[20].linebreak = &lbmischeader;
-  my.fring[21].filter = &symbolheader;
-  my.fring[21].linebreak = &lbsymbolheader;
-  my.fring[22].filter = &cjkheader;
-  my.fring[22].linebreak = &lbcjkheader;
-  my.fring[23].filter = &asianheader;
-  my.fring[23].linebreak = &lbasianheader;
-  my.fring[24].filter = &puaheader;
-  my.fring[24].linebreak = &lbpuaheader;
-  my.fring[25].filter = &formsheader;
-  my.fring[25].linebreak = &lbformsheader;
-  my.fring[26].filter = &hangulheader;
-  my.fring[26].linebreak = &lbhangulheader;
+  my.fring[18].filter = &indicheader;
+  my.fring[18].linebreak = &lbindicheader;
+  my.fring[19].filter = &mischeader;
+  my.fring[19].linebreak = &lbmischeader;
+  my.fring[20].filter = &symbolheader;
+  my.fring[20].linebreak = &lbsymbolheader;
+  my.fring[21].filter = &cjkheader;
+  my.fring[21].linebreak = &lbcjkheader;
+  my.fring[22].filter = &asianheader;
+  my.fring[22].linebreak = &lbasianheader;
+  my.fring[23].filter = &puaheader;
+  my.fring[23].linebreak = &lbpuaheader;
+  my.fring[24].filter = &formsheader;
+  my.fring[24].linebreak = &lbformsheader;
+  my.fring[25].filter = &hangulheader;
+  my.fring[25].linebreak = &lbhangulheader;
+  my.fring[26].filter = &fourbyteheader;
+  my.fring[26].linebreak = &lbfourbyteheader;
 }
 
 inline void aunicode(self ** me)
@@ -304,33 +304,33 @@ inline void aunicode(self ** me)
   for (int i = LATINMIN; i <= LATINMAX; i++)
     my.funicode[i] = &my.fring[7];
   for (int i = IPAMIN; i <= IPAMAX; i++)
-    my.funicode[i] = &my.fring[7];
-  for (int i = ACCENTSMIN; i <= ACCENTSMAX; i++)
-    my.funicode[i] = &my.fring[7];
-  for (int i = GREEKMIN; i <= GREEKMAX; i++)
-    my.funicode[i] = &my.fring[7];
-  for (int i = CYRILMIN; i <= CYRILMAX; i++)
-    my.funicode[i] = &my.fring[7];
-  my.funicode[ARMENIMIN] = &my.fring[7];
-  for (int i = HEBREWMIN; i <= HEBREWMAX; i++)
-    my.funicode[i] = &my.fring[7];
-  for (int i = ARABICMIN; i <= ARABICMAX; i++)
-    my.funicode[i] = &my.fring[7];
-  my.funicode[SYRIACMIN] = &my.fring[7];
-  my.funicode[THAANAMIN] = &my.fring[7];
-  my.funicode[NKOMIN] = &my.fring[7];
-  my.funicode[INDICMIN] = &my.fring[9];
-  my.funicode[MISCMIN] = &my.fring[10];
-  my.funicode[SYMBOLMIN] = &my.fring[11];
-  for (int i = CJKMIN; i <= CJKMAX; i++)
-    my.funicode[i] = &my.fring[12];
-  my.funicode[ASIANMIN] = &my.fring[13];
-  my.funicode[PUAMIN] = &my.fring[14];
-  my.funicode[FORMSMIN] = &my.fring[15];
-  for (int i = HANGULMIN; i <= HANGULMAX; i++)
-    my.funicode[i] = &my.fring[16];
-  for (int i = THREEBYTEHEADER; i < FOURBYTEHEADER; i++)
     my.funicode[i] = &my.fring[8];
+  for (int i = ACCENTSMIN; i <= ACCENTSMAX; i++)
+    my.funicode[i] = &my.fring[9];
+  for (int i = GREEKMIN; i <= GREEKMAX; i++)
+    my.funicode[i] = &my.fring[10];
+  for (int i = CYRILMIN; i <= CYRILMAX; i++)
+    my.funicode[i] = &my.fring[11];
+  my.funicode[ARMENIMIN] = &my.fring[12];
+  for (int i = HEBREWMIN; i <= HEBREWMAX; i++)
+    my.funicode[i] = &my.fring[13];
+  for (int i = ARABICMIN; i <= ARABICMAX; i++)
+    my.funicode[i] = &my.fring[14];
+  my.funicode[SYRIACMIN] = &my.fring[15];
+  my.funicode[THAANAMIN] = &my.fring[16];
+  my.funicode[NKOMIN] = &my.fring[17];
+  my.funicode[INDICMIN] = &my.fring[18];
+  my.funicode[MISCMIN] = &my.fring[19];
+  my.funicode[SYMBOLMIN] = &my.fring[20];
+  for (int i = CJKMIN; i <= CJKMAX; i++)
+    my.funicode[i] = &my.fring[21];
+  my.funicode[ASIANMIN] = &my.fring[22];
+  my.funicode[PUAMIN] = &my.fring[23];
+  my.funicode[FORMSMIN] = &my.fring[24];
+  for (int i = HANGULMIN; i <= HANGULMAX; i++)
+    my.funicode[i] = &my.fring[25];
+  for (int i = THREEBYTEHEADER; i < FOURBYTEHEADER; i++)
+    my.funicode[i] = &my.fring[26];
   for (int i = FOURBYTEHEADER; i < UNICODESIZE; i++)
     my.funicode[i] = &my.fring[6];
 }
