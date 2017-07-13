@@ -9,25 +9,18 @@ void usage(self ** me)
 {
   printf("%s%s%s", " Usage: ", my.progname,
          " [-c columns] [-j columns][-e][-f text file]\n\
-      LANG=countrycode.utf8\n\
-      -c: Set number of columns before line break.\n\
-      The default is 80 (min:1,max:235).\n\
-      Each three bytes glyph (e.g. CJK) takes 2 columns.\n\
-      Each one or two bytes glyph (e.g. ascii and latin)\n\
-      takes 1 column.\n\
-      -j: Same as -c but justified lines with ascii spaces.\n\
-      -f: read input from text file instead of default stdin.\n\
-      -e: Line break without ascii space but a newline only.\n\
-      The default line break is ascii space plus newline.\n\
-      Due to ascii space occasionally been used as word\n\
-      and name separator in asian languages.\n\
-      -h: Print usage and exit.\n\
-      -d: Output debugging text to /tmp/lwrap.debug file.\n\
-      -V: Print Version and exit.\n\
+      LANG = countrycode.utf8\n\
+      -c:   set number of columns before line break.\n\
+      -j:   same as -c but justified lines with ASCII spaces.\n\
+      -f:   read input from text file instead of default stdin.\n\
+      -e:   line break without ASCII space but a newline only.\n\
+      -h:   print usage and exit.\n\
+      -d:   output debugging text to /tmp/lwrap.debug file.\n\
+      -v:   print version and exit.\n\
       e.g.  -c80 -f foo.txt\n\
       e.g.  -j60 <foo.txt\n\
       e.g.  -e -j60 <foo.txt >result.txt\n\
-      Use with vim.  :[range]! -j60\n");
+      use with vim.  :[range]! -j60\n");
 }
 
 void version(self ** me)
@@ -83,17 +76,17 @@ inline void strappend(char *str, char **strp, self ** me)
 inline void fjustify(self ** me)
 {
   if (!my.justifying) {
-    my.writebuff[my.curroutindex->val] = SPACE;
+    my.writebuff[my.curroutindex->val] = space;
     my.curroutindex = my.curroutindex->incre;
     return;
   }
   if (my.outjustify->remain == 0) {
-    my.writebuff[my.curroutindex->val] = SPACE;
+    my.writebuff[my.curroutindex->val] = space;
     my.curroutindex = my.curroutindex->incre;
     return;
   }
   if (my.outjustify->wcount < 2) {
-    my.writebuff[my.curroutindex->val] = SPACE;
+    my.writebuff[my.curroutindex->val] = space;
     my.curroutindex = my.curroutindex->incre;
     return;
   }
@@ -105,10 +98,10 @@ inline void fjustify(self ** me)
   if (remainder)
     spaces++;
   for (int i = 0; i < spaces; i++) {
-    my.writebuff[my.curroutindex->val] = SPACE;
+    my.writebuff[my.curroutindex->val] = space;
     my.curroutindex = my.curroutindex->incre;
   }
-  my.writebuff[my.curroutindex->val] = SPACE;
+  my.writebuff[my.curroutindex->val] = space;
   my.curroutindex = my.curroutindex->incre;
   my.outjustify->remain -= spaces;
   my.outjustify->wcount--;
@@ -116,7 +109,7 @@ inline void fjustify(self ** me)
 
 void option(self ** me)
 {
-  while ((my.optchr = getopt(my.argc, my.argv, "hc:dj:ef:V")) != EOF) {
+  while ((my.optchr = getopt(my.argc, my.argv, "hc:dj:ef:v")) != EOF) {
     switch (my.optchr) {
     case 'h':
     case '?':
@@ -155,7 +148,7 @@ void option(self ** me)
         break;
       delocate(me);
       exit(0);
-    case 'V':
+    case 'v':
       version(me);
       delocate(me);
       exit(0);
@@ -235,7 +228,7 @@ inline void avariable(self ** me)
   my.fring = (fun_t **) NULL;
   mlocate((void **)&my.string, (sizeof(char) * my.stringsize));
   for (int i = 0; i < my.stringsize; i++)
-    my.string[i] = SPACE;
+    my.string[i] = space;
   my.string[my.stringsize - 1] = EOS;
   my.currstring = &my.string[0];
   strappend("lwrap", &my.progname, me);
