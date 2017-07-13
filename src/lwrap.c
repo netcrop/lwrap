@@ -16,7 +16,7 @@ void usage(self ** me)
       -e:   line break without ASCII space but a newline only.\n\
       -h:   print usage and exit.\n\
       -d:   output debugging text to /tmp/lwrap.debug file.\n\
-      -v:   print version and exit.\n\
+      -V:   print version and exit.\n\
       e.g.  -c80 -f foo.txt\n\
       e.g.  -j60 <foo.txt\n\
       e.g.  -e -j60 <foo.txt >result.txt\n\
