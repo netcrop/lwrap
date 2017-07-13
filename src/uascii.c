@@ -128,15 +128,6 @@ void middlebyte(self ** me)
   my.currdata->wcolcount = 2;
 }
 
-void twobyteheader(self ** me)
-{
-  my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
-  my.currdata->byteheader = 20;
-  my.currdata->wbytecount = ++my.wbytecount;
-  my.currdata->wcolcount = ++my.wcolcount;
-  my.hbytecount++;
-}
-
 void fourbyteheader(self ** me)
 {
   my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
@@ -189,11 +180,6 @@ inline void lbmiddlebyte(self ** me)
 {
   my.currjustify->remain = my.currdata->wcolcount;
   my.lbdata->annotation = NEWLINE;
-}
-
-inline void lbtwobyteheader(self ** me)
-{
-  my.currjustify->remain = my.currdata->wcolcount;
 }
 
 inline void lbfourbyteheader(self ** me)
