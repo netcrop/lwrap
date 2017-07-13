@@ -17,6 +17,7 @@ void hangulheader(self ** me)
   my.hcolcount += 2;
   my.hbytecount++;
 }
+
 inline void lbhangulheader(self ** me)
 {
   my.currjustify->remain = my.currdata->wcolcount;
