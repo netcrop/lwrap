@@ -164,7 +164,7 @@ inline void avariable(self ** me)
   my.callsize = 2;
   my.flinebreaksize = 28;
   my.fmiddlebytesize = 28;
-  my.fringboundry = 18;
+  my.fringboundry = 28;
   my.fringsize = my.fringboundry - 1;
   my.initwritebuff = FINITOUTBUFF;
   my.buffboundry = my.hcolsize * my.buffmultiple + 1;
@@ -246,24 +246,44 @@ inline void afring(self ** me)
   my.fring[6].linebreak = &lbinvalidbyte;
   my.fring[7].filter = &latinheader;
   my.fring[7].linebreak = &lblatinheader;
-  my.fring[8].filter = &fourbyteheader;
-  my.fring[8].linebreak = &lbfourbyteheader;
-  my.fring[9].filter = &indicheader;
-  my.fring[9].linebreak = &lbindicheader;
-  my.fring[10].filter = &mischeader;
-  my.fring[10].linebreak = &lbmischeader;
-  my.fring[11].filter = &symbolheader;
-  my.fring[11].linebreak = &lbsymbolheader;
-  my.fring[12].filter = &cjkheader;
-  my.fring[12].linebreak = &lbcjkheader;
-  my.fring[13].filter = &asianheader;
-  my.fring[13].linebreak = &lbasianheader;
-  my.fring[14].filter = &puaheader;
-  my.fring[14].linebreak = &lbpuaheader;
-  my.fring[15].filter = &formsheader;
-  my.fring[15].linebreak = &lbformsheader;
-  my.fring[16].filter = &hangulheader;
-  my.fring[16].linebreak = &lbhangulheader;
+  my.fring[8].filter = &ipaheader;
+  my.fring[8].linebreak = &lbipaheader;
+  my.fring[9].filter = &accentsheader;
+  my.fring[9].linebreak = &lbaccentsheader;
+  my.fring[10].filter = &greekheader;
+  my.fring[10].linebreak = &lbgreekheader;
+  my.fring[11].filter = &cyrilheader;
+  my.fring[11].linebreak = &lbcyrilheader;
+  my.fring[12].filter = &armeniheader;
+  my.fring[12].linebreak = &lbarmeniheader;
+  my.fring[13].filter = &hebrewheader;
+  my.fring[13].linebreak = &lbhebrewheader;
+  my.fring[14].filter = &arabicheader;
+  my.fring[14].linebreak = &lbarabicheader;
+  my.fring[15].filter = &syriacheader;
+  my.fring[15].linebreak = &lbsyriacheader;
+  my.fring[16].filter = &thaanaheader;
+  my.fring[16].linebreak = &lbthaanaheader;
+  my.fring[17].filter = &nkoheader;
+  my.fring[17].linebreak = &lbnkoheader;
+  my.fring[18].filter = &fourbyteheader;
+  my.fring[18].linebreak = &lbfourbyteheader;
+  my.fring[19].filter = &indicheader;
+  my.fring[19].linebreak = &lbindicheader;
+  my.fring[20].filter = &mischeader;
+  my.fring[20].linebreak = &lbmischeader;
+  my.fring[21].filter = &symbolheader;
+  my.fring[21].linebreak = &lbsymbolheader;
+  my.fring[22].filter = &cjkheader;
+  my.fring[22].linebreak = &lbcjkheader;
+  my.fring[23].filter = &asianheader;
+  my.fring[23].linebreak = &lbasianheader;
+  my.fring[24].filter = &puaheader;
+  my.fring[24].linebreak = &lbpuaheader;
+  my.fring[25].filter = &formsheader;
+  my.fring[25].linebreak = &lbformsheader;
+  my.fring[26].filter = &hangulheader;
+  my.fring[26].linebreak = &lbhangulheader;
 }
 
 inline void aunicode(self ** me)
@@ -286,6 +306,8 @@ inline void aunicode(self ** me)
   for (int i = IPAMIN; i <= IPAMAX; i++)
     my.funicode[i] = &my.fring[7];
   for (int i = ACCENTSMIN; i <= ACCENTSMAX; i++)
+    my.funicode[i] = &my.fring[7];
+  for (int i = GREEKMIN; i <= GREEKMAX; i++)
     my.funicode[i] = &my.fring[7];
   for (int i = CYRILMIN; i <= CYRILMAX; i++)
     my.funicode[i] = &my.fring[7];
