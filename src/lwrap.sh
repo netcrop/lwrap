@@ -200,6 +200,9 @@ lwrap.indent()
 }
 lwrap.indentall()
 {
+  local indent=$(which indent)
+  [[ x$indent == x ]] && return
+  [[ -x $indent ]] || return
   local i;
   for i in *.c *.h;do
     lwrap.indent $i
