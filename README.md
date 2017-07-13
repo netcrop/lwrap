@@ -109,6 +109,12 @@ Or use this bash function:
 > lwrap.indentall
 ```
 
+* Releases
+
+  alpha is the latest developing branch.  
+  beta is the latest testing release tag.  
+  v1.0 is the upcomming stable release tag.
+
 ## Reporting a bug and security issues
 
 github.com/netcrop/lwrap/issues
