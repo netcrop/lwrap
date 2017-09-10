@@ -57,7 +57,7 @@ lwrap.install()
   local binfile=\$(${Lwrap[basename]} \$binpath)
   local bindir=\${2:-/usr/local/bin}
   local manfile=\${binfile}.1
-  ${Lwrap[basename]} -f \$binpath \$bindir/\$binfile
+  ${Lwrap[cp]} -f \$binpath \$bindir/\$binfile
   ${Lwrap[chmod]} gu=rx \$bindir/\$binfile
   ${Lwrap[chown]} \$USER: \$bindir/\$binfile
   ${Lwrap[cp]} -f \$manfile /usr/local/man/man1/\$manfile
