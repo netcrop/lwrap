@@ -26,30 +26,30 @@ LWRAPINFO
 lwrap.config()
 {
   ${Lwrap[make]} clean &&\
-    rm -f Makefile Makefile.in configure config.h.in config.h \
+  ${Lwrap[rm]} -f Makefile Makefile.in configure config.h.in config.h \
     config.log config.status
-  rm -rf autom4te.cache
-  autoheader &&\
-    automake &&\
-    autoconf configure.ac >configure &&\
-    chmod u=rwx configure
+  ${Lwrap[rm]} -rf autom4te.cache
+  ${Lwrap[autoheader]} &&\
+  ${Lwrap[automake]} &&\
+  ${Lwrap[autoconf]} configure.ac >configure &&\
+  ${Lwrap[chmod]} u=rwx configure
   ./configure
 }
 lwrap.clean()
 {
   touch .deps/lwrap.Po
   make clean
-  rm -f Makefile Makefile.in configure config.h.in config.h \
+  ${Lwrap[rm]} -f Makefile Makefile.in configure config.h.in config.h \
     config.log config.status lwrap.spec lwrap.s lwrap.out \
     lwrap.verbose verify *.*~
-  rm -rf autom4te.cache
+  ${Lwrap[rm]} -rf autom4te.cache
 }
 lwrap.make()
 {
   lwrap.indentall
-  make clean
+  ${Lwrap[make]} clean
   touch .deps/lwrap.Po
-  make -j4 CFLAGS='-g -O2 -w'
+  ${Lwrap[make]} -j4 CFLAGS='-g -O2 -w'
 }
 lwrap.install()
 {
@@ -68,12 +68,12 @@ lwrap.uninstall()
 {
   local binpath=\${1:-/usr/local/bin/lwrap}
   local manpath=\${2:-/usr/local/man/man1/lwrap.1}
-  rm -f \$binpath
-  rm -f \$manpath
+  ${Lwrap[rm]} -f \$binpath
+  ${Lwrap[rm]} -f \$manpath
 }
 lwrap.exclude()
 {
-  cat<<-EOF>.git/info/exclude
+  ${Lwrap[cat]}<<-EOF>.git/info/exclude
   Makefile
   Makefile.in
   configure
@@ -118,8 +118,8 @@ lwrap.test()
     for arg1 in \$arglist;do
       for prefix1 in \$arglist;do
         ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language >/tmp/\$prefix1.\$arg1.\$filename.\$language
-        diff -c ../test/\$arg1.\$filename.\$language /tmp/\$prefix1.\$arg1.\$filename.\$language
-        rm -f /tmp/\$prefix1.\$arg1.\$filename.\$language
+        ${Lwrap[diff]} -c ../test/\$arg1.\$filename.\$language /tmp/\$prefix1.\$arg1.\$filename.\$language
+        ${Lwrap[rm]} -f /tmp/\$prefix1.\$arg1.\$filename.\$language
       done
     done
   done
@@ -134,8 +134,8 @@ lwrap.test.justify()
     for arg1 in \$arglist;do
       for prefix1 in \$arglist;do
         ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language >/tmp/\$prefix1.\$arg1.\$filename.\$language
-        diff -c ../test/\$arg1.\$filename.\$language /tmp/\$prefix1.\$arg1.\$filename.\$language
-        rm -f /tmp/\$prefix1.\$arg1.\$filename.\$language
+        ${Lwrap[diff]} -c ../test/\$arg1.\$filename.\$language /tmp/\$prefix1.\$arg1.\$filename.\$language
+        ${Lwrap[rm]} -f /tmp/\$prefix1.\$arg1.\$filename.\$language
       done
     done
   done
@@ -153,7 +153,7 @@ lwrap.test.wc()
         ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language >/tmp/\$prefix1.\$arg1.\$filename.\$language
         rest1=\$(tr -d '\n \t\b\f\r\t\v\0' <../test/\$prefix1.\$filename.\$language |wc -c)
         rest2=\$(tr -d '\n ' </tmp/\$prefix1.\$arg1.\$filename.\$language |wc -c)
-        rm -f /tmp/\$prefix1.\$arg1.\$filename.\$language
+        ${Lwrap[rm]} -f /tmp/\$prefix1.\$arg1.\$filename.\$language
         [[ \$rest1 -eq \$rest2 ]] && continue;
         builtin echo -e "../test/\$prefix1.\$filename.\$languagea\n/tmp/\$prefix1.\$arg1.\$filename.\$language\n\$rest1:\$rest2"
       done
@@ -169,7 +169,7 @@ lwrap.compare.wc()
   ./lwrap <\$filepath >\$restfile
   rest1=\$(tr -d '\n \t\b\f\r\t\v\0' <\$filepath|wc -c)
   rest2=\$(tr -d '\n ' <\$restfile |wc -c)
-  rm -f \$restfile
+  ${Lwrap[rm]} -f \$restfile
   [[ \$rest1 -eq \$rest2 ]] && continue;
   builtin echo -e "\$filepath\n\$restfile\n\$rest1:\$rest2"
 }
@@ -187,7 +187,7 @@ lwrap.composite.wc()
   ./lwrap -c1 <\$rest1file >\$rest2file
   rest1=\$(tr -d '\n \t\b\f\r\t\v\0' <\$rest1file |wc -c)
   rest2=\$(tr -d '\n ' <\$rest2file |wc -c)
-  rm -f \$rest1file \$rest2file
+  ${Lwrap[rm]} -f \$rest1file \$rest2file
   [[ \$rest1 -eq \$rest2 ]] ||\
     builtin echo -e "\$rest1file\n\$rest2file\n\$rest1:\$rest2"
 }
@@ -208,13 +208,13 @@ lwrap.indent()
   local infile=\${1:?[c,h file]}
   local tmpfile=\$(mktemp)
   indent --linux-style --indent-level2 --no-tabs --tab-size2 \$infile -o \$tmpfile
-  local change="\$(diff --brief \$infile \$tmpfile)"
+  local change="\$(${Lwrap[diff]} --brief \$infile \$tmpfile)"
   if [[ X\$change == X ]];then
-    /bin/rm -f \$tmpfile
+    ${Lwrap[rm]} -f \$tmpfile
     return
   fi
-  mv \$tmpfile \$infile
-  /bin/rm -f \$infile~
+  ${Lwrap[mv]} \$tmpfile \$infile
+  ${Lwrap[rm]} -f \$infile~
 }
 lwrap.indentall()
 {
@@ -232,8 +232,8 @@ lwrap.comments()
   local tmpfile=\$(mktemp)
   local i;
   for i in *.c *.h;do
-    cat \$infile \$i > \$tmpfile
-    mv \$tmpfile \$i
+    ${Lwrap[cat]} \$infile \$i > \$tmpfile
+    ${Lwrap[mv]} \$tmpfile \$i
   done
 }
 SUB
