@@ -54,15 +54,15 @@ lwrap.make()
 lwrap.install()
 {
   local binpath=\${1:-lwrap}
-  binfile=\$(basename \$binpath)
+  local binfile=\$(${Lwrap[basename]} \$binpath)
   local bindir=\${2:-/usr/local/bin}
   local manfile=\${binfile}.1
-  cp -f \$binpath \$bindir/\$binfile
-  chmod gu=rx \$bindir/\$binfile
-  chown \$USER: \$bindir/\$binfile
-  cp -f \$manfile /usr/local/man/man1/\$manfile
-  chmod gu=r /usr/local/man/man1/\$manfile
-  chown \$USER: /usr/local/man/man1/\$manfile
+  ${Lwrap[basename]}cp -f \$binpath \$bindir/\$binfile
+  ${Lwrap[chmod]} gu=rx \$bindir/\$binfile
+  ${Lwrap[chown]} \$USER: \$bindir/\$binfile
+  ${Lwrap[cp]} -f \$manfile /usr/local/man/man1/\$manfile
+  ${Lwrap[chmod]} gu=r /usr/local/man/man1/\$manfile
+  ${Lwrap[chown]} \$USER: /usr/local/man/man1/\$manfile
 }
 lwrap.uninstall()
 {
@@ -73,40 +73,40 @@ lwrap.uninstall()
 }
 lwrap.exclude()
 {
-  ${Lwrap[cat]}<<-EOF>.git/info/exclude
-  Makefile
-  Makefile.in
-  configure
-  config.log
-  config.status
-  autom4te.cache/
-  config.h
-  config.h.in
-  lwrap
-  lwrap.spec
-  lwrap.s
-  lwrap.verbose
-  lwrap.out
-  .*
-  *.o
-  *~
-EOF
+  ${Lwrap[cat]}<<-LWRAPEXCLUDE>.git/info/exclude
+Makefile
+Makefile.in
+configure
+config.log
+config.status
+autom4te.cache/
+config.h
+config.h.in
+lwrap
+lwrap.spec
+lwrap.s
+lwrap.verbose
+lwrap.out
+.*
+*.o
+*~
+LWRAPEXCLUDE
 }
 lwrap.assembly()
 {
-  gcc -O2 -S -o lwrap.s lwrap.c
+  ${Lwrap[gcc]} -O2 -S -o lwrap.s lwrap.c
 }
 lwrap.verbose()
 {
-  gcc -c -g -O2 -Wa,-ahl=lwrap.verbose lwrap.c
+  ${Lwrap[gcc]} -c -g -O2 -Wa,-ahl=lwrap.verbose lwrap.c
 }
 lwrap.dot()
 {
   local infile=\${1:?[infile gv]}
   local name=\$(basename \${infile/.gv/})
-  dot -Tpng \$infile -o /tmp/\$name.png
-  chown \$USER:users /tmp/\$name.png
-  chmod u=rw,go=r /tmp/\$name.png
+  ${Lwrap[dot]} -Tpng \$infile -o /tmp/\$name.png
+  ${Lwrap[chown]} \$USER:users /tmp/\$name.png
+  ${Lwrap[chmod]} u=rw,go=r /tmp/\$name.png
 }
 lwrap.test()
 {
@@ -151,8 +151,8 @@ lwrap.test.wc()
     for arg1 in \$arglist;do
       for prefix1 in \$arglist;do
         ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language >/tmp/\$prefix1.\$arg1.\$filename.\$language
-        rest1=\$(tr -d '\n \t\b\f\r\t\v\0' <../test/\$prefix1.\$filename.\$language |wc -c)
-        rest2=\$(tr -d '\n ' </tmp/\$prefix1.\$arg1.\$filename.\$language |wc -c)
+        rest1=\$(${Lwrap[tr]} -d '\n \t\b\f\r\t\v\0' <../test/\$prefix1.\$filename.\$language |wc -c)
+        rest2=\$(${Lwrap[tr]} -d '\n ' </tmp/\$prefix1.\$arg1.\$filename.\$language |wc -c)
         ${Lwrap[rm]} -f /tmp/\$prefix1.\$arg1.\$filename.\$language
         [[ \$rest1 -eq \$rest2 ]] && continue;
         builtin echo -e "../test/\$prefix1.\$filename.\$languagea\n/tmp/\$prefix1.\$arg1.\$filename.\$language\n\$rest1:\$rest2"
@@ -167,8 +167,8 @@ lwrap.compare.wc()
   local restfile=/tmp/.\$filename
   local rest1 rest2
   ./lwrap <\$filepath >\$restfile
-  rest1=\$(tr -d '\n \t\b\f\r\t\v\0' <\$filepath|wc -c)
-  rest2=\$(tr -d '\n ' <\$restfile |wc -c)
+  rest1=\$(${Lwrap[tr]} -d '\n \t\b\f\r\t\v\0' <\$filepath|${Lwrap[wc]} -c)
+  rest2=\$(${Lwrap[tr]} -d '\n ' <\$restfile |${Lwrap[wc]} -c)
   ${Lwrap[rm]} -f \$restfile
   [[ \$rest1 -eq \$rest2 ]] && continue;
   builtin echo -e "\$filepath\n\$restfile\n\$rest1:\$rest2"
@@ -185,8 +185,8 @@ lwrap.composite.wc()
   done
   paste \$filelist >\$rest1file
   ./lwrap -c1 <\$rest1file >\$rest2file
-  rest1=\$(tr -d '\n \t\b\f\r\t\v\0' <\$rest1file |wc -c)
-  rest2=\$(tr -d '\n ' <\$rest2file |wc -c)
+  rest1=\$(${Lwrap[tr]} -d '\n \t\b\f\r\t\v\0' <\$rest1file |wc -c)
+  rest2=\$(${Lwrap[tr]} -d '\n ' <\$rest2file |${Lwrap[wc]} -c)
   ${Lwrap[rm]} -f \$rest1file \$rest2file
   [[ \$rest1 -eq \$rest2 ]] ||\
     builtin echo -e "\$rest1file\n\$rest2file\n\$rest1:\$rest2"
@@ -218,7 +218,7 @@ lwrap.indent()
 }
 lwrap.indentall()
 {
-  local indent=\$(which indent)
+  local indent=\$(${Lwrap[which]} indent)
   [[ x\$indent == x ]] && return
   [[ -x \$indent ]] || return
   local i;
