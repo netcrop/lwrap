@@ -11,7 +11,7 @@ lwrap.substitute()
     if [[ -z $i ]];then
       \builtin \printf "%s\n" "missing $cmd"
     fi
-    Lwrap["$cmd"]="${i:-:}"
+    Lwrap["$cmd"]="${i:-#}"
   done
   Lwrap[perl_version]="$(${Lwrap[perl]} -e 'print $^V')"
   \builtin \source <(${Lwrap[cat]}<<-SUB
