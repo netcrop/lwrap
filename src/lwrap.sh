@@ -5,7 +5,7 @@ lwrap.substitute()
   basename cat ls id cut bash man mktemp egrep date env mv
   cp chmod ln chown rm printf touch head mkdir find file
   make autoheader automake autoconf diff gcc dot indent
-  which'
+  which tr'
   for cmd in $cmdlist;do
     i="$(which $cmd)"
     if [[ -z $i ]];then
