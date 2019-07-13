@@ -9,18 +9,18 @@ stdio.h
 stdlib.h  
 unistd.h  
 ```
-For best security precaution,
-following commands do Not use sudo
+Some of the following commands use sudo for install/uninstall.
 > cd src/
 > source lwrap.sh
 > lwrap.config
 > lwrap.make
 > lwrap.install
-> man lwrap
 > lwrap.uninstall
 ```
 ## Using lwrap
-
+```
+> man lwrap
+```
    The most flexible way of using lwrap is to  
 shifting with different line width inside vim  
 with command, `:[range]!lwrap -jNUMBERS`.  

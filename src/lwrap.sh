@@ -9,6 +9,13 @@ lwrap.substitute()
         \builtin eval "${cmd##*/}=${cmd}"
     done
     perl_version="$($perl -e 'print $^V')"
+    prefix=/usr/local/
+    bindir=${prefix}/bin/
+    mandir=${prefix}/man/man1/
+    binpath='lwrap'
+    binfile="$(basename ${binpath})"
+    manpath="${binfile}.1"
+    manfile="$(basename ${manpath})"
     \builtin \source <($cat<<-SUB
 
 lwrap.info()
@@ -42,30 +49,23 @@ lwrap.clean()
 }
 lwrap.make()
 {
-    lwrap.indentall
     $make clean
     touch .deps/lwrap.Po
     $make -j4 CFLAGS='-g -O2 -w'
 }
 lwrap.install()
 {
-    local binpath=\${1:-lwrap}
-    local binfile=\$($basename \$binpath)
-    local bindir=\${2:-/usr/local/bin}
-    local manfile=\${binfile}.1
-    $cp -f \$binpath \$bindir/\$binfile
-    $chmod gu=rx \$bindir/\$binfile
-    $chown \$USER: \$bindir/\$binfile
-    $cp -f \$manfile /usr/local/man/man1/\$manfile
-    $chmod gu=r /usr/local/man/man1/\$manfile
-    $chown \$USER: /usr/local/man/man1/\$manfile
+    $sudo $cp -f $binpath $bindir/$binfile
+    $sudo $chmod gu=rx $bindir/$binfile
+    $sudo $chown \$USER: \$bindir/$binfile
+    $sudo $cp -f $manpath ${mandir}/$manfile
+    $sudo $chmod gu=r ${mandir}/$manfile
+    $sudo $chown \$USER: ${mandir}/$manfile
 }
 lwrap.uninstall()
 {
-    local binpath=\${1:-/usr/local/bin/lwrap}
-    local manpath=\${2:-/usr/local/man/man1/lwrap.1}
-    $rm -f \$binpath
-    $rm -f \$manpath
+    $sudo $rm -f $binfille
+    $sudo $rm -f $manpath
 }
 lwrap.exclude()
 {
@@ -203,7 +203,7 @@ lwrap.indent()
 {
     local infile=\${1:?[c,h file]}
     local tmpfile=\$(mktemp)
-    indent --linux-style --indent-level4 --no-tabs --tab-size4 \
+    $indent --linux-style --indent-level4 --no-tabs --tab-size4 \
     --line-length80 \$infile -o \$tmpfile
     local change="\$($diff --brief \$infile \$tmpfile)"
     if [[ X\$change == X ]];then
@@ -215,22 +215,9 @@ lwrap.indent()
 }
 lwrap.indentall()
 {
-    local indent=\$($which indent)
-    [[ x\$indent == x ]] && return
-    [[ -x \$indent ]] || return
     local i;
     for i in *.c *.h;do
         lwrap.indent \$i
-    done
-}
-lwrap.comments()
-{
-    local infile=\${1:?[infile]}
-    local tmpfile=\$(mktemp)
-    local i;
-    for i in *.c *.h;do
-        $cat \$infile \$i > \$tmpfile
-        $mv \$tmpfile \$i
     done
 }
 SUB
