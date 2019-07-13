@@ -7,22 +7,22 @@
 #define my (**me)
 void ipaheader(self ** me)
 {
-  my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
-  my.currdata->byteheader = 20;
-  my.currdata->wcolcount = ++my.wcolcount;
-  my.currdata->wbytecount = ++my.wbytecount;
-  my.hbytecount++;
+    my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
+    my.currdata->byteheader = 20;
+    my.currdata->wcolcount = ++my.wcolcount;
+    my.currdata->wbytecount = ++my.wbytecount;
+    my.hbytecount++;
 }
 
 inline void fipamiddlebyte(self ** me)
 {
-  my.hbytecount++;
-  my.hcolcount++;
-  my.currdata->wbytecount = ++my.wbytecount;
-  my.currdata->wcolcount = my.wcolcount;
+    my.hbytecount++;
+    my.hcolcount++;
+    my.currdata->wbytecount = ++my.wbytecount;
+    my.currdata->wcolcount = my.wcolcount;
 }
 
 inline void lbipaheader(self ** me)
 {
-  my.currjustify->remain = my.currdata->wcolcount;
+    my.currjustify->remain = my.currdata->wcolcount;
 }
