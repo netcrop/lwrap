@@ -113,10 +113,8 @@ lwrap.test()
     for language in \$languagelist;do
         for arg1 in \$arglist;do
             for prefix1 in \$arglist;do
-                ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language \
-                >/tmp/\$prefix1.\$arg1.\$filename.\$language
-                $diff -c ../test/\$arg1.\$filename.\$language \
-                /tmp/\$prefix1.\$arg1.\$filename.\$language
+                ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language >/tmp/\$prefix1.\$arg1.\$filename.\$language
+                $diff -c ../test/\$arg1.\$filename.\$language /tmp/\$prefix1.\$arg1.\$filename.\$language
                 $rm -f /tmp/\$prefix1.\$arg1.\$filename.\$language
             done
         done
@@ -131,10 +129,8 @@ lwrap.test.justify()
     for language in \$languagelist;do
         for arg1 in \$arglist;do
             for prefix1 in \$arglist;do
-                ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language \
-                >/tmp/\$prefix1.\$arg1.\$filename.\$language
-                $diff -c ../test/\$arg1.\$filename.\$language \
-                /tmp/\$prefix1.\$arg1.\$filename.\$language
+                ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language  >/tmp/\$prefix1.\$arg1.\$filename.\$language
+                $diff -c ../test/\$arg1.\$filename.\$language /tmp/\$prefix1.\$arg1.\$filename.\$language
                 $rm -f /tmp/\$prefix1.\$arg1.\$filename.\$language
             done
         done
@@ -150,12 +146,9 @@ lwrap.test.wc()
     for language in \$languagelist;do
         for arg1 in \$arglist;do
             for prefix1 in \$arglist;do
-                ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language \
-                >/tmp/\$prefix1.\$arg1.\$filename.\$language
-                rest1=\$($tr -d '\n \t\b\f\r\t\v\0' \
-                <../test/\$prefix1.\$filename.\$language |wc -c)
-                rest2=\$($tr -d '\n ' \
-                </tmp/\$prefix1.\$arg1.\$filename.\$language |wc -c)
+                ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language >/tmp/\$prefix1.\$arg1.\$filename.\$language
+                rest1=\$($tr -d '\n \t\b\f\r\t\v\0' <../test/\$prefix1.\$filename.\$language |wc -c)
+                rest2=\$($tr -d '\n ' </tmp/\$prefix1.\$arg1.\$filename.\$language |wc -c)
                 $rm -f /tmp/\$prefix1.\$arg1.\$filename.\$language
                 [[ \$rest1 -eq \$rest2 ]] && continue;
                 builtin echo -e "../test/\$prefix1.\$filename.\$languagea\n/tmp/\$prefix1.\$arg1.\$filename.\$language\n\$rest1:\$rest2"
