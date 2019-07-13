@@ -199,26 +199,10 @@ lwrap.release()
     local branch=\${1:-alpha}
     g.push origin alpha
 }
-lwrap.indent()
-{
-    local infile=\${1:?[c,h file]}
-    local tmpfile=\$(mktemp)
-    $indent --linux-style --indent-level4 --no-tabs --tab-size4 \
-    --line-length80 \$infile -o \$tmpfile
-    local change="\$($diff --brief \$infile \$tmpfile)"
-    if [[ X\$change == X ]];then
-        $rm -f \$tmpfile
-        return
-    fi
-    $mv \$tmpfile \$infile
-    $rm -f \$infile~
-}
 lwrap.indentall()
 {
-    local i;
-    for i in *.c *.h;do
-        lwrap.indent \$i
-    done
+    $indent --linux-style --indent-level4 --no-tabs --tab-size4 \
+    --line-length80 *.[c,h]
 }
 SUB
 )
