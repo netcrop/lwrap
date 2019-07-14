@@ -1,6 +1,6 @@
 #include "lwrap.h"
 #define my (**me)
-void formsheader(self ** me)
+void formsheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 30;
@@ -12,7 +12,7 @@ void formsheader(self ** me)
     my.hbytecount++;
 }
 
-inline void lbformsheader(self ** me)
+inline void lbformsheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

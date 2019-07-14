@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void syriacheader(self ** me)
+void syriacheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void syriacheader(self ** me)
     my.hbytecount++;
 }
 
-inline void fsyriacmiddlebyte(self ** me)
+inline void fsyriacmiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void fsyriacmiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lbsyriacheader(self ** me)
+inline void lbsyriacheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

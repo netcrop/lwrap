@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void accentsheader(self ** me)
+void accentsheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void accentsheader(self ** me)
     my.hbytecount++;
 }
 
-inline void faccentsmiddlebyte(self ** me)
+inline void faccentsmiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void faccentsmiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lbaccentsheader(self ** me)
+inline void lbaccentsheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

@@ -6,7 +6,7 @@
 #include "lwrap.h"
 #define my (**me)
 
-void fourbyteheader(self ** me)
+void fourbyteheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 40;
@@ -17,7 +17,7 @@ void fourbyteheader(self ** me)
     my.hbytecount++;
 }
 
-inline void lbfourbyteheader(self ** me)
+inline void lbfourbyteheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

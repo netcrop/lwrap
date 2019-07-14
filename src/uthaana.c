@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void thaanaheader(self ** me)
+void thaanaheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void thaanaheader(self ** me)
     my.hbytecount++;
 }
 
-inline void fthaanamiddlebyte(self ** me)
+inline void fthaanamiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void fthaanamiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lbthaanaheader(self ** me)
+inline void lbthaanaheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void puaheader(self ** me)
+void puaheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 30;
@@ -17,7 +17,7 @@ void puaheader(self ** me)
     my.hbytecount++;
 }
 
-inline void lbpuaheader(self ** me)
+inline void lbpuaheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void cyrilheader(self ** me)
+void cyrilheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void cyrilheader(self ** me)
     my.hbytecount++;
 }
 
-inline void fcyrilmiddlebyte(self ** me)
+inline void fcyrilmiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void fcyrilmiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lbcyrilheader(self ** me)
+inline void lbcyrilheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void asianheader(self ** me)
+void asianheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 30;
@@ -17,7 +17,7 @@ void asianheader(self ** me)
     my.hbytecount++;
 }
 
-inline void lbasianheader(self ** me)
+inline void lbasianheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void ipaheader(self ** me)
+void ipaheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void ipaheader(self ** me)
     my.hbytecount++;
 }
 
-inline void fipamiddlebyte(self ** me)
+inline void fipamiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void fipamiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lbipaheader(self ** me)
+inline void lbipaheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

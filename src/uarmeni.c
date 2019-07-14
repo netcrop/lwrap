@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void armeniheader(self ** me)
+void armeniheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void armeniheader(self ** me)
     my.hbytecount++;
 }
 
-inline void farmenimiddlebyte(self ** me)
+inline void farmenimiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void farmenimiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lbarmeniheader(self ** me)
+inline void lbarmeniheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

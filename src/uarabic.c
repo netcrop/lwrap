@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void arabicheader(self ** me)
+void arabicheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void arabicheader(self ** me)
     my.hbytecount++;
 }
 
-inline void farabicmiddlebyte(self ** me)
+inline void farabicmiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void farabicmiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lbarabicheader(self ** me)
+inline void lbarabicheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

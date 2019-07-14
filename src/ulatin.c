@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void latinheader(self ** me)
+void latinheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void latinheader(self ** me)
     my.hbytecount++;
 }
 
-inline void flatinmiddlebyte(self ** me)
+inline void flatinmiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void flatinmiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lblatinheader(self ** me)
+inline void lblatinheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

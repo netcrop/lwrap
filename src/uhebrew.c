@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void hebrewheader(self ** me)
+void hebrewheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void hebrewheader(self ** me)
     my.hbytecount++;
 }
 
-inline void fhebrewmiddlebyte(self ** me)
+inline void fhebrewmiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void fhebrewmiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lbhebrewheader(self ** me)
+inline void lbhebrewheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

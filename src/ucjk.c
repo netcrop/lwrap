@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void cjkheader(self ** me)
+void cjkheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 30;
@@ -18,7 +18,7 @@ void cjkheader(self ** me)
     my.hbytecount++;
 }
 
-inline void lbcjkheader(self ** me)
+inline void lbcjkheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

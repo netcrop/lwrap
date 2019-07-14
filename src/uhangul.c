@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void hangulheader(self ** me)
+void hangulheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 30;
@@ -18,7 +18,7 @@ void hangulheader(self ** me)
     my.hbytecount++;
 }
 
-inline void lbhangulheader(self ** me)
+inline void lbhangulheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

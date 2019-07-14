@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void nkoheader(self ** me)
+void nkoheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void nkoheader(self ** me)
     my.hbytecount++;
 }
 
-inline void fnkomiddlebyte(self ** me)
+inline void fnkomiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void fnkomiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lbnkoheader(self ** me)
+inline void lbnkoheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

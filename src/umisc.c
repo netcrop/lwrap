@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void mischeader(self ** me)
+void mischeader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 30;
@@ -17,7 +17,7 @@ void mischeader(self ** me)
     my.hbytecount++;
 }
 
-inline void lbmischeader(self ** me)
+inline void lbmischeader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

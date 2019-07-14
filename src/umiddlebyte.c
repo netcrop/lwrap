@@ -6,7 +6,7 @@
 #include "lwrap.h"
 #define my (**me)
 
-void middlebyte(self ** me)
+void middlebyte()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = my.prevdata->byteheader + 1;
@@ -23,7 +23,7 @@ void middlebyte(self ** me)
     my.currdata->wcolcount = 2;
 }
 
-inline void lbmiddlebyte(self ** me)
+inline void lbmiddlebyte()
 {
     my.currjustify->remain = my.currdata->wcolcount;
     my.lbdata->annotation = NEWLINE;

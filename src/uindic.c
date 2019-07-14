@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void indicheader(self ** me)
+void indicheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 30;
@@ -17,7 +17,7 @@ void indicheader(self ** me)
     my.hbytecount++;
 }
 
-inline void lbindicheader(self ** me)
+inline void lbindicheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

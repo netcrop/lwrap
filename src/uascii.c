@@ -6,7 +6,7 @@
 #include "lwrap.h"
 #define my (**me)
 
-void alnum(self ** me)
+void alnum()
 {
     if (my.prevdata->byteheader > TWOBYTEMAX) {
         my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
@@ -26,7 +26,7 @@ void alnum(self ** me)
     my.currdata->wcolcount = ++my.wcolcount;
 }
 
-void space(self ** me)
+void space()
 {
     if (my.prevdata->val == SPACE) {
         my.wbytecount = 0;
@@ -54,7 +54,7 @@ void space(self ** me)
     my.currdata->wcolcount = my.wcolcount = 0;
 }
 
-void formfeed(self ** me)
+void formfeed()
 {
     my.currdata->byteheader = 10;
     my.currdata->val = NEWLINE;
@@ -64,7 +64,7 @@ void formfeed(self ** me)
     my.currdata->wcolcount = my.wcolcount = 0;
 }
 
-void newline(self ** me)
+void newline()
 {
     if (my.prevdata->val == NEWLINE) {
         my.currdata->val = NEWLINE;
@@ -99,19 +99,19 @@ void newline(self ** me)
     my.wcolcount = 0;
 }
 
-void nonealnum(self ** me)
+void nonealnum()
 {
     my.wbytecount = 0;
     my.wcolcount = 0;
 }
 
-void invalidbyte(self ** me)
+void invalidbyte()
 {
     my.wbytecount = 0;
     my.wcolcount = 0;
 }
 
-inline void lbspace(self ** me)
+inline void lbspace()
 {
     my.currjustify->remain = my.currdata->wcolcount;
     if (my.endingspace == 1) {
@@ -121,29 +121,29 @@ inline void lbspace(self ** me)
     my.lbdata->val = NEWLINE;
 }
 
-inline void lbnewline(self ** me)
+inline void lbnewline()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }
 
-inline void lbnonealnum(self ** me)
+inline void lbnonealnum()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }
 
-inline void lbalnum(self ** me)
-{
-    my.currjustify->remain = my.currdata->wcolcount;
-    my.lbdata->annotation = NEWLINE;
-}
-
-inline void lbformfeed(self ** me)
+inline void lbalnum()
 {
     my.currjustify->remain = my.currdata->wcolcount;
     my.lbdata->annotation = NEWLINE;
 }
 
-inline void lbinvalidbyte(self ** me)
+inline void lbformfeed()
+{
+    my.currjustify->remain = my.currdata->wcolcount;
+    my.lbdata->annotation = NEWLINE;
+}
+
+inline void lbinvalidbyte()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

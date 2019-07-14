@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void symbolheader(self ** me)
+void symbolheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 30;
@@ -18,7 +18,7 @@ void symbolheader(self ** me)
     my.hbytecount++;
 }
 
-inline void lbsymbolheader(self ** me)
+inline void lbsymbolheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }

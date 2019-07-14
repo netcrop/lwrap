@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 #define my (**me)
-void greekheader(self ** me)
+void greekheader()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = 20;
@@ -14,7 +14,7 @@ void greekheader(self ** me)
     my.hbytecount++;
 }
 
-inline void fgreekmiddlebyte(self ** me)
+inline void fgreekmiddlebyte()
 {
     my.hbytecount++;
     my.hcolcount++;
@@ -22,7 +22,7 @@ inline void fgreekmiddlebyte(self ** me)
     my.currdata->wcolcount = my.wcolcount;
 }
 
-inline void lbgreekheader(self ** me)
+inline void lbgreekheader()
 {
     my.currjustify->remain = my.currdata->wcolcount;
 }
