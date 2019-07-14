@@ -9,11 +9,11 @@ int main(int argc, char *argv[])
 {
     me = (self *) NULL;
     avariable(&me);
-    my.argc = argc;
-    my.argv = argv;
-   # my.option(&me);
-   # my.alocate(&me);
-   # my.freadfile(&me);
-    my.delocate(&me);
+    me->argc = argc;
+    me->argv = argv;
+   # me->option(&me);
+   # me->alocate(&me);
+   # me->freadfile(&me);
+    me->delocate(&me);
     return 0;
 }

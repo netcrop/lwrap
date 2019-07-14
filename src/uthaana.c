@@ -7,22 +7,22 @@
 #define my (**me)
 void thaanaheader()
 {
-    my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
-    my.currdata->byteheader = 20;
-    my.currdata->wcolcount = ++my.wcolcount;
-    my.currdata->wbytecount = ++my.wbytecount;
-    my.hbytecount++;
+    me->currdata->val = (unsigned char)me->readbuff[me->currreadindex->val];
+    me->currdata->byteheader = 20;
+    me->currdata->wcolcount = ++me->wcolcount;
+    me->currdata->wbytecount = ++me->wbytecount;
+    me->hbytecount++;
 }
 
 inline void fthaanamiddlebyte()
 {
-    my.hbytecount++;
-    my.hcolcount++;
-    my.currdata->wbytecount = ++my.wbytecount;
-    my.currdata->wcolcount = my.wcolcount;
+    me->hbytecount++;
+    me->hcolcount++;
+    me->currdata->wbytecount = ++me->wbytecount;
+    me->currdata->wcolcount = me->wcolcount;
 }
 
 inline void lbthaanaheader()
 {
-    my.currjustify->remain = my.currdata->wcolcount;
+    me->currjustify->remain = me->currdata->wcolcount;
 }

@@ -22,7 +22,7 @@ inline void frelay()
 {
     me->currreadindex = &me->readindex[0];
     for (me->rindex = 0; me->rindex < me->readsize; me->rindex++) {
-        ffilter(me);
+        ffilter();
         me->currreadindex = me->currreadindex->incre;
     }
 }
@@ -31,10 +31,10 @@ void freadfile()
 {
     do {
         me->readsize = fread(me->readbuff, 1, me->readbuffsize, me->filep);
-        frelay(me);
+        frelay();
     } while (me->readsize == me->readbuffsize);
     for (int i = 0; i < me->writebuffrelay; i++) {
-        fwritebuff(me);
+        fwritebuff();
         me->foutput(me);
     }
     fwrite(me->writebuff, 1, me->curroutindex->val, stdout);

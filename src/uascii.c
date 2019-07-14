@@ -8,142 +8,142 @@
 
 void alnum()
 {
-    if (my.prevdata->byteheader > TWOBYTEMAX) {
-        my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
-        my.currdata->byteheader = 10;
-        my.hbytecount++;
-        my.hcolcount++;
-        my.currjustify->wcount++;
-        my.currdata->wbytecount = my.wbytecount = 1;
-        my.currdata->wcolcount = my.wcolcount = 1;
+    if (me->prevdata->byteheader > TWOBYTEMAX) {
+        me->currdata->val = (unsigned char)me->readbuff[me->currreadindex->val];
+        me->currdata->byteheader = 10;
+        me->hbytecount++;
+        me->hcolcount++;
+        me->currjustify->wcount++;
+        me->currdata->wbytecount = me->wbytecount = 1;
+        me->currdata->wcolcount = me->wcolcount = 1;
         return;
     }
-    my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
-    my.currdata->byteheader = 10;
-    my.hbytecount++;
-    my.hcolcount++;
-    my.currdata->wbytecount = ++my.wbytecount;
-    my.currdata->wcolcount = ++my.wcolcount;
+    me->currdata->val = (unsigned char)me->readbuff[me->currreadindex->val];
+    me->currdata->byteheader = 10;
+    me->hbytecount++;
+    me->hcolcount++;
+    me->currdata->wbytecount = ++me->wbytecount;
+    me->currdata->wcolcount = ++me->wcolcount;
 }
 
 void space()
 {
-    if (my.prevdata->val == SPACE) {
-        my.wbytecount = 0;
-        my.wcolcount = 0;
+    if (me->prevdata->val == SPACE) {
+        me->wbytecount = 0;
+        me->wcolcount = 0;
         return;
     }
-    if (my.prevdata->val == NEWLINE
-        && (unsigned char)my.readbuff[my.currreadindex->incre->val] !=
+    if (me->prevdata->val == NEWLINE
+        && (unsigned char)me->readbuff[me->currreadindex->incre->val] !=
         SYMBOLMIN) {
-        my.wbytecount = 0;
-        my.wcolcount = 0;
+        me->wbytecount = 0;
+        me->wcolcount = 0;
         return;
     }
-    if ((unsigned char)my.readbuff[my.currreadindex->incre->val] == SPACE) {
-        my.wbytecount = 0;
-        my.wcolcount = 0;
+    if ((unsigned char)me->readbuff[me->currreadindex->incre->val] == SPACE) {
+        me->wbytecount = 0;
+        me->wcolcount = 0;
         return;
     }
-    my.currdata->val = SPACE;
-    my.currdata->byteheader = 10;
-    my.hbytecount++;
-    my.hcolcount++;
-    my.currjustify->wcount++;
-    my.currdata->wbytecount = my.wbytecount = 0;
-    my.currdata->wcolcount = my.wcolcount = 0;
+    me->currdata->val = SPACE;
+    me->currdata->byteheader = 10;
+    me->hbytecount++;
+    me->hcolcount++;
+    me->currjustify->wcount++;
+    me->currdata->wbytecount = me->wbytecount = 0;
+    me->currdata->wcolcount = me->wcolcount = 0;
 }
 
 void formfeed()
 {
-    my.currdata->byteheader = 10;
-    my.currdata->val = NEWLINE;
-    my.hbytecount++;
-    my.hcolcount = my.hcolsize + 1;
-    my.currdata->wbytecount = my.wbytecount = 0;
-    my.currdata->wcolcount = my.wcolcount = 0;
+    me->currdata->byteheader = 10;
+    me->currdata->val = NEWLINE;
+    me->hbytecount++;
+    me->hcolcount = me->hcolsize + 1;
+    me->currdata->wbytecount = me->wbytecount = 0;
+    me->currdata->wcolcount = me->wcolcount = 0;
 }
 
 void newline()
 {
-    if (my.prevdata->val == NEWLINE) {
-        my.currdata->val = NEWLINE;
-        my.currdata->byteheader = 10;
-        my.currjustify->wcount = 0;
-        my.hbytecount++;
-        my.hcolcount = my.hcolsize + 1;
-        my.currdata->wbytecount = my.wbytecount = 0;
-        my.currdata->wcolcount = my.wcolcount = 0;
+    if (me->prevdata->val == NEWLINE) {
+        me->currdata->val = NEWLINE;
+        me->currdata->byteheader = 10;
+        me->currjustify->wcount = 0;
+        me->hbytecount++;
+        me->hcolcount = me->hcolsize + 1;
+        me->currdata->wbytecount = me->wbytecount = 0;
+        me->currdata->wcolcount = me->wcolcount = 0;
         return;
     }
-    if ((unsigned char)my.readbuff[my.currreadindex->incre->val] == NEWLINE) {
-        my.currdata->val = NEWLINE;
-        my.currdata->byteheader = 10;
-        my.currjustify->wcount = 0;
-        my.hbytecount++;
-        my.hcolcount = my.hcolsize + 1;
-        my.currdata->wbytecount = my.wbytecount = 0;
-        my.currdata->wcolcount = my.wcolcount = 0;
+    if ((unsigned char)me->readbuff[me->currreadindex->incre->val] == NEWLINE) {
+        me->currdata->val = NEWLINE;
+        me->currdata->byteheader = 10;
+        me->currjustify->wcount = 0;
+        me->hbytecount++;
+        me->hcolcount = me->hcolsize + 1;
+        me->currdata->wbytecount = me->wbytecount = 0;
+        me->currdata->wcolcount = me->wcolcount = 0;
         return;
     }
-    if ((unsigned char)my.readbuff[my.currreadindex->incre->val] == EOS) {
-        my.currdata->val = NEWLINE;
-        my.currdata->byteheader = 10;
-        my.hbytecount++;
-        my.hcolcount = my.hcolsize + 1;
-        my.currdata->wbytecount = my.wbytecount = 0;
-        my.currdata->wcolcount = my.wcolcount = 0;
+    if ((unsigned char)me->readbuff[me->currreadindex->incre->val] == EOS) {
+        me->currdata->val = NEWLINE;
+        me->currdata->byteheader = 10;
+        me->hbytecount++;
+        me->hcolcount = me->hcolsize + 1;
+        me->currdata->wbytecount = me->wbytecount = 0;
+        me->currdata->wcolcount = me->wcolcount = 0;
         return;
     }
-    my.wbytecount = 0;
-    my.wcolcount = 0;
+    me->wbytecount = 0;
+    me->wcolcount = 0;
 }
 
 void nonealnum()
 {
-    my.wbytecount = 0;
-    my.wcolcount = 0;
+    me->wbytecount = 0;
+    me->wcolcount = 0;
 }
 
 void invalidbyte()
 {
-    my.wbytecount = 0;
-    my.wcolcount = 0;
+    me->wbytecount = 0;
+    me->wcolcount = 0;
 }
 
 inline void lbspace()
 {
-    my.currjustify->remain = my.currdata->wcolcount;
-    if (my.endingspace == 1) {
-        my.lbdata->annotation = NEWLINE;
+    me->currjustify->remain = me->currdata->wcolcount;
+    if (me->endingspace == 1) {
+        me->lbdata->annotation = NEWLINE;
         return;
     }
-    my.lbdata->val = NEWLINE;
+    me->lbdata->val = NEWLINE;
 }
 
 inline void lbnewline()
 {
-    my.currjustify->remain = my.currdata->wcolcount;
+    me->currjustify->remain = me->currdata->wcolcount;
 }
 
 inline void lbnonealnum()
 {
-    my.currjustify->remain = my.currdata->wcolcount;
+    me->currjustify->remain = me->currdata->wcolcount;
 }
 
 inline void lbalnum()
 {
-    my.currjustify->remain = my.currdata->wcolcount;
-    my.lbdata->annotation = NEWLINE;
+    me->currjustify->remain = me->currdata->wcolcount;
+    me->lbdata->annotation = NEWLINE;
 }
 
 inline void lbformfeed()
 {
-    my.currjustify->remain = my.currdata->wcolcount;
-    my.lbdata->annotation = NEWLINE;
+    me->currjustify->remain = me->currdata->wcolcount;
+    me->lbdata->annotation = NEWLINE;
 }
 
 inline void lbinvalidbyte()
 {
-    my.currjustify->remain = my.currdata->wcolcount;
+    me->currjustify->remain = me->currdata->wcolcount;
 }

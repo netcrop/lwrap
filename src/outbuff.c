@@ -18,7 +18,7 @@ void finitwritebuff()
     if (me->currdata->dataindex < me->writebuffrelay)
         return;
     me->initwritebuff = FOUTBUFF;
-    fwritebuff(me);
+    fwritebuff();
 }
 
 inline void fwritebuff()
