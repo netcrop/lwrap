@@ -25,12 +25,12 @@ lwrap.substitute()
 
 lwrap.debug()
 {
-    $gdb --args $binpath -j80 ${testdir}/c20.starwars.en
+    $gdb --args $binpath -j80 -f ${testdir}/c20.starwars.en
 }
 lwrap.valgrind()
 {
 	$valgrind --leak-check=full --show-leak-kinds=all \
-    $binpath -j80 ${testdir}/c20.starwars.en
+    $binpath -j80 -f ${testdir}/c20.starwars.en
 }
 lwrap.info()
 {

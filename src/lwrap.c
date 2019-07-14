@@ -47,31 +47,31 @@ void version()
 
 void delocate()
 {
-    if (!me)
+    if (&me)
         return;
-    if (me->filep != NULL)
-        fclose(me->filep);
-    if (me->filedebug != NULL)
-        fclose(me->filedebug);
-    if (me->data != NULL)
-        free(me->data);
-    if (me->outindex != NULL)
-        free(me->outindex);
-    if (me->readindex != NULL)
-        free(me->readindex);
-    if (me->writebuff != NULL)
-        free(me->writebuff);
-    if (me->readbuff != NULL)
-        free(me->readbuff);
-    if (me->justify != NULL)
-        free(me->justify);
-    if (me->string != NULL)
-        free(me->string);
-    if (me->funicode != NULL)
-        free(me->funicode);
-    if (me->call != NULL)
-        free(me->call);
-    if (me->fring != NULL)
+    if (&me->filep != NULL)
+        fclose(&me->filep);
+    if (&me->filedebug != NULL)
+        fclose(&me->filedebug);
+    if (&me->data != NULL)
+        free(&me->data);
+    if (&me->outindex != NULL)
+        free(&me->outindex);
+    if (&me->readindex != NULL)
+        free(&me->readindex);
+    if (&me->writebuff != NULL)
+        free(&me->writebuff);
+    if (&me->readbuff != NULL)
+        free(&me->readbuff);
+    if (&me->justify != NULL)
+        free(&me->justify);
+    if (&me->string != NULL)
+        free(&me->string);
+    if (&me->funicode != NULL)
+        free(&me->funicode);
+    if (&me->call != NULL)
+        free(&me->call);
+    if (&me->fring != NULL)
         free(me->fring);
     free(&me);
 }
