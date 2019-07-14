@@ -4,7 +4,6 @@
  */
 
 #include "lwrap.h"
-#define my (**me)
 
 inline void flinebreak()
 {
@@ -17,7 +16,7 @@ inline void flinebreak()
     me->lbdata = &me->data[me->linebreak];
     me->hcolcount = me->currdata->wcolcount;
     me->hbytecount = me->currdata->wbytecount;
-    me->funicode[me->lbdata->val]->linebreak(me);
+    me->funicode[me->lbdata->val]->linebreak();
     if (me->currjustify->remain != 0 && me->currjustify->wcount == 0) ;
     else
         me->currjustify = me->currjustify->after;
@@ -48,33 +47,33 @@ void version()
 
 void delocate()
 {
+    if (!me)
+        return;
     if (me->filep != NULL)
         fclose(me->filep);
     if (me->filedebug != NULL)
         fclose(me->filedebug);
-    if (*me != NULL) {
-        if (me->data != NULL)
-            free(me->data);
-        if (me->outindex != NULL)
-            free(me->outindex);
-        if (me->readindex != NULL)
-            free(me->readindex);
-        if (me->writebuff != NULL)
-            free(me->writebuff);
-        if (me->readbuff != NULL)
-            free(me->readbuff);
-        if (me->justify != NULL)
-            free(me->justify);
-        if (me->string != NULL)
-            free(me->string);
-        if (me->funicode != NULL)
-            free(me->funicode);
-        if (me->call != NULL)
-            free(me->call);
-        if (me->fring != NULL)
-            free(me->fring);
-        free(*me);
-    }
+    if (me->data != NULL)
+        free(me->data);
+    if (me->outindex != NULL)
+        free(me->outindex);
+    if (me->readindex != NULL)
+        free(me->readindex);
+    if (me->writebuff != NULL)
+        free(me->writebuff);
+    if (me->readbuff != NULL)
+        free(me->readbuff);
+    if (me->justify != NULL)
+        free(me->justify);
+    if (me->string != NULL)
+        free(me->string);
+    if (me->funicode != NULL)
+        free(me->funicode);
+    if (me->call != NULL)
+        free(me->call);
+    if (me->fring != NULL)
+        free(me->fring);
+    free(&me);
 }
 
 void mlocate(void **p, size_t size)
@@ -85,7 +84,7 @@ void mlocate(void **p, size_t size)
     }
 }
 
-inline void strappend(char *str, char **strp, )
+inline void strappend(char *str, char **strp)
 {
     *strp = me->currstring;
     while ((*me->currstring++ = *str++) != EOS) ;
@@ -97,8 +96,8 @@ void option()
         switch (me->optchr) {
         case 'h':
         case '?':
-            me->usage(me);
-            delocate(me);
+            me->usage();
+            delocate();
             exit(0);
         case 'c':
             if ((me->hcolsize =
@@ -107,7 +106,7 @@ void option()
                 me->writebuffrelay = me->hcolsize * me->justifymultiple;
                 break;
             }
-            delocate(me);
+            delocate();
             exit(0);
         case 'd':
             me->debug = 1;
@@ -125,16 +124,16 @@ void option()
                 me->justifying = 1;
                 break;
             }
-            delocate(me);
+            delocate();
             exit(0);
         case 'f':
             if ((me->filep = fopen(optarg, "r")) != NULL)
                 break;
-            delocate(me);
+            delocate();
             exit(0);
         case 'v':
-            version(me);
-            delocate(me);
+            version();
+            delocate();
             exit(0);
         }
     }
@@ -142,7 +141,7 @@ void option()
 
 inline void avariable()
 {
-    mlocate((void **)me, sizeof(self));
+    mlocate((void **)&me, sizeof(self));
     me->displaymax = 236;
     me->justifymultiple = 2;
     me->buffmultiple = 42;
@@ -215,8 +214,8 @@ inline void avariable()
         me->string[i] = SPACE;
     me->string[me->stringsize - 1] = EOS;
     me->currstring = &me->string[0];
-    strappend("lwrap", &me->progname, me);
-    strappend("/tmp/lwrap.debug", &me->debugfile, me);
+    strappend("lwrap", &me->progname);
+    strappend("/tmp/lwrap.debug", &me->debugfile);
 }
 
 inline void acall()
@@ -407,10 +406,10 @@ inline void abuff()
 
 inline void alocate()
 {
-    acall(me);
-    afring(me);
-    aunicode(me);
-    abuff(me);
+    acall();
+    afring();
+    aunicode();
+    abuff();
 }
 
 inline void fjustify()

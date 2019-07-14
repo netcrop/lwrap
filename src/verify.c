@@ -4,16 +4,15 @@
  */
 
 #include "lwrap.h"
-#define my (*me)
+self *me = (self *) NULL;
 int main(int argc, char *argv[])
 {
-    me = (self *) NULL;
-    avariable(&me);
+    avariable();
     me->argc = argc;
     me->argv = argv;
-   # me->option(&me);
-   # me->alocate(&me);
-   # me->freadfile(&me);
-    me->delocate(&me);
+    option();
+    alocate();
+    freadfile();
+    delocate();
     return 0;
 }

@@ -4,8 +4,6 @@
  */
 
 #include "lwrap.h"
-#define my (**me)
-
 void alnum()
 {
     if (me->prevdata->byteheader > TWOBYTEMAX) {

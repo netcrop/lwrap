@@ -5,7 +5,7 @@ lwrap.substitute()
     basename cat ls id cut bash man mktemp egrep date env mv
     cp chmod ln chown rm printf touch head mkdir find file
     make autoheader aclocal automake autoconf diff gcc dot indent
-    which tr wc'
+    which tr wc valgrind gdb'
     for cmd in $(which $cmdlist);do
         \builtin eval "${cmd##*/}=${cmd}"
     done
@@ -23,6 +23,15 @@ lwrap.substitute()
     languagelist="en sv fr cn jp zh"
     \builtin \source <($cat<<-SUB
 
+lwrap.debug()
+{
+    $gdb --args $binpath -j80 ${testdir}/c20.starwars.en
+}
+lwrap.valgrind()
+{
+	$valgrind --leak-check=full --show-leak-kinds=all \
+    $binpath -j80 ${testdir}/c20.starwars.en
+}
 lwrap.info()
 {
     $cat<<-LWRAPINFO
