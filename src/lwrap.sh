@@ -1,6 +1,7 @@
 lwrap.substitute()
 {
-    local cmd perl_version i cmdlist='sed shred perl readlink dirname sudo
+    local filename testdir languagelist arglist cmd perl_version i j k
+    cmdlist='sed shred perl readlink dirname sudo paste
     basename cat ls id cut bash man mktemp egrep date env mv
     cp chmod ln chown rm printf touch head mkdir find file
     make autoheader aclocal automake autoconf diff gcc dot indent
@@ -12,10 +13,14 @@ lwrap.substitute()
     prefix=/usr/local/
     bindir=${prefix}/bin/
     mandir=${prefix}/man/man1/
+    testdir='../test/'
     binpath='lwrap'
     binfile="$(basename ${binpath})"
     manpath="${binfile}.1"
     manfile="$(basename ${manpath})"
+    filename='starwars'
+    arglist="c80 c3 c20 c235"
+    languagelist="en sv fr cn jp zh"
     \builtin \source <($cat<<-SUB
 
 lwrap.info()
@@ -106,52 +111,31 @@ lwrap.dot()
 }
 lwrap.test()
 {
-    local language arg1 prefix1
-    local filename=starwars
-    local arglist="c80 c3 c20 c235"
-    local languagelist="en sv fr cn jp zh"
-    for language in \$languagelist;do
-        for arg1 in \$arglist;do
-            for prefix1 in \$arglist;do
-                ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language >/tmp/\$prefix1.\$arg1.\$filename.\$language
-                $diff -c ../test/\$arg1.\$filename.\$language /tmp/\$prefix1.\$arg1.\$filename.\$language
-                $rm -f /tmp/\$prefix1.\$arg1.\$filename.\$language
-            done
-        done
-    done
+   lwrap.test.justify
 }
 lwrap.test.justify()
 {
-    local language arg1 prefix1
-    local filename=starwars
-    local arglist="j80 j3 j20 j235"
-    local languagelist="en sv fr cn jp zh"
-    for language in \$languagelist;do
-        for arg1 in \$arglist;do
-            for prefix1 in \$arglist;do
-                ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language  >/tmp/\$prefix1.\$arg1.\$filename.\$language
-                $diff -c ../test/\$arg1.\$filename.\$language /tmp/\$prefix1.\$arg1.\$filename.\$language
-                $rm -f /tmp/\$prefix1.\$arg1.\$filename.\$language
+    for i in $languagelist;do
+        for j in $arglist;do
+            for k in $arglist;do
+                ./lwrap -\$j <${testdir}/\$k.$filename.\$i |\
+                $diff -c ${testdir}/\$j.$filename.\$i - 
             done
         done
     done
 }
 lwrap.test.wc()
 {
-    local language arg1 prefix1
-    local filename=starwars
-    local arglist="c80 c3 c20 c235"
-    local languagelist="en sv fr cn jp zh"
     local rest1 rest2
-    for language in \$languagelist;do
-        for arg1 in \$arglist;do
-            for prefix1 in \$arglist;do
-                ./lwrap -\$arg1 <../test/\$prefix1.\$filename.\$language >/tmp/\$prefix1.\$arg1.\$filename.\$language
-                rest1=\$($tr -d '\n \t\b\f\r\t\v\0' <../test/\$prefix1.\$filename.\$language |wc -c)
-                rest2=\$($tr -d '\n ' </tmp/\$prefix1.\$arg1.\$filename.\$language |wc -c)
-                $rm -f /tmp/\$prefix1.\$arg1.\$filename.\$language
+    for i in $languagelist;do
+        for j in $arglist;do
+            for k in $arglist;do
+                ./lwrap -\$j <${testdir}/\$k.$filename.\$i >/tmp/\$k.\$j.$filename.\$i
+              rest1=\$($tr -d '\n \t\b\f\r\t\v\0'<${testdir}/\$k.$filename.\$i |wc -c)
+                rest2=\$($tr -d '\n ' </tmp/\$k.\$j.$filename.\$i |wc -c)
+                $rm -f /tmp/\$k.\$j.$filename.\$i
                 [[ \$rest1 -eq \$rest2 ]] && continue;
-                builtin echo -e "../test/\$prefix1.\$filename.\$languagea\n/tmp/\$prefix1.\$arg1.\$filename.\$language\n\$rest1:\$rest2"
+                builtin echo -e "${testdir}/\$k.$filename.\$i\n/tmp/\$k.\$j.$filename.\$i\n\$rest1:\$rest2"
             done
         done
     done
@@ -172,14 +156,13 @@ lwrap.compare.wc()
 lwrap.composite.wc()
 {
     local lan arg filelist rest1 rest2 rest2file
-    local filename=starwars
-    local rest1file=/tmp/rest1.\$filename.comp
-    local rest2file=/tmp/rest2.\$filename.comp
+    local rest1file=/tmp/rest1.$filename.comp
+    local rest2file=/tmp/rest2.$filename.comp
     local languagelist="en sv fr cn jp zh ger turk sp ned pol ko"
     for lan in \$languagelist;do
-        filelist+="../test/\$filename.\$lan "
+        filelist+="${testdir}/$filename.\$lan "
     done
-    paste \$filelist >\$rest1file
+    $paste \$filelist >\$rest1file
     ./lwrap -c1 <\$rest1file >\$rest2file
     rest1=\$($tr -d '\n \t\b\f\r\t\v\0' <\$rest1file |wc -c)
     rest2=\$($tr -d '\n ' <\$rest2file |$wc -c)
@@ -189,7 +172,6 @@ lwrap.composite.wc()
 }
 lwrap.testall()
 {
-    lwrap.test
     lwrap.test.justify
     lwrap.test.wc
     lwrap.composite.wc
