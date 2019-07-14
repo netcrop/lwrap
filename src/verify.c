@@ -8,8 +8,8 @@ self *me = (self *) NULL;
 int main(int argc, char *argv[])
 {
     avariable();
-    me->argc = argc;
-    me->argv = argv;
+    my.argc = argc;
+    my.argv = argv;
     option();
     alocate();
     freadfile();

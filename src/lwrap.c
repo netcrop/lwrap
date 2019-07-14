@@ -7,24 +7,24 @@
 
 inline void flinebreak()
 {
-    if (me->hcolcount <= me->hcolsize)
+    if (my.hcolcount <= my.hcolsize)
         return;
-    if (me->currdata->val == EOS)
+    if (my.currdata->val == EOS)
         return;
-    if ((me->linebreak = me->currdata->dataindex - me->currdata->wbytecount) < 0)
-        me->linebreak += me->databoundry;
-    me->lbdata = &me->data[me->linebreak];
-    me->hcolcount = me->currdata->wcolcount;
-    me->hbytecount = me->currdata->wbytecount;
-    me->funicode[me->lbdata->val]->linebreak();
-    if (me->currjustify->remain != 0 && me->currjustify->wcount == 0) ;
+    if ((my.linebreak = my.currdata->dataindex - my.currdata->wbytecount) < 0)
+        my.linebreak += my.databoundry;
+    my.lbdata = &my.data[my.linebreak];
+    my.hcolcount = my.currdata->wcolcount;
+    my.hbytecount = my.currdata->wbytecount;
+    my.funicode[my.lbdata->val]->linebreak();
+    if (my.currjustify->remain != 0 && my.currjustify->wcount == 0) ;
     else
-        me->currjustify = me->currjustify->after;
+        my.currjustify = my.currjustify->after;
 }
 
 void usage()
 {
-    printf("%s%s%s", " Usage: ", me->progname,
+    printf("%s%s%s", " Usage: ", my.progname,
            " [-c columns] [-j columns][-e][-f text file]\n\
       LANG = countrycode.utf8\n\
       -c:   set number of columns before line break.\n\
@@ -49,30 +49,30 @@ void delocate()
 {
     if (&me)
         return;
-    if (&me->filep != NULL)
-        fclose(&me->filep);
-    if (&me->filedebug != NULL)
-        fclose(&me->filedebug);
-    if (&me->data != NULL)
-        free(&me->data);
-    if (&me->outindex != NULL)
-        free(&me->outindex);
-    if (&me->readindex != NULL)
-        free(&me->readindex);
-    if (&me->writebuff != NULL)
-        free(&me->writebuff);
-    if (&me->readbuff != NULL)
-        free(&me->readbuff);
-    if (&me->justify != NULL)
-        free(&me->justify);
-    if (&me->string != NULL)
-        free(&me->string);
-    if (&me->funicode != NULL)
-        free(&me->funicode);
-    if (&me->call != NULL)
-        free(&me->call);
-    if (&me->fring != NULL)
-        free(me->fring);
+    if (&my.filep != NULL)
+        fclose(&my.filep);
+    if (&my.filedebug != NULL)
+        fclose(&my.filedebug);
+    if (&my.data != NULL)
+        free(&my.data);
+    if (&my.outindex != NULL)
+        free(&my.outindex);
+    if (&my.readindex != NULL)
+        free(&my.readindex);
+    if (&my.writebuff != NULL)
+        free(&my.writebuff);
+    if (&my.readbuff != NULL)
+        free(&my.readbuff);
+    if (&my.justify != NULL)
+        free(&my.justify);
+    if (&my.string != NULL)
+        free(&my.string);
+    if (&my.funicode != NULL)
+        free(&my.funicode);
+    if (&my.call != NULL)
+        free(&my.call);
+    if (&my.fring != NULL)
+        free(my.fring);
     free(&me);
 }
 
@@ -86,48 +86,48 @@ void mlocate(void **p, size_t size)
 
 inline void strappend(char *str, char **strp)
 {
-    *strp = me->currstring;
-    while ((*me->currstring++ = *str++) != EOS) ;
+    *strp = my.currstring;
+    while ((*my.currstring++ = *str++) != EOS) ;
 }
 
 void option()
 {
-    while ((me->optchr = getopt(me->argc, me->argv, "hc:dj:ef:v")) != EOF) {
-        switch (me->optchr) {
+    while ((my.optchr = getopt(my.argc, my.argv, "hc:dj:ef:v")) != EOF) {
+        switch (my.optchr) {
         case 'h':
         case '?':
-            me->usage();
+            my.usage();
             delocate();
             exit(0);
         case 'c':
-            if ((me->hcolsize =
-                 (int)strtol(optarg, &me->strtolend, 10)) > 0
-                && me->hcolsize < me->displaymax) {
-                me->writebuffrelay = me->hcolsize * me->justifymultiple;
+            if ((my.hcolsize =
+                 (int)strtol(optarg, &my.strtolend, 10)) > 0
+                && my.hcolsize < my.displaymax) {
+                my.writebuffrelay = my.hcolsize * my.justifymultiple;
                 break;
             }
             delocate();
             exit(0);
         case 'd':
-            me->debug = 1;
-            if ((me->filedebug = fopen(me->debugfile, "w")) == NULL)
-                me->filedebug = stderr;
+            my.debug = 1;
+            if ((my.filedebug = fopen(my.debugfile, "w")) == NULL)
+                my.filedebug = stderr;
             break;
         case 'e':
-            me->endingspace = 0;
+            my.endingspace = 0;
             break;
         case 'j':
-            if ((me->hcolsize =
-                 (int)strtol(optarg, &me->strtolend, 10)) > 0
-                && me->hcolsize < me->displaymax) {
-                me->writebuffrelay = me->hcolsize * me->justifymultiple;
-                me->justifying = 1;
+            if ((my.hcolsize =
+                 (int)strtol(optarg, &my.strtolend, 10)) > 0
+                && my.hcolsize < my.displaymax) {
+                my.writebuffrelay = my.hcolsize * my.justifymultiple;
+                my.justifying = 1;
                 break;
             }
             delocate();
             exit(0);
         case 'f':
-            if ((me->filep = fopen(optarg, "r")) != NULL)
+            if ((my.filep = fopen(optarg, "r")) != NULL)
                 break;
             delocate();
             exit(0);
@@ -142,266 +142,266 @@ void option()
 inline void avariable()
 {
     mlocate((void **)&me, sizeof(self));
-    me->displaymax = 236;
-    me->justifymultiple = 2;
-    me->buffmultiple = 42;
-    me->argc = 0;
-    me->argv = (char **)NULL;
-    me->foutput = &foutput;
-    me->usage = &usage;
-    me->version = &version;
-    me->option = &option;
-    me->freadfile = &freadfile;
-    me->delocate = &delocate;
-    me->fjustify = &fjustify;
-    me->alocate = &alocate;
-    me->flinebreak = &flinebreak;
-    me->hcolsize = 80;
-    me->maxwordsize = 28;
-    me->readbuffrelay = 2;
-    me->writebuffrelay = me->maxwordsize;
-    me->callsize = 2;
-    me->flinebreaksize = 28;
-    me->fmiddlebytesize = 28;
-    me->fringboundry = 28;
-    me->fringsize = me->fringboundry - 1;
-    me->initwritebuff = FINITOUTBUFF;
-    me->buffboundry = me->hcolsize * me->buffmultiple + 1;
-    me->readbuffsize = me->buffboundry - 1;
-    me->databoundry = me->hcolsize * me->buffmultiple + 1;
-    me->datasize = me->databoundry - 1;
-    me->writebuffboundry = me->hcolsize * me->buffmultiple + 1;
-    me->writebuffsize = me->writebuffboundry - 1;
-    me->writesize = 3200;
-    me->justifyboundry = 40;
-    me->justifysize = me->justifyboundry - 1;
-    me->hcolcount = 0;
-    me->hbytecount = 0;
-    me->linebreak = 0;
-    me->getchar = 0;
-    me->wcolcount = 0;
-    me->delimeter = 0;
-    me->justifying = 0;
-    me->endingspace = 1;
-    me->wbytecount = 0;
-    me->optchr = 0;
-    me->debug = 0;
-    me->readsize = 0;
-    me->rindex = 0;
-    me->oindex = 0;
-    me->stringsize = 60;
-    me->filesize = 0;
-    me->strtolend = (char *)NULL;
-    me->filep = stdin;
-    me->filedebug = stderr;
-    me->data = (data_t *) NULL;
-    me->outdata = (data_t *) NULL;
-    me->currdata = (data_t *) NULL;
-    me->prevdata = (data_t *) NULL;
-    me->nextdata = (data_t *) NULL;
-    me->readdata = (data_t *) NULL;
-    me->lbdata = (data_t *) NULL;
-    me->outindex = (index_t *) NULL;
-    me->readindex = (index_t *) NULL;
-    me->call = (fun) NULL;
-    me->justify = (justify_t *) NULL;
-    me->funicode = (fun_t **) NULL;
-    me->readbuff = (char *)NULL;
-    me->writebuff = (char *)NULL;
-    me->fring = (fun_t **) NULL;
-    mlocate((void **)&me->string, (sizeof(char) * me->stringsize));
-    for (int i = 0; i < me->stringsize; i++)
-        me->string[i] = SPACE;
-    me->string[me->stringsize - 1] = EOS;
-    me->currstring = &me->string[0];
-    strappend("lwrap", &me->progname);
-    strappend("/tmp/lwrap.debug", &me->debugfile);
+    my.displaymax = 236;
+    my.justifymultiple = 2;
+    my.buffmultiple = 42;
+    my.argc = 0;
+    my.argv = (char **)NULL;
+    my.foutput = &foutput;
+    my.usage = &usage;
+    my.version = &version;
+    my.option = &option;
+    my.freadfile = &freadfile;
+    my.delocate = &delocate;
+    my.fjustify = &fjustify;
+    my.alocate = &alocate;
+    my.flinebreak = &flinebreak;
+    my.hcolsize = 80;
+    my.maxwordsize = 28;
+    my.readbuffrelay = 2;
+    my.writebuffrelay = my.maxwordsize;
+    my.callsize = 2;
+    my.flinebreaksize = 28;
+    my.fmiddlebytesize = 28;
+    my.fringboundry = 28;
+    my.fringsize = my.fringboundry - 1;
+    my.initwritebuff = FINITOUTBUFF;
+    my.buffboundry = my.hcolsize * my.buffmultiple + 1;
+    my.readbuffsize = my.buffboundry - 1;
+    my.databoundry = my.hcolsize * my.buffmultiple + 1;
+    my.datasize = my.databoundry - 1;
+    my.writebuffboundry = my.hcolsize * my.buffmultiple + 1;
+    my.writebuffsize = my.writebuffboundry - 1;
+    my.writesize = 3200;
+    my.justifyboundry = 40;
+    my.justifysize = my.justifyboundry - 1;
+    my.hcolcount = 0;
+    my.hbytecount = 0;
+    my.linebreak = 0;
+    my.getchar = 0;
+    my.wcolcount = 0;
+    my.delimeter = 0;
+    my.justifying = 0;
+    my.endingspace = 1;
+    my.wbytecount = 0;
+    my.optchr = 0;
+    my.debug = 0;
+    my.readsize = 0;
+    my.rindex = 0;
+    my.oindex = 0;
+    my.stringsize = 60;
+    my.filesize = 0;
+    my.strtolend = (char *)NULL;
+    my.filep = stdin;
+    my.filedebug = stderr;
+    my.data = (data_t *) NULL;
+    my.outdata = (data_t *) NULL;
+    my.currdata = (data_t *) NULL;
+    my.prevdata = (data_t *) NULL;
+    my.nextdata = (data_t *) NULL;
+    my.readdata = (data_t *) NULL;
+    my.lbdata = (data_t *) NULL;
+    my.outindex = (index_t *) NULL;
+    my.readindex = (index_t *) NULL;
+    my.call = (fun) NULL;
+    my.justify = (justify_t *) NULL;
+    my.funicode = (fun_t **) NULL;
+    my.readbuff = (char *)NULL;
+    my.writebuff = (char *)NULL;
+    my.fring = (fun_t **) NULL;
+    mlocate((void **)&my.string, (sizeof(char) * my.stringsize));
+    for (int i = 0; i < my.stringsize; i++)
+        my.string[i] = SPACE;
+    my.string[my.stringsize - 1] = EOS;
+    my.currstring = &my.string[0];
+    strappend("lwrap", &my.progname);
+    strappend("/tmp/lwrap.debug", &my.debugfile);
 }
 
 inline void acall()
 {
-    mlocate((void **)&me->call, (sizeof(fun) * me->callsize));
-    me->call[0] = &finitwritebuff;
-    me->call[1] = &fwritebuff;
+    mlocate((void **)&my.call, (sizeof(fun) * my.callsize));
+    my.call[0] = &finitwritebuff;
+    my.call[1] = &fwritebuff;
 }
 
 inline void afring()
 {
-    mlocate((void **)&me->fring, (sizeof(fun_t) * me->fringboundry));
-    me->fring[0].filter = &nonealnum;
-    me->fring[0].linebreak = &lbnonealnum;
-    me->fring[1].filter = &alnum;
-    me->fring[1].linebreak = &lbalnum;
-    me->fring[2].filter = &space;
-    me->fring[2].linebreak = &lbspace;
-    me->fring[3].filter = &newline;
-    me->fring[3].linebreak = &lbnewline;
-    me->fring[4].filter = &formfeed;
-    me->fring[4].linebreak = &lbformfeed;
-    me->fring[5].filter = &middlebyte;
-    me->fring[5].linebreak = &lbmiddlebyte;
-    me->fring[6].filter = &invalidbyte;
-    me->fring[6].linebreak = &lbinvalidbyte;
-    me->fring[7].filter = &latinheader;
-    me->fring[7].linebreak = &lblatinheader;
-    me->fring[8].filter = &ipaheader;
-    me->fring[8].linebreak = &lbipaheader;
-    me->fring[9].filter = &accentsheader;
-    me->fring[9].linebreak = &lbaccentsheader;
-    me->fring[10].filter = &greekheader;
-    me->fring[10].linebreak = &lbgreekheader;
-    me->fring[11].filter = &cyrilheader;
-    me->fring[11].linebreak = &lbcyrilheader;
-    me->fring[12].filter = &armeniheader;
-    me->fring[12].linebreak = &lbarmeniheader;
-    me->fring[13].filter = &hebrewheader;
-    me->fring[13].linebreak = &lbhebrewheader;
-    me->fring[14].filter = &arabicheader;
-    me->fring[14].linebreak = &lbarabicheader;
-    me->fring[15].filter = &syriacheader;
-    me->fring[15].linebreak = &lbsyriacheader;
-    me->fring[16].filter = &thaanaheader;
-    me->fring[16].linebreak = &lbthaanaheader;
-    me->fring[17].filter = &nkoheader;
-    me->fring[17].linebreak = &lbnkoheader;
-    me->fring[18].filter = &indicheader;
-    me->fring[18].linebreak = &lbindicheader;
-    me->fring[19].filter = &mischeader;
-    me->fring[19].linebreak = &lbmischeader;
-    me->fring[20].filter = &symbolheader;
-    me->fring[20].linebreak = &lbsymbolheader;
-    me->fring[21].filter = &cjkheader;
-    me->fring[21].linebreak = &lbcjkheader;
-    me->fring[22].filter = &asianheader;
-    me->fring[22].linebreak = &lbasianheader;
-    me->fring[23].filter = &puaheader;
-    me->fring[23].linebreak = &lbpuaheader;
-    me->fring[24].filter = &formsheader;
-    me->fring[24].linebreak = &lbformsheader;
-    me->fring[25].filter = &hangulheader;
-    me->fring[25].linebreak = &lbhangulheader;
-    me->fring[26].filter = &fourbyteheader;
-    me->fring[26].linebreak = &lbfourbyteheader;
+    mlocate((void **)&my.fring, (sizeof(fun_t) * my.fringboundry));
+    my.fring[0].filter = &nonealnum;
+    my.fring[0].linebreak = &lbnonealnum;
+    my.fring[1].filter = &alnum;
+    my.fring[1].linebreak = &lbalnum;
+    my.fring[2].filter = &space;
+    my.fring[2].linebreak = &lbspace;
+    my.fring[3].filter = &newline;
+    my.fring[3].linebreak = &lbnewline;
+    my.fring[4].filter = &formfeed;
+    my.fring[4].linebreak = &lbformfeed;
+    my.fring[5].filter = &middlebyte;
+    my.fring[5].linebreak = &lbmiddlebyte;
+    my.fring[6].filter = &invalidbyte;
+    my.fring[6].linebreak = &lbinvalidbyte;
+    my.fring[7].filter = &latinheader;
+    my.fring[7].linebreak = &lblatinheader;
+    my.fring[8].filter = &ipaheader;
+    my.fring[8].linebreak = &lbipaheader;
+    my.fring[9].filter = &accentsheader;
+    my.fring[9].linebreak = &lbaccentsheader;
+    my.fring[10].filter = &greekheader;
+    my.fring[10].linebreak = &lbgreekheader;
+    my.fring[11].filter = &cyrilheader;
+    my.fring[11].linebreak = &lbcyrilheader;
+    my.fring[12].filter = &armeniheader;
+    my.fring[12].linebreak = &lbarmeniheader;
+    my.fring[13].filter = &hebrewheader;
+    my.fring[13].linebreak = &lbhebrewheader;
+    my.fring[14].filter = &arabicheader;
+    my.fring[14].linebreak = &lbarabicheader;
+    my.fring[15].filter = &syriacheader;
+    my.fring[15].linebreak = &lbsyriacheader;
+    my.fring[16].filter = &thaanaheader;
+    my.fring[16].linebreak = &lbthaanaheader;
+    my.fring[17].filter = &nkoheader;
+    my.fring[17].linebreak = &lbnkoheader;
+    my.fring[18].filter = &indicheader;
+    my.fring[18].linebreak = &lbindicheader;
+    my.fring[19].filter = &mischeader;
+    my.fring[19].linebreak = &lbmischeader;
+    my.fring[20].filter = &symbolheader;
+    my.fring[20].linebreak = &lbsymbolheader;
+    my.fring[21].filter = &cjkheader;
+    my.fring[21].linebreak = &lbcjkheader;
+    my.fring[22].filter = &asianheader;
+    my.fring[22].linebreak = &lbasianheader;
+    my.fring[23].filter = &puaheader;
+    my.fring[23].linebreak = &lbpuaheader;
+    my.fring[24].filter = &formsheader;
+    my.fring[24].linebreak = &lbformsheader;
+    my.fring[25].filter = &hangulheader;
+    my.fring[25].linebreak = &lbhangulheader;
+    my.fring[26].filter = &fourbyteheader;
+    my.fring[26].linebreak = &lbfourbyteheader;
 }
 
 inline void aunicode()
 {
-    mlocate((void **)&me->funicode, (sizeof(fun_t *) * UNICODESIZE));
+    mlocate((void **)&my.funicode, (sizeof(fun_t *) * UNICODESIZE));
     for (int i = 0; i <= NONEALNUMMAX; i++)
-        me->funicode[i] = &me->fring[0];
+        my.funicode[i] = &my.fring[0];
     for (int i = ALNUMMIN; i <= ALNUMMAX; i++)
-        me->funicode[i] = &me->fring[1];
-    me->funicode[ALNUMMAX + 1] = &me->fring[0];
-    me->funicode[SPACE] = &me->fring[2];
-    me->funicode[NEWLINE] = &me->fring[3];
-    me->funicode[FORMFEED] = &me->fring[4];
+        my.funicode[i] = &my.fring[1];
+    my.funicode[ALNUMMAX + 1] = &my.fring[0];
+    my.funicode[SPACE] = &my.fring[2];
+    my.funicode[NEWLINE] = &my.fring[3];
+    my.funicode[FORMFEED] = &my.fring[4];
     for (int i = MIDDLEBYTEMIN; i <= MIDDLEBYTEMAX; i++)
-        me->funicode[i] = &me->fring[5];
-    me->funicode[192] = &me->fring[6];
-    me->funicode[193] = &me->fring[6];
+        my.funicode[i] = &my.fring[5];
+    my.funicode[192] = &my.fring[6];
+    my.funicode[193] = &my.fring[6];
     for (int i = LATINMIN; i <= LATINMAX; i++)
-        me->funicode[i] = &me->fring[7];
+        my.funicode[i] = &my.fring[7];
     for (int i = IPAMIN; i <= IPAMAX; i++)
-        me->funicode[i] = &me->fring[8];
+        my.funicode[i] = &my.fring[8];
     for (int i = ACCENTSMIN; i <= ACCENTSMAX; i++)
-        me->funicode[i] = &me->fring[9];
+        my.funicode[i] = &my.fring[9];
     for (int i = GREEKMIN; i <= GREEKMAX; i++)
-        me->funicode[i] = &me->fring[10];
+        my.funicode[i] = &my.fring[10];
     for (int i = CYRILMIN; i <= CYRILMAX; i++)
-        me->funicode[i] = &me->fring[11];
-    me->funicode[ARMENIMIN] = &me->fring[12];
+        my.funicode[i] = &my.fring[11];
+    my.funicode[ARMENIMIN] = &my.fring[12];
     for (int i = HEBREWMIN; i <= HEBREWMAX; i++)
-        me->funicode[i] = &me->fring[13];
+        my.funicode[i] = &my.fring[13];
     for (int i = ARABICMIN; i <= ARABICMAX; i++)
-        me->funicode[i] = &me->fring[14];
-    me->funicode[SYRIACMIN] = &me->fring[15];
-    me->funicode[THAANAMIN] = &me->fring[16];
-    me->funicode[NKOMIN] = &me->fring[17];
-    me->funicode[INDICMIN] = &me->fring[18];
-    me->funicode[MISCMIN] = &me->fring[19];
-    me->funicode[SYMBOLMIN] = &me->fring[20];
+        my.funicode[i] = &my.fring[14];
+    my.funicode[SYRIACMIN] = &my.fring[15];
+    my.funicode[THAANAMIN] = &my.fring[16];
+    my.funicode[NKOMIN] = &my.fring[17];
+    my.funicode[INDICMIN] = &my.fring[18];
+    my.funicode[MISCMIN] = &my.fring[19];
+    my.funicode[SYMBOLMIN] = &my.fring[20];
     for (int i = CJKMIN; i <= CJKMAX; i++)
-        me->funicode[i] = &me->fring[21];
-    me->funicode[ASIANMIN] = &me->fring[22];
-    me->funicode[PUAMIN] = &me->fring[23];
-    me->funicode[FORMSMIN] = &me->fring[24];
+        my.funicode[i] = &my.fring[21];
+    my.funicode[ASIANMIN] = &my.fring[22];
+    my.funicode[PUAMIN] = &my.fring[23];
+    my.funicode[FORMSMIN] = &my.fring[24];
     for (int i = HANGULMIN; i <= HANGULMAX; i++)
-        me->funicode[i] = &me->fring[25];
+        my.funicode[i] = &my.fring[25];
     for (int i = THREEBYTEHEADER; i < FOURBYTEHEADER; i++)
-        me->funicode[i] = &me->fring[26];
+        my.funicode[i] = &my.fring[26];
     for (int i = FOURBYTEHEADER; i < UNICODESIZE; i++)
-        me->funicode[i] = &me->fring[6];
+        my.funicode[i] = &my.fring[6];
 }
 
 inline void abuff()
 {
-    mlocate((void **)&me->readbuff, (sizeof(char) * me->buffboundry));
-    for (int i = 0; i < me->buffboundry; i++)
-        me->readbuff[i] = EOS;
-    mlocate((void **)&me->writebuff, (sizeof(char) * me->writebuffboundry));
-    for (int i = 0; i < me->writebuffboundry; i++)
-        me->writebuff[i] = EOS;
-    mlocate((void **)&me->outindex, (sizeof(index_t) * me->writebuffboundry));
-    me->outindex[0].val = 0;
-    me->outindex[0].decre = &me->outindex[me->writebuffsize];
-    me->outindex[me->writebuffsize].incre = &me->outindex[0];
-    me->curroutindex = &me->outindex[0];
-    for (int i = 1; i < me->writebuffboundry; i++) {
-        me->outindex[i].val = i;
-        me->outindex[i].decre = &me->outindex[i - 1];
-        me->outindex[i - 1].incre = &me->outindex[i];
+    mlocate((void **)&my.readbuff, (sizeof(char) * my.buffboundry));
+    for (int i = 0; i < my.buffboundry; i++)
+        my.readbuff[i] = EOS;
+    mlocate((void **)&my.writebuff, (sizeof(char) * my.writebuffboundry));
+    for (int i = 0; i < my.writebuffboundry; i++)
+        my.writebuff[i] = EOS;
+    mlocate((void **)&my.outindex, (sizeof(index_t) * my.writebuffboundry));
+    my.outindex[0].val = 0;
+    my.outindex[0].decre = &my.outindex[my.writebuffsize];
+    my.outindex[my.writebuffsize].incre = &my.outindex[0];
+    my.curroutindex = &my.outindex[0];
+    for (int i = 1; i < my.writebuffboundry; i++) {
+        my.outindex[i].val = i;
+        my.outindex[i].decre = &my.outindex[i - 1];
+        my.outindex[i - 1].incre = &my.outindex[i];
     }
-    mlocate((void **)&me->readindex, (sizeof(index_t) * me->buffboundry));
-    me->readindex[0].val = 0;
-    me->readindex[0].decre = &me->readindex[me->readbuffsize];
-    me->readindex[me->readbuffsize].incre = &me->readindex[0];
-    me->currreadindex = &me->readindex[0];
-    for (int i = 1; i < me->buffboundry; i++) {
-        me->readindex[i].val = i;
-        me->readindex[i].decre = &me->readindex[i - 1];
-        me->readindex[i - 1].incre = &me->readindex[i];
+    mlocate((void **)&my.readindex, (sizeof(index_t) * my.buffboundry));
+    my.readindex[0].val = 0;
+    my.readindex[0].decre = &my.readindex[my.readbuffsize];
+    my.readindex[my.readbuffsize].incre = &my.readindex[0];
+    my.currreadindex = &my.readindex[0];
+    for (int i = 1; i < my.buffboundry; i++) {
+        my.readindex[i].val = i;
+        my.readindex[i].decre = &my.readindex[i - 1];
+        my.readindex[i - 1].incre = &my.readindex[i];
     }
-    mlocate((void **)&me->data, (sizeof(data_t) * me->databoundry));
-    me->data[0].dataindex = 0;
-    me->data[0].byteheader = 0;
-    me->data[0].wbytecount = 0;
-    me->data[0].wcolcount = 0;
-    me->data[0].annotation = EOS;
-    me->data[0].glyph = ASCII;
-    me->data[0].val = EOS;
-    me->data[0].before = &me->data[me->datasize];
-    me->data[me->datasize].after = &me->data[0];
-    for (int i = 1; i < me->databoundry; i++) {
-        me->data[i].dataindex = i;
-        me->data[i].wcolcount = 0;
-        me->data[i].byteheader = 0;
-        me->data[i].wbytecount = 0;
-        me->data[i].annotation = EOS;
-        me->data[i].glyph = ASCII;
-        me->data[i].val = EOS;
-        me->data[i].before = &me->data[i - 1];
-        me->data[i - 1].after = &me->data[i];
+    mlocate((void **)&my.data, (sizeof(data_t) * my.databoundry));
+    my.data[0].dataindex = 0;
+    my.data[0].byteheader = 0;
+    my.data[0].wbytecount = 0;
+    my.data[0].wcolcount = 0;
+    my.data[0].annotation = EOS;
+    my.data[0].glyph = ASCII;
+    my.data[0].val = EOS;
+    my.data[0].before = &my.data[my.datasize];
+    my.data[my.datasize].after = &my.data[0];
+    for (int i = 1; i < my.databoundry; i++) {
+        my.data[i].dataindex = i;
+        my.data[i].wcolcount = 0;
+        my.data[i].byteheader = 0;
+        my.data[i].wbytecount = 0;
+        my.data[i].annotation = EOS;
+        my.data[i].glyph = ASCII;
+        my.data[i].val = EOS;
+        my.data[i].before = &my.data[i - 1];
+        my.data[i - 1].after = &my.data[i];
     }
-    me->currdata = &me->data[0];
-    me->prevdata = me->currdata->before;
-    me->nextdata = me->currdata->after;
-    me->readdata = &me->data[0];
-    me->outdata = &me->data[0];
-    mlocate((void **)&me->justify, (sizeof(justify_t) * me->justifyboundry));
-    me->justify[0].remain = 0;
-    me->justify[0].index = 0;
-    me->justify[0].wcount = 0;
-    me->justify[0].before = &me->justify[me->justifysize];
-    me->justify[me->justifysize].after = &me->justify[0];
-    for (int i = 1; i < me->justifyboundry; i++) {
-        me->justify[i].remain = 0;
-        me->justify[i].index = i;
-        me->justify[i].wcount = 0;
-        me->justify[i].before = &me->justify[i - 1];
-        me->justify[i - 1].after = &me->justify[i];
+    my.currdata = &my.data[0];
+    my.prevdata = my.currdata->before;
+    my.nextdata = my.currdata->after;
+    my.readdata = &my.data[0];
+    my.outdata = &my.data[0];
+    mlocate((void **)&my.justify, (sizeof(justify_t) * my.justifyboundry));
+    my.justify[0].remain = 0;
+    my.justify[0].index = 0;
+    my.justify[0].wcount = 0;
+    my.justify[0].before = &my.justify[my.justifysize];
+    my.justify[my.justifysize].after = &my.justify[0];
+    for (int i = 1; i < my.justifyboundry; i++) {
+        my.justify[i].remain = 0;
+        my.justify[i].index = i;
+        my.justify[i].wcount = 0;
+        my.justify[i].before = &my.justify[i - 1];
+        my.justify[i - 1].after = &my.justify[i];
     }
-    me->currjustify = &me->justify[0];
-    me->outjustify = &me->justify[0];
+    my.currjustify = &my.justify[0];
+    my.outjustify = &my.justify[0];
 }
 
 inline void alocate()
@@ -414,34 +414,34 @@ inline void alocate()
 
 inline void fjustify()
 {
-    if (!me->justifying) {
-        me->writebuff[me->curroutindex->val] = SPACE;
-        me->curroutindex = me->curroutindex->incre;
+    if (!my.justifying) {
+        my.writebuff[my.curroutindex->val] = SPACE;
+        my.curroutindex = my.curroutindex->incre;
         return;
     }
-    if (me->outjustify->remain == 0) {
-        me->writebuff[me->curroutindex->val] = SPACE;
-        me->curroutindex = me->curroutindex->incre;
+    if (my.outjustify->remain == 0) {
+        my.writebuff[my.curroutindex->val] = SPACE;
+        my.curroutindex = my.curroutindex->incre;
         return;
     }
-    if (me->outjustify->wcount < 2) {
-        me->writebuff[me->curroutindex->val] = SPACE;
-        me->curroutindex = me->curroutindex->incre;
+    if (my.outjustify->wcount < 2) {
+        my.writebuff[my.curroutindex->val] = SPACE;
+        my.curroutindex = my.curroutindex->incre;
         return;
     }
-    if (me->outjustify->remain < 0 || me->outjustify->wcount < 2)
+    if (my.outjustify->remain < 0 || my.outjustify->wcount < 2)
         return;
-    int wseparator = me->outjustify->wcount - 1,
-        spaces = me->outjustify->remain / wseparator,
-        remainder = me->outjustify->remain % wseparator;
+    int wseparator = my.outjustify->wcount - 1,
+        spaces = my.outjustify->remain / wseparator,
+        remainder = my.outjustify->remain % wseparator;
     if (remainder)
         spaces++;
     for (int i = 0; i < spaces; i++) {
-        me->writebuff[me->curroutindex->val] = SPACE;
-        me->curroutindex = me->curroutindex->incre;
+        my.writebuff[my.curroutindex->val] = SPACE;
+        my.curroutindex = my.curroutindex->incre;
     }
-    me->writebuff[me->curroutindex->val] = SPACE;
-    me->curroutindex = me->curroutindex->incre;
-    me->outjustify->remain -= spaces;
-    me->outjustify->wcount--;
+    my.writebuff[my.curroutindex->val] = SPACE;
+    my.curroutindex = my.curroutindex->incre;
+    my.outjustify->remain -= spaces;
+    my.outjustify->wcount--;
 }

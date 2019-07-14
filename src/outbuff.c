@@ -4,63 +4,63 @@
  */
 
 #include "lwrap.h"
-#define my (**me)
+
 inline void foutput()
 {
-    if (me->curroutindex->val < me->writesize)
+    if (my.curroutindex->val < my.writesize)
         return;
-    fwrite(me->writebuff, 1, me->curroutindex->val, stdout);
-    me->curroutindex = &me->outindex[0];
+    fwrite(my.writebuff, 1, my.curroutindex->val, stdout);
+    my.curroutindex = &my.outindex[0];
 }
 
 void finitwritebuff()
 {
-    if (me->currdata->dataindex < me->writebuffrelay)
+    if (my.currdata->dataindex < my.writebuffrelay)
         return;
-    me->initwritebuff = FOUTBUFF;
+    my.initwritebuff = FOUTBUFF;
     fwritebuff();
 }
 
 inline void fwritebuff()
 {
-    if (me->outdata->val == EOS) {
-        me->outdata->annotation = EOS;
-        me->outdata = me->outdata->after;
+    if (my.outdata->val == EOS) {
+        my.outdata->annotation = EOS;
+        my.outdata = my.outdata->after;
         return;
     }
-    if (me->outdata->annotation == NEWLINE) {
-        me->writebuff[me->curroutindex->val] = me->outdata->val;
-        me->curroutindex = me->curroutindex->incre;
-        me->writebuff[me->curroutindex->val] = NEWLINE;
-        me->curroutindex = me->curroutindex->incre;
-        me->outjustify->wcount = 0;
-        me->outjustify = me->outjustify->after;
-        me->outdata->val = EOS;
-        me->outdata->annotation = EOS;
-        me->outdata = me->outdata->after;
+    if (my.outdata->annotation == NEWLINE) {
+        my.writebuff[my.curroutindex->val] = my.outdata->val;
+        my.curroutindex = my.curroutindex->incre;
+        my.writebuff[my.curroutindex->val] = NEWLINE;
+        my.curroutindex = my.curroutindex->incre;
+        my.outjustify->wcount = 0;
+        my.outjustify = my.outjustify->after;
+        my.outdata->val = EOS;
+        my.outdata->annotation = EOS;
+        my.outdata = my.outdata->after;
         return;
     }
-    if (me->outdata->val == SPACE) {
-        me->fjustify(me);
-        me->outdata->val = EOS;
-        me->outdata->annotation = EOS;
-        me->outdata = me->outdata->after;
+    if (my.outdata->val == SPACE) {
+        my.fjustify(me);
+        my.outdata->val = EOS;
+        my.outdata->annotation = EOS;
+        my.outdata = my.outdata->after;
         return;
     }
-    if (me->outdata->val == NEWLINE) {
-        me->writebuff[me->curroutindex->val] = NEWLINE;
-        me->curroutindex = me->curroutindex->incre;
-        me->outjustify->wcount = 0;
-        me->outjustify = me->outjustify->after;
-        me->outdata->val = EOS;
-        me->outdata->annotation = EOS;
-        me->outdata = me->outdata->after;
+    if (my.outdata->val == NEWLINE) {
+        my.writebuff[my.curroutindex->val] = NEWLINE;
+        my.curroutindex = my.curroutindex->incre;
+        my.outjustify->wcount = 0;
+        my.outjustify = my.outjustify->after;
+        my.outdata->val = EOS;
+        my.outdata->annotation = EOS;
+        my.outdata = my.outdata->after;
         return;
     }
 
-    me->writebuff[me->curroutindex->val] = me->outdata->val;
-    me->curroutindex = me->curroutindex->incre;
-    me->outdata->val = EOS;
-    me->outdata->annotation = EOS;
-    me->outdata = me->outdata->after;
+    my.writebuff[my.curroutindex->val] = my.outdata->val;
+    my.curroutindex = my.curroutindex->incre;
+    my.outdata->val = EOS;
+    my.outdata->annotation = EOS;
+    my.outdata = my.outdata->after;
 }

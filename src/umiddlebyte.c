@@ -4,27 +4,27 @@
  */
 
 #include "lwrap.h"
-#define my (**me)
+
 
 void middlebyte()
 {
-    me->currdata->val = (unsigned char)me->readbuff[me->currreadindex->val];
-    me->currdata->byteheader = me->prevdata->byteheader + 1;
-    me->currdata->glyph = me->prevdata->glyph;
-    if (me->currdata->byteheader < TWOBYTEMAX) {
-        me->hbytecount++;
-        me->hcolcount++;
-        me->currdata->wbytecount = ++me->wbytecount;
-        me->currdata->wcolcount = me->wcolcount;
+    my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
+    my.currdata->byteheader = my.prevdata->byteheader + 1;
+    my.currdata->glyph = my.prevdata->glyph;
+    if (my.currdata->byteheader < TWOBYTEMAX) {
+        my.hbytecount++;
+        my.hcolcount++;
+        my.currdata->wbytecount = ++my.wbytecount;
+        my.currdata->wcolcount = my.wcolcount;
         return;
     }
-    me->hbytecount++;
-    me->currdata->wbytecount = me->prevdata->wbytecount + 1;
-    me->currdata->wcolcount = 2;
+    my.hbytecount++;
+    my.currdata->wbytecount = my.prevdata->wbytecount + 1;
+    my.currdata->wcolcount = 2;
 }
 
 inline void lbmiddlebyte()
 {
-    me->currjustify->remain = me->currdata->wcolcount;
-    me->lbdata->annotation = NEWLINE;
+    my.currjustify->remain = my.currdata->wcolcount;
+    my.lbdata->annotation = NEWLINE;
 }

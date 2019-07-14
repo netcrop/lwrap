@@ -1,18 +1,18 @@
 #include "lwrap.h"
-#define my (**me)
+
 void formsheader()
 {
-    me->currdata->val = (unsigned char)me->readbuff[me->currreadindex->val];
-    me->currdata->byteheader = 30;
-    me->wcolcount = me->wbytecount = 0;
-    me->currdata->wcolcount = 2;
-    me->currdata->wbytecount = 1;
-    me->currjustify->wcount++;
-    me->hcolcount += 2;
-    me->hbytecount++;
+    my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
+    my.currdata->byteheader = 30;
+    my.wcolcount = my.wbytecount = 0;
+    my.currdata->wcolcount = 2;
+    my.currdata->wbytecount = 1;
+    my.currjustify->wcount++;
+    my.hcolcount += 2;
+    my.hbytecount++;
 }
 
 inline void lbformsheader()
 {
-    me->currjustify->remain = me->currdata->wcolcount;
+    my.currjustify->remain = my.currdata->wcolcount;
 }

@@ -4,25 +4,25 @@
  */
 
 #include "lwrap.h"
-#define my (**me)
+
 void greekheader()
 {
-    me->currdata->val = (unsigned char)me->readbuff[me->currreadindex->val];
-    me->currdata->byteheader = 20;
-    me->currdata->wcolcount = ++me->wcolcount;
-    me->currdata->wbytecount = ++me->wbytecount;
-    me->hbytecount++;
+    my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
+    my.currdata->byteheader = 20;
+    my.currdata->wcolcount = ++my.wcolcount;
+    my.currdata->wbytecount = ++my.wbytecount;
+    my.hbytecount++;
 }
 
 inline void fgreekmiddlebyte()
 {
-    me->hbytecount++;
-    me->hcolcount++;
-    me->currdata->wbytecount = ++me->wbytecount;
-    me->currdata->wcolcount = me->wcolcount;
+    my.hbytecount++;
+    my.hcolcount++;
+    my.currdata->wbytecount = ++my.wbytecount;
+    my.currdata->wcolcount = my.wcolcount;
 }
 
 inline void lbgreekheader()
 {
-    me->currjustify->remain = me->currdata->wcolcount;
+    my.currjustify->remain = my.currdata->wcolcount;
 }

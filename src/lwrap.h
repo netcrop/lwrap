@@ -286,4 +286,5 @@ void lbipaheader(void);
 void lbnkoheader(void);
 void lbsyriacheader(void);
 void lbthaanaheader(void);
+#define my (*me)
 extern self *me;

@@ -4,38 +4,38 @@
  */
 
 #include "lwrap.h"
-#define my (**me)
+
 inline void ffilter()
 {
-    me->funicode[(unsigned char)me->readbuff[me->currreadindex->val]]->filter(me);
-    if (me->currdata->val == EOS)
+    my.funicode[(unsigned char)my.readbuff[my.currreadindex->val]]->filter(me);
+    if (my.currdata->val == EOS)
         return;
-    me->flinebreak(me);
-    me->call[me->initwritebuff] (me);
-    me->foutput(me);
-    me->prevdata = me->currdata;
-    me->currdata = me->currdata->after;
-    me->nextdata = me->currdata->after;
+    my.flinebreak(me);
+    my.call[my.initwritebuff] (me);
+    my.foutput(me);
+    my.prevdata = my.currdata;
+    my.currdata = my.currdata->after;
+    my.nextdata = my.currdata->after;
 }
 
 inline void frelay()
 {
-    me->currreadindex = &me->readindex[0];
-    for (me->rindex = 0; me->rindex < me->readsize; me->rindex++) {
+    my.currreadindex = &my.readindex[0];
+    for (my.rindex = 0; my.rindex < my.readsize; my.rindex++) {
         ffilter();
-        me->currreadindex = me->currreadindex->incre;
+        my.currreadindex = my.currreadindex->incre;
     }
 }
 
 void freadfile()
 {
     do {
-        me->readsize = fread(me->readbuff, 1, me->readbuffsize, me->filep);
+        my.readsize = fread(my.readbuff, 1, my.readbuffsize, my.filep);
         frelay();
-    } while (me->readsize == me->readbuffsize);
-    for (int i = 0; i < me->writebuffrelay; i++) {
+    } while (my.readsize == my.readbuffsize);
+    for (int i = 0; i < my.writebuffrelay; i++) {
         fwritebuff();
-        me->foutput(me);
+        my.foutput(me);
     }
-    fwrite(me->writebuff, 1, me->curroutindex->val, stdout);
+    fwrite(my.writebuff, 1, my.curroutindex->val, stdout);
 }
