@@ -73,10 +73,10 @@ lwrap.make()
 lwrap.install()
 {
     $sudo $cp -f $binpath $bindir/$binfile
-    $sudo $chmod gu=rx $bindir/$binfile
+    $sudo $chmod gu=rx,o=rx $bindir/$binfile
     $sudo $chown \$USER: \$bindir/$binfile
     $sudo $cp -f $manpath ${mandir}/$manfile
-    $sudo $chmod gu=r ${mandir}/$manfile
+    $sudo $chmod gu=r,o=r ${mandir}/$manfile
     $sudo $chown \$USER: ${mandir}/$manfile
 }
 lwrap.uninstall()
