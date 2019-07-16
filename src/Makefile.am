@@ -10,4 +10,3 @@ uthaana.c unko.c ufourbyte.c umiddlebyte.c
 man_MANS = lwrap.1
 EXTRA_DIST = COPYING ChangeLog INSTALL README \
 		install-sh missing mkinstalldirs lwrap.1 lwrap.spec
-LDADD = /usr/local/lib/libstimy.so
