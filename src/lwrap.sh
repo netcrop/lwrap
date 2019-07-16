@@ -25,7 +25,9 @@ lwrap.substitute()
 
 lwrap.debug()
 {
-    $gdb --args $binpath -j80 -f ${testdir}/c20.starwars.en
+    local args="./${binpath} -j80 -f ${testdir}/c20.starwars.en"
+    args=\${@:-\$args}
+    $gdb --args \$args
 }
 lwrap.valgrind()
 {

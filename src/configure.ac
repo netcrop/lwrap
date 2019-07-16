@@ -21,6 +21,6 @@ AC_CHECK_FUNCS(putenv)
 
 dnl Only change gcc options if we are using gcc.  
 if test "$ac_cv_prog_CC" = gcc -o "$ac_cv_prog_CC" = g++; then
-  CFLAGS="$CFLAGS -Wall -Wno-comment"
+  CFLAGS="$CFLAGS -Wall -Wno-comment -g"
 fi
 AC_OUTPUT(Makefile lwrap.spec)
