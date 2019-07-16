@@ -124,6 +124,7 @@ lwrap.spec
 lwrap.s
 lwrap.verbose
 lwrap.out
+src/.deps
 .*
 *.o
 *~
