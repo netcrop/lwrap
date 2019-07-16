@@ -77,6 +77,7 @@ void delocate()
     if (my.fring != NULL)
         free(my.fring);
     free(me);
+    me = NULL;
 }
 
 void mlocate(void **p, size_t size)
@@ -136,10 +137,16 @@ void option()
         }
     }
 }
-
+inline void sighandler(int sig)
+{
+    exit(0);
+}
 inline void avariable()
 {
     atexit(delocate);
+    signal(SIGINT,sighandler);
+    if(me)
+        return;
     mlocate((void **)&me, sizeof(self));
     my.displaymax = 236;
     my.justifymultiple = 2;

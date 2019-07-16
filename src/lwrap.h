@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <signal.h>
 #include "config.h"
 typedef void (*fun)();
 typedef struct data_t data_t;
@@ -286,5 +287,6 @@ void lbipaheader(void);
 void lbnkoheader(void);
 void lbsyriacheader(void);
 void lbthaanaheader(void);
+void sighandler(int);
 #define my (*me)
 extern self *me;
