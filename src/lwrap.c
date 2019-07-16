@@ -47,33 +47,36 @@ void version()
 
 void delocate()
 {
-    if (&me)
+    if (!me)
         return;
-    if (&my.filep != NULL)
-        fclose(&my.filep);
-    if (&my.filedebug != NULL)
-        fclose(&my.filedebug);
-    if (&my.data != NULL)
-        free(&my.data);
-    if (&my.outindex != NULL)
-        free(&my.outindex);
-    if (&my.readindex != NULL)
-        free(&my.readindex);
-    if (&my.writebuff != NULL)
-        free(&my.writebuff);
-    if (&my.readbuff != NULL)
-        free(&my.readbuff);
-    if (&my.justify != NULL)
-        free(&my.justify);
-    if (&my.string != NULL)
-        free(&my.string);
-    if (&my.funicode != NULL)
-        free(&my.funicode);
-    if (&my.call != NULL)
-        free(&my.call);
-    if (&my.fring != NULL)
+    if (my.filep != NULL){
+        fclose(my.filep);
+    }
+    if (my.filedebug != NULL){
+        fclose(my.filedebug);
+    }
+    if (my.data != NULL){
+        free(my.data);
+    }
+    if (my.outindex != NULL)
+        free(my.outindex);
+    if (my.readindex != NULL)
+        free(my.readindex);
+    if (my.writebuff != NULL)
+        free(my.writebuff);
+    if (my.readbuff != NULL)
+        free(my.readbuff);
+    if (my.justify != NULL)
+        free(my.justify);
+    if (my.string != NULL)
+        free(my.string);
+    if (my.funicode != NULL)
+        free(my.funicode);
+    if (my.call != NULL)
+        free(my.call);
+    if (my.fring != NULL)
         free(my.fring);
-    free(&me);
+    free(me);
 }
 
 void mlocate(void **p, size_t size)
@@ -97,7 +100,6 @@ void option()
         case 'h':
         case '?':
             my.usage();
-            delocate();
             exit(0);
         case 'c':
             if ((my.hcolsize =
@@ -106,7 +108,6 @@ void option()
                 my.writebuffrelay = my.hcolsize * my.justifymultiple;
                 break;
             }
-            delocate();
             exit(0);
         case 'd':
             my.debug = 1;
@@ -124,16 +125,13 @@ void option()
                 my.justifying = 1;
                 break;
             }
-            delocate();
             exit(0);
         case 'f':
             if ((my.filep = fopen(optarg, "r")) != NULL)
                 break;
-            delocate();
             exit(0);
         case 'v':
             version();
-            delocate();
             exit(0);
         }
     }
@@ -141,6 +139,7 @@ void option()
 
 inline void avariable()
 {
+    atexit(delocate);
     mlocate((void **)&me, sizeof(self));
     my.displaymax = 236;
     my.justifymultiple = 2;

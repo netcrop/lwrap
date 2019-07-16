@@ -13,6 +13,5 @@ int main(int argc, char *argv[])
     option();
     alocate();
     freadfile();
-    delocate();
     return 0;
 }

@@ -29,8 +29,9 @@ lwrap.debug()
 }
 lwrap.valgrind()
 {
-	$valgrind --leak-check=full --show-leak-kinds=all \
-    $binpath -j80 -f ${testdir}/c20.starwars.en
+    local args="./${binpath} -j80 -f ${testdir}/c20.starwars.en"
+    args=\${@:-\$args}
+	$valgrind --leak-check=full --show-leak-kinds=all \${args}
 }
 lwrap.info()
 {
