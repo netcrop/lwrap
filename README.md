@@ -111,7 +111,7 @@ and debugging the source code.
 and use the following command for all of your source code  
 before commit and change back to your preferred style  
 after your checkout:  
-`> indent --linux-style --indent-level2 --no-tabs`  
+`> indent --linux-style --indent-level4 --tab-size4 --line-length80 --no-tabs`
 ```
 Or use this bash function:
 > cd src/
@@ -121,10 +121,10 @@ Or use this bash function:
 
 * Releases
 
-  **alpha** is allways the latest developing **branch**.  
-**beta** is allways the latest testing **release** tag.  
+**beta** is the latest developing **branch**.
+each **release** tag will be created from this **branch**.
 v[new features].[bugfix/security fix/documentation/API]  
-e.g. **v1.0** is the upcomming stable **release** tag.
+e.g. **v1.0** is the first stable **release** tag form **beta** **branch**.
 
 ## Reporting a bug and security issues
 
