@@ -61,13 +61,22 @@ By doing this we avoid as many as possible if-else statements.
 And keep the functions in minimal size.
 
   The same filter applys for the last byte before each line  
-break. This time the struct pointer will execute another  
-function call.
+break. This time the struct pointer will be resigned to execute
+another function call.
 
-  It seems we introduced a lot of overhead by doing many  
-function calls. But the benefits of decreased if-else cluster  
-and maintainability of functions overcome some hundred  
-millisecounds in lost speed efficiency.
+  It seems we introduced a overhead by doing many function calls.
+But the benefits of decreased if-else cluster and maintainability
+of source code overcome some hundred millisecounds in lost speed 
+efficiency.
+```
+> wc big.txt
+> 79594 568449 3525627 big.txt
+> time lwrap -c80 -f big.txt >result1.txt
+> real 0m0.079s
+...
+> time fmt -w 80 big.txt >result2.txt
+> real 0m0.068s
+```
 
 <img src="misc/functions.png" height="282" width="282">
 
