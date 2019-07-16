@@ -68,7 +68,7 @@ lwrap.make()
 {
     $make clean
     touch .deps/lwrap.Po
-    $make -j4 CFLAGS='-g -O2 -w'
+    $make -j4 CFLAGS='-g3 -O2 -w'
 }
 lwrap.install()
 {
@@ -107,11 +107,11 @@ LWRAPEXCLUDE
 }
 lwrap.assembly()
 {
-    $gcc -O2 -S -o lwrap.s lwrap.c
+    $gcc -g3 -O2 -S -o lwrap.s lwrap.c
 }
 lwrap.verbose()
 {
-    $gcc -c -g -O2 -Wa,-ahl=lwrap.verbose lwrap.c
+    $gcc -c -g3 -O2 -Wa,-ahl=lwrap.verbose lwrap.c
 }
 lwrap.dot()
 {
@@ -187,11 +187,6 @@ lwrap.testall()
     lwrap.test.justify
     lwrap.test.wc
     lwrap.composite.wc
-}
-lwrap.release()
-{
-    local branch=\${1:-alpha}
-    g.push origin alpha
 }
 lwrap.indentall()
 {
