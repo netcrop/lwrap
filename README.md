@@ -123,7 +123,6 @@ Or use this bash function:
 
 **beta** is the latest developing **branch**.
 each **release** tag will be created from this **branch**.
-v[new features].[bugfix/security fix/documentation/API]  
 e.g. **v1.0** is the first stable **release** tag form **beta** **branch**.
 
 ## Reporting a bug and security issues
