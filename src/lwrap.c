@@ -80,10 +80,10 @@ void delocate()
     me = NULL;
 }
 
-void mlocate(void **p, size_t size)
+void lwrap_mlocate(void **p, size_t size)
 {
     if (!(*p = malloc(size))) {
-        fprintf(stderr, "%s\n", "mlocate: memory allocation faild.");
+        fprintf(stderr, "%s\n", "lwrap_mlocate: memory allocation faild.");
         exit(0);
     }
 }
@@ -147,7 +147,7 @@ inline void avariable()
     signal(SIGINT,sighandler);
     if(me)
         return;
-    mlocate((void **)&me, sizeof(self));
+    lwrap_mlocate((void **)&me, sizeof(self));
     my.displaymax = 236;
     my.justifymultiple = 2;
     my.buffmultiple = 42;
@@ -215,7 +215,7 @@ inline void avariable()
     my.readbuff = (char *)NULL;
     my.writebuff = (char *)NULL;
     my.fring = (fun_t **) NULL;
-    mlocate((void **)&my.string, (sizeof(char) * my.stringsize));
+    lwrap_mlocate((void **)&my.string, (sizeof(char) * my.stringsize));
     for (int i = 0; i < my.stringsize; i++)
         my.string[i] = SPACE;
     my.string[my.stringsize - 1] = EOS;
@@ -226,14 +226,14 @@ inline void avariable()
 
 inline void acall()
 {
-    mlocate((void **)&my.call, (sizeof(fun) * my.callsize));
+    lwrap_mlocate((void **)&my.call, (sizeof(fun) * my.callsize));
     my.call[0] = &finitwritebuff;
     my.call[1] = &fwritebuff;
 }
 
 inline void afring()
 {
-    mlocate((void **)&my.fring, (sizeof(fun_t) * my.fringboundry));
+    lwrap_mlocate((void **)&my.fring, (sizeof(fun_t) * my.fringboundry));
     my.fring[0].filter = &nonealnum;
     my.fring[0].linebreak = &lbnonealnum;
     my.fring[1].filter = &alnum;
@@ -292,7 +292,7 @@ inline void afring()
 
 inline void aunicode()
 {
-    mlocate((void **)&my.funicode, (sizeof(fun_t *) * UNICODESIZE));
+    lwrap_mlocate((void **)&my.funicode, (sizeof(fun_t *) * UNICODESIZE));
     for (int i = 0; i <= NONEALNUMMAX; i++)
         my.funicode[i] = &my.fring[0];
     for (int i = ALNUMMIN; i <= ALNUMMAX; i++)
@@ -341,13 +341,13 @@ inline void aunicode()
 
 inline void abuff()
 {
-    mlocate((void **)&my.readbuff, (sizeof(char) * my.buffboundry));
+    lwrap_mlocate((void **)&my.readbuff, (sizeof(char) * my.buffboundry));
     for (int i = 0; i < my.buffboundry; i++)
         my.readbuff[i] = EOS;
-    mlocate((void **)&my.writebuff, (sizeof(char) * my.writebuffboundry));
+    lwrap_mlocate((void **)&my.writebuff, (sizeof(char) * my.writebuffboundry));
     for (int i = 0; i < my.writebuffboundry; i++)
         my.writebuff[i] = EOS;
-    mlocate((void **)&my.outindex, (sizeof(index_t) * my.writebuffboundry));
+    lwrap_mlocate((void **)&my.outindex, (sizeof(index_t) * my.writebuffboundry));
     my.outindex[0].val = 0;
     my.outindex[0].decre = &my.outindex[my.writebuffsize];
     my.outindex[my.writebuffsize].incre = &my.outindex[0];
@@ -357,7 +357,7 @@ inline void abuff()
         my.outindex[i].decre = &my.outindex[i - 1];
         my.outindex[i - 1].incre = &my.outindex[i];
     }
-    mlocate((void **)&my.readindex, (sizeof(index_t) * my.buffboundry));
+    lwrap_mlocate((void **)&my.readindex, (sizeof(index_t) * my.buffboundry));
     my.readindex[0].val = 0;
     my.readindex[0].decre = &my.readindex[my.readbuffsize];
     my.readindex[my.readbuffsize].incre = &my.readindex[0];
@@ -367,7 +367,7 @@ inline void abuff()
         my.readindex[i].decre = &my.readindex[i - 1];
         my.readindex[i - 1].incre = &my.readindex[i];
     }
-    mlocate((void **)&my.data, (sizeof(data_t) * my.databoundry));
+    lwrap_mlocate((void **)&my.data, (sizeof(data_t) * my.databoundry));
     my.data[0].dataindex = 0;
     my.data[0].byteheader = 0;
     my.data[0].wbytecount = 0;
@@ -393,7 +393,7 @@ inline void abuff()
     my.nextdata = my.currdata->after;
     my.readdata = &my.data[0];
     my.outdata = &my.data[0];
-    mlocate((void **)&my.justify, (sizeof(justify_t) * my.justifyboundry));
+    lwrap_mlocate((void **)&my.justify, (sizeof(justify_t) * my.justifyboundry));
     my.justify[0].remain = 0;
     my.justify[0].index = 0;
     my.justify[0].wcount = 0;
