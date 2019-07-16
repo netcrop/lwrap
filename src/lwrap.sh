@@ -1,13 +1,28 @@
 lwrap.substitute()
 {
-    local filename testdir languagelist arglist cmd perl_version i j k
+    local reslist devlist filename testdir languagelist arglist manfile \
+    cmd perl_version i j k binpath binfile bindir prefix mandir manpath
     cmdlist='sed shred perl readlink dirname sudo paste
     basename cat ls id cut bash man mktemp egrep date env mv
     cp chmod ln chown rm printf touch head mkdir find file
-    make autoheader aclocal automake autoconf diff gcc dot indent
-    which tr wc valgrind gdb'
-    for cmd in $(which $cmdlist);do
-        \builtin eval "${cmd##*/}=${cmd}"
+    make autoheader aclocal automake autoconf diff gcc which tr wc'
+    declare -A Devlist=(
+    [valgrind]='valgrind'
+    [gdb]='gdb'
+    [dot]='dot'
+    [indent]='indent'
+    )
+    cmdlist="${Devlist[@]} $cmdlist"
+    for cmd in $cmdlist;do
+        i="$(which $cmd 2>/dev/null)"
+        if [[ -z $i ]];then
+            if [[ -z ${Devlist[$cmd]} ]];then
+                reslist+=$cmd
+            else
+                devlist+=$cmd
+            fi
+        fi
+        \builtin eval "${cmd}=${i:-:}"
     done
     perl_version="$($perl -e 'print $^V')"
     prefix=/usr/local/
@@ -21,6 +36,15 @@ lwrap.substitute()
     filename='starwars'
     arglist="c80 c3 c20 c235"
     languagelist="en sv fr cn jp zh"
+    [[ -z $reslist ]] ||\
+    {
+        \builtin printf "%s\n" \
+        "$FUNCNAME: says: ( $reslist ) These Required Commands are missing."
+        return
+    }
+    [[ -z $devlist ]] ||\
+    \builtin printf  "%s\n" \
+    "$FUNCNAME: says: ( $devlist ) These Optional Commands are missing for further development."
     \builtin \source <($cat<<-SUB
 
 lwrap.debug()

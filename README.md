@@ -8,6 +8,7 @@ required header files:
 stdio.h  
 stdlib.h  
 unistd.h  
+signal.h
 ```
 Some of the following commands use sudo for install/uninstall.
 > cd src/
