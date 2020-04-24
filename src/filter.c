@@ -7,12 +7,12 @@
 
 inline void ffilter()
 {
-    my.funicode[(unsigned char)my.readbuff[my.currreadindex->val]]->filter(me);
+    my.funicode[(unsigned char)my.readbuff[my.currreadindex->val]]->filter();
     if (my.currdata->val == EOS)
         return;
-    my.flinebreak(me);
-    my.call[my.initwritebuff] (me);
-    my.foutput(me);
+    my.flinebreak();
+    my.call[my.initwritebuff] ();
+    my.foutput();
     my.prevdata = my.currdata;
     my.currdata = my.currdata->after;
     my.nextdata = my.currdata->after;
@@ -35,7 +35,7 @@ void freadfile()
     } while (my.readsize == my.readbuffsize);
     for (int i = 0; i < my.writebuffrelay; i++) {
         fwritebuff();
-        my.foutput(me);
+        my.foutput();
     }
     fwrite(my.writebuff, 1, my.curroutindex->val, stdout);
 }

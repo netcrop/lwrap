@@ -1,29 +1,41 @@
 lwrap.substitute()
 {
     local reslist devlist filename testdir languagelist arglist manfile \
-    cmd perl_version i j k binpath binfile bindir prefix mandir manpath
+    cmd perl_version i j k binpath binfile bindir prefix mandir manpath \
     cmdlist='sed shred perl readlink dirname sudo paste
     basename cat ls id cut bash man mktemp egrep date env mv
     cp chmod ln chown rm printf touch head mkdir find file
     make autoheader aclocal automake autoconf diff gcc which tr wc'
+
     declare -A Devlist=(
     [valgrind]='valgrind'
     [gdb]='gdb'
     [dot]='dot'
     [indent]='indent'
+    [gprof]='gprof'
     )
     cmdlist="${Devlist[@]} $cmdlist"
     for cmd in $cmdlist;do
-        i="$(which $cmd 2>/dev/null)"
+        i=($(\builtin type -afp $cmd 2>/dev/null))
         if [[ -z $i ]];then
             if [[ -z ${Devlist[$cmd]} ]];then
-                reslist+=$cmd
+                reslist+=" $cmd"
             else
-                devlist+=$cmd
+                devlist+=" $cmd"
             fi
         fi
-        \builtin eval "${cmd}=${i:-:}"
+        \builtin eval "local ${cmd//-/_}=${i:-:}"
     done
+    [[ -z $reslist ]] ||\
+    {
+        \builtin printf "%s\n" \
+        "$FUNCNAME says: ( $reslist ) These Required Commands are missing."
+        return
+    }
+    [[ -z $devlist ]] ||\
+    \builtin printf "%s\n" \
+    "$FUNCNAME says: ( $devlist ) These Optional Commands for further development."
+
     perl_version="$($perl -e 'print $^V')"
     prefix=/usr/local/
     bindir=${prefix}/bin/
@@ -36,15 +48,7 @@ lwrap.substitute()
     filename='starwars'
     arglist="c80 c3 c20 c235"
     languagelist="en sv fr cn jp zh"
-    [[ -z $reslist ]] ||\
-    {
-        \builtin printf "%s\n" \
-        "$FUNCNAME: says: ( $reslist ) These Required Commands are missing."
-        return
-    }
-    [[ -z $devlist ]] ||\
-    \builtin printf  "%s\n" \
-    "$FUNCNAME: says: ( $devlist ) These Optional Commands are missing for further development."
+    
     \builtin \source <($cat<<-SUB
 
 lwrap.debug()
@@ -57,7 +61,7 @@ lwrap.valgrind()
 {
     local args="./${binpath} -j80 -f ${testdir}/c20.starwars.en"
     args=\${@:-\$args}
-	$valgrind --leak-check=full --show-leak-kinds=all \${args}
+    $valgrind --leak-check=full --show-leak-kinds=all \${args}
 }
 lwrap.info()
 {
@@ -70,7 +74,7 @@ lwrap.config()
 {
     $make clean &&\
     $rm -f Makefile Makefile.in configure config.h.in config.h \
-        config.log config.status
+        config.log config.status gmon.out
     $rm -rf autom4te.cache
     $aclocal &&\
     $autoheader &&\
@@ -85,8 +89,19 @@ lwrap.clean()
     make clean
     $rm -f Makefile Makefile.in configure config.h.in config.h \
         config.log config.status lwrap.spec lwrap.s lwrap.out \
-        lwrap.verbose verify *.*~
+        lwrap.verbose verify gmon.out *.*~
     $rm -rf autom4te.cache
+}
+lwrap.callgraph()
+{
+    ./lwrap -j80 -f ../test/starwars.en 
+    $gprof lwrap gmon.out >/tmp/lwrap.txt
+}
+lwrap.make.callgraph()
+{
+    $make clean
+    touch .deps/lwrap.Po
+    $make -j4 CFLAGS='-g3 -O2 -w -pg'
 }
 lwrap.make()
 {
@@ -98,7 +113,7 @@ lwrap.install()
 {
     $sudo $cp -f $binpath $bindir/$binfile
     $sudo $chmod gu=rx,o=rx $bindir/$binfile
-    $sudo $chown \$USER: \$bindir/$binfile
+    $sudo $chown \$USER: $bindir/$binfile
     $sudo $cp -f $manpath ${mandir}/$manfile
     $sudo $chmod gu=r,o=r ${mandir}/$manfile
     $sudo $chown \$USER: ${mandir}/$manfile
@@ -124,7 +139,9 @@ lwrap.spec
 lwrap.s
 lwrap.verbose
 lwrap.out
+gmon.out
 src/.deps
+src/gmon.out
 .*
 *.o
 *~

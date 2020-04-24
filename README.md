@@ -32,16 +32,16 @@ output, `:[range]!lwrap -jNUMBERS -e`
 
 ## Examples
 
-* Output screenshots in different natural languages.
+* Output screen shots in different natural languages.
 
-  lwrap support unicode utf-8 codepage. The actual  
+  lwrap support unicode utf-8 code page. The actual  
 line width consistency depends on the input language  
 font glyph width.
 
-  The default line break is ascii space plus newline,  
+  The default line break is ASCII space plus newline,  
 it makes the output reversible back to it's original  
-input format. The reason is ascii space occasionally  
-been used as word and name separator in asian  
+input format. The reason is ASCII space occasionally  
+been used as word and name separator in Asia  
 languages, and if these spaces were erased, the output  
 will no longer be reversible. The default can be  
 changed with this command option, and it may be the  
@@ -51,23 +51,16 @@ desired final output.
 
 ## For developers
 
-* Function calls
+* Function structure
 
-  One 255 elements array been created as a "filter" for each  
-input byte. Each element is a struct pointer that pointing  
-to one of 16 structs, which in turn contains functions that  
-process each input byte.  
-By doing this we avoid as many as possible if-else statements.  
-And keep the functions in minimal size.
+    One 256 elements struct array has been created. Each struct contains
+function pointers, which in turn executes function to process unicode byte.
 
-  The same filter applys for the last byte before each line  
-break. This time the struct pointer will be resigned to execute
-another function call.
+<img src="misc/structure.png" height="282" width="282">
 
-  It seems we introduced a overhead by doing many function calls.
-But the benefits of decreased if-else cluster and maintainability
-of source code overcome some hundred millisecounds in lost speed 
-efficiency.
+    It seems we introduced a overhead by doing many function calls. 
+But the benefits of decreased if-else cluster and increased maintainability 
+of source code overcome some hundred milliseconds in lost speed efficiency. 
 ```
 > wc big.txt
 > 79594 568449 3525627 big.txt
@@ -77,15 +70,16 @@ efficiency.
 > time fmt -w 80 big.txt >result2.txt
 > real 0m0.068s
 ```
+* Control flow
 
 <img src="misc/functions.png" height="282" width="282">
 
-* Timeline
+* Time line
 
   Three buffers been created for handling input bytes.  
 We use library functions `fread` and `fwrite` to minimize  
 the number of function calls. A short time delay been  
-introduced for the first occurence of line break.  
+introduced for the first occurrence of line break.  
 And another one for initiation of write buffer.  
 The big "O" notation of input stream through  
 the entire program is constant.
@@ -127,7 +121,7 @@ e.g. **v1.0** is the first stable **release** tag form **beta** **branch**.
 
 ## Reporting a bug and security issues
 
-github.com/netcrop/lwrap/issues
+github.com/netcrop/lwrap/pulls
 
 ## License
 

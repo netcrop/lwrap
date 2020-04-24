@@ -1,0 +1,226 @@
+digraph ports {
+    bgcolor="gray"
+    { rank=same; n0}
+    splines=polyline;
+    n0 [shape=none,margin=0,label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+    <TR>
+        <TD
+            PORT="1" BGCOLOR="gray" COLSPAN="11">
+            <FONT POINT-SIZE="18">struct fun_t funicode[256]</FONT>
+        </TD>
+    </TR>
+    </TABLE>>];
+    n1 [shape=none,margin=0,label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+    <TR>
+        <TD
+            PORT="1" BGCOLOR="gray" COLSPAN="11">
+            <FONT POINT-SIZE="18">struct fun_t fring[26]</FONT>
+        </TD>
+    </TR>
+    </TABLE>>];
+    n2 [shape=none,margin=0,label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+    <TR>
+        <TD
+            PORT="1" BGCOLOR="gray" COLSPAN="11">
+            <FONT POINT-SIZE="18">fun *filter</FONT>
+        </TD>
+    </TR>
+    </TABLE>>];
+    n3 [shape=none,margin=0,label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+    <TR>
+        <TD
+            PORT="1" BGCOLOR="gray" COLSPAN="11">
+            <FONT POINT-SIZE="18">fun *linebreak</FONT>
+        </TD>
+    </TR>
+    </TABLE>>];
+    n4 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">alnum()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">space()</FONT>
+      </TD>
+	 </TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">formfeed()</FONT>
+      </TD>
+		</TR>
+  <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">twobyteheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">hangulheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">asianheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">formsheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">symbolheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">mischeader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">indicheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">cjkheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">hangulmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">cjkmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">latinmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">middlebyteheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">fourbyteheader()</FONT>
+      </TD>
+		</TR>
+    <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">newline()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+    n5 [shape=none,margin=0,label=<
+	<TABLE BORDER="0" CELLBORDER="1"
+	 CELLSPACING="0" CELLPADDING="4">
+   <TR>
+       <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbalnum()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbspace()</FONT>
+      </TD>
+	 </TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbformfeed()</FONT>
+      </TD>
+		</TR>
+  <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbtwobyteheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbhangulheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbasianheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbformsheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbsymbolheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbmischeader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbindicheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbcjkheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbhangulmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbcjkmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lblatinmiddlebyte()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbmiddlebyteheader()</FONT>
+      </TD>
+		</TR>
+   <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbfourbyteheader()</FONT>
+      </TD>
+		</TR>
+    <TR>
+      <TD PORT="1" BGCOLOR="gray" COLSPAN="11">
+        <FONT POINT-SIZE="18">lbnewline()</FONT>
+      </TD>
+		</TR>
+  </TABLE>>];
+  n0:1:s->n1:1:n;
+    n1:1:s->n2:1:n;
+    n1:1:s->n3:1:n;
+    n2:1:s->n4:1:n;
+    n3:1:s->n5:1:n;
+    label = "\n\nlwrap: Functions Structures.";
+    fontsize=18;
+}

@@ -41,7 +41,7 @@ inline void fwritebuff()
         return;
     }
     if (my.outdata->val == SPACE) {
-        my.fjustify(me);
+        my.fjustify();
         my.outdata->val = EOS;
         my.outdata->annotation = EOS;
         my.outdata = my.outdata->after;
