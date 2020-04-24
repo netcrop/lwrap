@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 
-inline void flinebreak()
+__attribute__((always_inline)) inline void flinebreak()
 {
     if (my.hcolcount <= my.hcolsize)
         return;

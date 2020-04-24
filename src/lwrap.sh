@@ -95,7 +95,7 @@ lwrap.clean()
 lwrap.callgraph()
 {
     local infile=\${1:?[text infile]}
-    ./lwrap -j80 -f \${infile} 
+    ./lwrap -j80 -f \${infile} >/dev/null 
     $gprof lwrap gmon.out >/tmp/lwrap.txt
 }
 lwrap.make.callgraph()

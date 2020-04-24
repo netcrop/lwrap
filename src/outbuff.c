@@ -5,7 +5,7 @@
 
 #include "lwrap.h"
 
-inline void foutput()
+__attribute__((always_inline)) inline void foutput()
 {
     if (my.curroutindex->val < my.writesize)
         return;
@@ -21,7 +21,7 @@ void finitwritebuff()
     fwritebuff();
 }
 
-inline void fwritebuff()
+__attribute__((always_inline)) inline void fwritebuff()
 {
     if (my.outdata->val == EOS) {
         my.outdata->annotation = EOS;

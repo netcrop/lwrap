@@ -6,7 +6,7 @@
 #include "lwrap.h"
 
 
-void middlebyte()
+__attribute__((always_inline)) inline void middlebyte()
 {
     my.currdata->val = (unsigned char)my.readbuff[my.currreadindex->val];
     my.currdata->byteheader = my.prevdata->byteheader + 1;
